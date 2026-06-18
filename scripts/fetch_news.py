@@ -35,15 +35,26 @@ QUERIES = [
 RSS_TMPL = "https://news.google.com/rss/search?q={q}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
 
 # 关键词 -> 分类。命中越多得分越高，取最高分；都为 0 归入 other。
+# 注意：已移除「销售数据」板块。纯财经/销售类新闻会被丢弃（见 SALES_KEYWORDS）。
 CATEGORY_KEYWORDS = {
-    "sales":  ["财报", "营收", "净利", "利润", "业绩", "收益", "季度", "同比",
-               "增长", "股价", "市值", "毛利", "回购", "营业额", "销售额", "指引"],
     "store":  ["开业", "门店", "新店", "首店", "旗舰店", "落地", "开出", "拓店", "新增门店"],
     "expo":   ["展览", "展区", "消博会", "进博会", "乐园", "POP LAND", "POPLAND",
                "光影节", "艺术展", "巡展", "主题展", "快闪"],
     "collab": ["联名", "合作", "授权", "联动", "跨界", "签约", "电影", "动画",
                "影业", "代工", "OEM"],
 }
+
+# 纯销售/财经类关键词：若一条新闻只命中这些、不属于上面任何板块，则丢弃（不展示）。
+SALES_KEYWORDS = ["财报", "营收", "净利", "利润", "业绩", "收益", "季度营收", "同比",
+                  "股价", "市值", "毛利", "回购", "营业额", "销售额", "盈利", "营收增长"]
+
+# 海外关键词：命中则 region=overseas，否则默认 china。
+OVERSEAS_KEYWORDS = ["海外", "美国", "美洲", "北美", "欧洲", "全球", "出海", "国际",
+                     "泰国", "曼谷", "新加坡", "越南", "胡志明", "印尼", "雅加达",
+                     "马来", "吉隆坡", "菲律宾", "马尼拉", "日本", "东京", "韩国", "首尔",
+                     "英国", "伦敦", "法国", "巴黎", "意大利", "米兰", "荷兰", "西班牙",
+                     "德国", "澳大利亚", "悉尼", "加拿大", "多伦多", "纽约", "洛杉矶",
+                     "迪拜", "中东", "东南亚", "世界杯", "索尼", "海外市场"]
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
@@ -59,12 +70,21 @@ def http_get(url, timeout=25):
 
 
 def categorize(text):
-    """根据关键词命中计分，返回得分最高的分类。"""
-    scores = {}
-    for cat, kws in CATEGORY_KEYWORDS.items():
-        scores[cat] = sum(1 for kw in kws if kw in text)
+    """返回得分最高的分类；纯销售类返回 None（表示丢弃）；无任何命中归 other。"""
+    scores = {cat: sum(1 for kw in kws if kw in text)
+              for cat, kws in CATEGORY_KEYWORDS.items()}
     best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else "other"
+    if scores[best] > 0:
+        return best
+    # 未命中任何板块：若是纯销售/财经新闻则丢弃，否则归入 other
+    if any(kw in text for kw in SALES_KEYWORDS):
+        return None
+    return "other"
+
+
+def detect_region(text):
+    """命中海外关键词 -> overseas，否则 china。"""
+    return "overseas" if any(kw in text for kw in OVERSEAS_KEYWORDS) else "china"
 
 
 def clean_title(title):
@@ -110,8 +130,13 @@ def parse_rss(xml_text):
         if not title or not link:
             continue
 
+        cat = categorize(title)
+        if cat is None:        # 纯销售/财经新闻，跳过（已移除销售板块）
+            continue
+
         items.append({
-            "cat": categorize(title),
+            "cat": cat,
+            "region": detect_region(title),
             "d": d,
             "title": title,
             "text": title,           # RSS 仅有标题，正文留作标题（前端展示用）

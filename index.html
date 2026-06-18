@@ -109,6 +109,8 @@
   .map-holder svg{width:100%;height:auto;display:block}
   .map-holder path{stroke:#fff;stroke-width:.5;transition:opacity .15s}
   .map-holder path:hover{opacity:.78;cursor:pointer}
+  .newpulse{transform-box:fill-box;transform-origin:center;animation:newpulse 1.4s ease-out infinite}
+  @keyframes newpulse{0%{opacity:.9;transform:scale(1)}70%{opacity:0;transform:scale(2.2)}100%{opacity:0;transform:scale(2.2)}}
   .legend{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:11px;color:var(--muted);flex-wrap:wrap}
   .legend .sw{display:inline-flex;gap:2px}
   .legend .sw i{width:18px;height:9px;display:inline-block;border-radius:2px}
@@ -183,8 +185,7 @@
     </div>
     <div class="console-spacer"></div>
     <div class="refresh-group">
-      <div class="countdown" id="cdText">下次检查 5:00<div class="cd-bar"><div class="cd-fill" id="cdFill"></div></div></div>
-      <div class="toggle on" id="autoToggle" role="switch" aria-checked="true" tabindex="0"><span class="switch"></span>自动</div>
+      <span style="font-size:12px;color:var(--faint)">数据随每周抓取更新</span>
       <button class="btn" id="refreshBtn">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>刷新
       </button>
@@ -278,6 +279,9 @@ function applyNews(json){
   document.getElementById('snapText').innerHTML = `共 ${NEWS.length} 条动向 · 新闻更新于 <b style="color:var(--ink)">${txt}</b>`;
 }
 
+let prevStoreKeys = null;   // 上次见到的门店集合（null=首次加载）
+let newStoreCities = new Set();   // 本次新增门店所在城市（用于地图脉冲高亮）
+
 function applyStores(s){
   STORES = s;
   const t = s.totals||{};
@@ -286,6 +290,20 @@ function applyStores(s){
   animateNum('k-co', t.countries||0);
   animateNum('k-cn', t.china_total||0);
   document.getElementById('kpiAsOf').textContent = s.as_of ? '截至 '+s.as_of : '—';
+
+  // —— 检测新增门店 ——
+  const stores = s.us_stores||[];
+  const keys = new Set(stores.map(x=>x.name+'|'+x.addr));
+  newStoreCities = new Set();
+  if(prevStoreKeys){
+    const added = stores.filter(x=>!prevStoreKeys.has(x.name+'|'+x.addr));
+    if(added.length){
+      added.forEach(x=>newStoreCities.add(x.city+', '+x.state));
+      const names = added.slice(0,3).map(x=>x.name).join('、');
+      toast(`🆕 新增 ${added.length} 家门店：${names}${added.length>3?' 等':''}`);
+    }
+  }
+  prevStoreKeys = keys;
 }
 
 function animateNum(id, target){
@@ -335,7 +353,7 @@ function renderOverseas(){
       ${est?'<span class="est-badge">估算 / 示意数据 · 非官方逐店统计</span>':''}
       <span style="font-size:12px;color:var(--faint)">截至 ${STORES.as_of||'—'}</span></div>
     <div class="map-grid">
-      <div class="map-card"><h4>美国门店分布（精确到州）</h4><div class="cap">颜色越深 = 门店越多 · 悬停查看各州数量</div>
+      <div class="map-card"><h4>美国门店分布（按城市 · 密集度）</h4><div class="cap">圆圈越大越深 = 该城市门店越多 · 悬停查看 · 新店自动高亮</div>
         <div class="map-holder" id="usMap"></div>
         <div class="legend" id="usLegend"></div></div>
       <div class="map-card"><h4>全球门店分布（按国家）</h4><div class="cap">颜色越深 = 门店越多 · 悬停查看各国数量</div>
@@ -374,18 +392,53 @@ function legendHTML(ramp,maxV){
 
 function drawUSMap(){
   const el=document.getElementById('usMap'); if(!el||!window.d3) return; el.innerHTML='';
-  const data=STORES.us||{}; const max=Math.max(1,...Object.values(data));
-  const color=d3.scaleQuantize([0,max],US_RAMP);
+  const stores=STORES.us_stores||[];
+  // 按城市聚合
+  const byCity={};
+  stores.forEach(s=>{
+    const key=s.city+', '+s.state;
+    if(!byCity[key]) byCity[key]={city:s.city,state:s.state,count:0,lat:0,lng:0,names:[]};
+    const c=byCity[key]; c.count++; c.lat+=s.lat; c.lng+=s.lng; c.names.push(s.name);
+  });
+  const cities=Object.values(byCity).map(c=>({...c,lat:c.lat/c.count,lng:c.lng/c.count}));
+  const maxC=Math.max(1,...cities.map(c=>c.count));
+  const rScale=d3.scaleSqrt([1,maxC],[6,20]);                 // 半径∝门店数
+  const shade=d3.scaleQuantize([1,maxC],['#F4C0D1','#ED93B1','#D4537E','#993556']); // 颜色∝密集度
+
   const svg=d3.select(el).append('svg').attr('viewBox','0 0 960 560');
-  const path=d3.geoPath(d3.geoAlbersUsa().scale(1100).translate([480,275]));
+  const proj=d3.geoAlbersUsa().scale(1100).translate([480,275]);
+  const path=d3.geoPath(proj);
   d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us=>{
-    svg.selectAll('path').data(topojson.feature(us,us.objects.states).features).join('path')
-      .attr('d',path)
-      .attr('fill',d=>{const v=data[d.properties.name];return v?color(v):'#EDEAF4';})
-      .on('mousemove',(e,d)=>{const v=data[d.properties.name]||0;
-        showTip(e,`${d.properties.name}<br><span class="sm">${v} 家门店</span>`);})
-      .on('mouseleave',hideTip);
-    document.getElementById('usLegend').innerHTML=legendHTML(US_RAMP,max);
+    svg.append('g').selectAll('path')
+      .data(topojson.feature(us,us.objects.states).features).join('path')
+      .attr('d',path).attr('fill','#EFEAF7').attr('stroke','#fff').attr('stroke-width',.6)
+      .style('pointer-events','none');
+    const g=svg.append('g');
+    cities.sort((a,b)=>b.count-a.count).forEach(c=>{          // 大圈在下、小圈在上
+      const xy=proj([c.lng,c.lat]); if(!xy) return;
+      const isNew=newStoreCities.has(c.city+', '+c.state);
+      if(isNew){                                              // 新店：外圈脉冲高亮
+        g.append('circle').attr('cx',xy[0]).attr('cy',xy[1]).attr('r',rScale(c.count))
+          .attr('fill','none').attr('stroke','var(--gold)').attr('stroke-width',2.5)
+          .attr('class','newpulse');
+      }
+      const names=c.names.slice(0,4).join('、')+(c.names.length>4?` 等${c.names.length}家`:'');
+      g.append('circle')
+        .attr('cx',xy[0]).attr('cy',xy[1]).attr('r',rScale(c.count))
+        .attr('fill',shade(c.count)).attr('fill-opacity',.85)
+        .attr('stroke','#fff').attr('stroke-width',1.4).style('cursor','pointer')
+        .on('mousemove',e=>showTip(e,
+            `${esc(c.city)}, ${c.state} · <b>${c.count} 家</b>${isNew?' <span class="sm">🆕新增</span>':''}<br><span class="sm">${esc(names)}</span>`))
+        .on('mouseleave',hideTip);
+      if(c.count>1){                                          // 多店城市标数字
+        g.append('text').attr('x',xy[0]).attr('y',xy[1]+3.5).attr('text-anchor','middle')
+          .attr('font-size','11').attr('font-weight','700').attr('fill','#fff')
+          .style('pointer-events','none').text(c.count);
+      }
+    });
+    document.getElementById('usLegend').innerHTML=
+      `圆圈越大/越深 = 该城市门店越多 · 悬停查看城市与门店 · 共 ${cities.length} 城 / ${stores.length} 家`+
+      (newStoreCities.size?` · <span style="color:#b8860b">金圈=本次新增</span>`:'');
   }).catch(()=>{el.innerHTML='<div style="padding:30px;text-align:center;color:var(--faint);font-size:13px">地图地形数据加载失败（需联网）</div>';});
 }
 
@@ -451,12 +504,7 @@ function toast(msg){const t=document.getElementById('toast');
   document.getElementById('toastMsg').textContent=msg;t.classList.add('show');
   clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
 
-let autoOn=true,cd=300,cdTimer=null;const PERIOD=300;
-function mmss(s){return `${Math.floor(s/60)}:${pad(s%60)}`;}
-function updateCd(){document.getElementById('cdText').firstChild.textContent=`下次检查 ${mmss(cd)}`;
-  document.getElementById('cdFill').style.transform=`scaleX(${cd/PERIOD})`;}
-function startCountdown(){clearInterval(cdTimer);cd=PERIOD;updateCd();
-  cdTimer=setInterval(()=>{if(!autoOn)return;cd--;updateCd();if(cd<=0)doRefresh(true);},1000);}
+let autoOn=false;   // 已停用前端自动轮询：数据随每周定时任务更新，打开页面时加载一次
 
 async function doRefresh(auto){
   const btn=document.getElementById('refreshBtn');btn.classList.add('spinning');
@@ -467,17 +515,9 @@ async function doRefresh(auto){
     if(stores.status==='fulfilled') applyStores(stores.value);
     renderTicker();renderFilters();renderOverseas();renderBoard();
     const changed=(META.generated!==beforeGen)||(STORES&&JSON.stringify(STORES.totals)!==beforeStores);
-    toast(auto?(changed?'已更新 · 数据有变化':'已是最新 · 暂无变化'):(changed?'已刷新 · 数据已更新':'已是最新 · 数据无变化'));
+    toast(changed?'已刷新 · 数据已更新':'已是最新 · 数据无变化');
   }catch(e){ toast('读取失败 · 保留当前数据'); }
-  finally{ btn.classList.remove('spinning');cd=PERIOD;updateCd(); }
-}
-
-function setupToggle(){
-  const t=document.getElementById('autoToggle');
-  const flip=()=>{autoOn=!autoOn;t.classList.toggle('on',autoOn);t.setAttribute('aria-checked',autoOn);
-    if(autoOn){startCountdown();toast('已开启自动检查（每 5 分钟）');}
-    else{toast('已暂停自动检查');document.getElementById('cdText').firstChild.textContent='自动检查已暂停';}};
-  t.onclick=flip;t.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}};
+  finally{ btn.classList.remove('spinning'); }
 }
 
 /* ===== Init ===== */
@@ -490,10 +530,10 @@ async function init(){
   if(news.status!=='fulfilled'||stores.status!=='fulfilled')
     document.getElementById('snapText').textContent='部分数据读取失败，当前含离线兜底数据';
   setupRegion();renderTicker();renderFilters();renderOverseas();renderBoard();
-  startCountdown();setupToggle();
   document.getElementById('refreshBtn').onclick=()=>doRefresh(false);
 }
 init();
 </script>
 </body>
 </html>
+

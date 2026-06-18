@@ -17,24 +17,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 安装 Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: 抓取最新动向
         run: python scripts/fetch_news.py
 
+      - name: 抓取美国门店（需配置 STORE_API_URL，否则自动跳过）
+        env:
+          STORE_API_URL: ${{ vars.STORE_API_URL }}
+        run: python scripts/fetch_stores.py
+
       - name: 提交更新（若有变化）
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json stores.json
           if git diff --staged --quiet; then
-            echo "data.json 无变化，跳过提交。"
+            echo "无变化，跳过提交。"
           else
-            git commit -m "chore: 周度动向更新 $(date -u +%Y-%m-%d)"
+            git commit -m "chore: 周度数据更新 $(date -u +%Y-%m-%d)"
             git push
           fi

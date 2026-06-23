@@ -101,7 +101,7 @@
   .maps-intro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 14px}
   .maps-intro h3{font-size:18px;font-weight:700}
   .est-badge{font-size:11.5px;font-weight:600;color:#8a5a00;background:#FDEBC8;border:1px solid #F5D08A;padding:3px 10px;border-radius:999px}
-  .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .map-grid{display:grid;grid-template-columns:1fr;gap:18px}
   .map-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 16px 12px;box-shadow:var(--shadow-sm);position:relative}
   .map-card h4{font-size:15px;font-weight:700;margin-bottom:4px}
   .map-card .cap{font-size:12px;color:var(--faint);margin-bottom:8px}
@@ -212,11 +212,9 @@
 
   <div class="controls">
     <div class="seg" id="regionSeg">
-      <button data-region="all" class="active">全部</button>
-      <button data-region="china">🇨🇳 中国</button>
+      <button data-region="china" class="active">🇨🇳 中国</button>
       <button data-region="overseas">🌍 海外</button>
     </div>
-    <div class="filters" id="filters"></div>
   </div>
 
   <div id="overseasBlock"></div>
@@ -255,7 +253,7 @@ const FALLBACK_STORES = {as_of:'2026-03-31',is_estimate:true,totals:{overseas_to
   monthly:[{month:'2026-04',china:5,overseas:7},{month:'2026-03',china:6,overseas:9}]};
 
 let NEWS=[], STORES=null, META={generated:null};
-let activeRegion='all', activeCat='all';
+let activeRegion='china';
 
 const fmtDate = iso => { const [y,m,d]=iso.split('-'); return `${parseInt(m)}月${parseInt(d)}日`; };
 const fmtMonth = m => { const [y,mm]=m.split('-'); return `${y}年${parseInt(mm)}月`; };
@@ -325,22 +323,10 @@ function setupRegion(){
   document.querySelectorAll('#regionSeg button').forEach(b=>{
     b.onclick=()=>{activeRegion=b.dataset.region;
       document.querySelectorAll('#regionSeg button').forEach(x=>x.classList.toggle('active',x===b));
-      renderFilters();renderOverseas();renderBoard();};
+      renderOverseas();renderBoard();};
   });
 }
-function regionFilter(arr){ return activeRegion==='all'?arr:arr.filter(u=>u.region===activeRegion); }
-
-function renderFilters(){
-  const pool = regionFilter(NEWS);
-  const counts={all:pool.length};
-  Object.keys(CATS).forEach(k=>counts[k]=pool.filter(u=>u.cat===k).length);
-  const chip=(key,label,color)=>`<button class="chip ${activeCat===key?'active':''}" data-cat="${key}">
-      ${color?`<span class="cdot" style="background:${color}"></span>`:''}${label}<span class="cnt">${counts[key]||0}</span></button>`;
-  let html=chip('all','全部类别','');
-  Object.entries(CATS).forEach(([k,v])=>{ if(counts[k]) html+=chip(k,v.label,v.color); });
-  const nav=document.getElementById('filters');nav.innerHTML=html;
-  nav.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{activeCat=c.dataset.cat;renderFilters();renderBoard();});
-}
+function regionFilter(arr){ return arr.filter(u=>u.region===activeRegion); }
 
 /* ===== 海外门店区块（地图 + 表） ===== */
 function renderOverseas(){
@@ -465,36 +451,31 @@ function drawWorldMap(){
   }).catch(()=>{el.innerHTML='<div style="padding:30px;text-align:center;color:var(--faint);font-size:13px">地图地形数据加载失败（需联网）</div>';});
 }
 
-/* ===== 新闻板块 ===== */
+/* ===== 资讯板块（不分类，按地区列出） ===== */
 function renderBoard(){
   const board=document.getElementById('board');
-  const pool=regionFilter(NEWS);
-  const cats = activeCat==='all' ? Object.keys(CATS) : [activeCat];
-  let html='';
-  if(activeRegion!=='china' && STORES){ /* 海外/全部：标题分隔新闻区 */
-    html+=`<div class="region-head"><span class="flag">📰</span><h2>动向资讯</h2><span class="ln"></span></div>`;
+  const items=sortByDate(regionFilter(NEWS));
+  const accent='var(--violet)';
+  let html=`<div class="region-head"><span class="flag">📰</span><h2>动向资讯</h2>
+    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${items.length} 条</span><span class="ln"></span></div>`;
+  if(!items.length){
+    board.innerHTML = html + `<div class="empty">该地区暂无动向。</div>`;
+    return;
   }
-  cats.forEach(cat=>{
-    const items=sortByDate(pool.filter(u=>u.cat===cat));
-    if(!items.length) return;
-    const c=CATS[cat];
-    html+=`<section><div class="sec-head"><span class="bar" style="background:${c.color}">${c.mark}</span>
-      <h3>${c.label}</h3><span class="meta">${items.length} 条</span></div><div class="cards">`;
-    items.forEach((u,i)=>{
-      const r=REGIONS[u.region]||null;
-      html+=`<article class="card enter" style="border-left-color:${c.color};animation-delay:${Math.min(i*55,500)}ms">
-        <div class="top"><span class="date" style="background:${c.color}">${fmtDate(u.d)}</span>
-          <span class="ctag">${c.label}</span>
-          ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}</div>
-        <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
-        <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
-          <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-        </div></article>`;
-    });
-    html+=`</div></section>`;
+  html += `<div class="cards">`;
+  items.forEach((u,i)=>{
+    const r=REGIONS[u.region]||null;
+    html+=`<article class="card enter" style="border-left-color:${accent};animation-delay:${Math.min(i*45,500)}ms">
+      <div class="top"><span class="date" style="background:${accent}">${fmtDate(u.d)}</span>
+        ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}</div>
+      <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
+      <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
+        <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div></article>`;
   });
-  board.innerHTML = html || `<div class="empty">该筛选下暂无动向。</div>`;
+  html+=`</div>`;
+  board.innerHTML = html;
 }
 
 /* ===== 时钟 & 刷新 ===== */
@@ -513,7 +494,7 @@ async function doRefresh(auto){
     const [news,stores]=await Promise.allSettled([fetchJSON('data.json'),fetchJSON('stores.json')]);
     if(news.status==='fulfilled') applyNews(news.value);
     if(stores.status==='fulfilled') applyStores(stores.value);
-    renderTicker();renderFilters();renderOverseas();renderBoard();
+    renderTicker();renderOverseas();renderBoard();
     const changed=(META.generated!==beforeGen)||(STORES&&JSON.stringify(STORES.totals)!==beforeStores);
     toast(changed?'已刷新 · 数据已更新':'已是最新 · 数据无变化');
   }catch(e){ toast('读取失败 · 保留当前数据'); }
@@ -529,11 +510,10 @@ async function init(){
   applyStores(stores.status==='fulfilled'?stores.value:FALLBACK_STORES);
   if(news.status!=='fulfilled'||stores.status!=='fulfilled')
     document.getElementById('snapText').textContent='部分数据读取失败，当前含离线兜底数据';
-  setupRegion();renderTicker();renderFilters();renderOverseas();renderBoard();
+  setupRegion();renderTicker();renderOverseas();renderBoard();
   document.getElementById('refreshBtn').onclick=()=>doRefresh(false);
 }
 init();
 </script>
 </body>
 </html>
-

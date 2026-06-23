@@ -31,6 +31,13 @@ QUERIES = [
     "泡泡玛特",
     "泡泡玛特 LABUBU",
     "POP MART 泡泡玛特",
+    "泡泡玛特 门店",
+    "泡泡玛特 海外",
+    "泡泡玛特 联名",
+    "泡泡玛特 新品",
+    "泡泡玛特 财报 业绩",
+    "泡泡玛特 城市乐园",
+    "泡泡玛特 星星人",
 ]
 RSS_TMPL = "https://news.google.com/rss/search?q={q}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
 
@@ -59,7 +66,7 @@ OVERSEAS_KEYWORDS = ["海外", "美国", "美洲", "北美", "欧洲", "全球",
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
-MAX_ITEMS = 48          # data.json 中保留的最大条数
+MAX_ITEMS = 90          # data.json 中保留的最大条数
 MIN_FETCHED = 3         # 抓取结果少于此数则视为失败，不覆盖旧数据
 
 
@@ -70,15 +77,14 @@ def http_get(url, timeout=25):
 
 
 def categorize(text):
-    """返回得分最高的分类；纯销售类返回 None（表示丢弃）；无任何命中归 other。"""
+    """返回得分最高的分类；纯财经/销售类返回 None（丢弃，不展示）；无命中归 other。"""
     scores = {cat: sum(1 for kw in kws if kw in text)
               for cat, kws in CATEGORY_KEYWORDS.items()}
     best = max(scores, key=scores.get)
     if scores[best] > 0:
         return best
-    # 未命中任何板块：若是纯销售/财经新闻则丢弃，否则归入 other
     if any(kw in text for kw in SALES_KEYWORDS):
-        return None
+        return None             # 纯财经新闻（营收/股价/财报/回购等）丢弃，不展示
     return "other"
 
 
@@ -131,7 +137,7 @@ def parse_rss(xml_text):
             continue
 
         cat = categorize(title)
-        if cat is None:        # 纯销售/财经新闻，跳过（已移除销售板块）
+        if cat is None:        # 纯财经新闻，跳过不展示
             continue
 
         items.append({

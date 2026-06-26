@@ -97,6 +97,10 @@
   .region-head .flag{font-size:22px}
   .region-head h2{font-size:25px;font-weight:700;letter-spacing:-.01em}
   .region-head .ln{flex:1;height:1px;background:var(--line)}
+  .cat-head{display:flex;align-items:center;gap:9px;margin:22px 0 12px}
+  .cat-head .bar{width:4px;height:17px;border-radius:3px;display:inline-block}
+  .cat-head h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .cat-head .meta{font-family:'Space Mono',monospace;font-size:12px;color:var(--faint)}
 
   .maps-intro{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 14px}
   .maps-intro h3{font-size:18px;font-weight:700}
@@ -486,11 +490,40 @@ function isLead(u){
   return LEAD_KW.some(k=>t.includes(k.toLowerCase()));
 }
 
-/* ===== 资讯板块（不分类，按地区列出） ===== */
+/* ===== 动向资讯四分类 ===== */
+const CATS4={
+  popup:{label:'展览快闪', color:'#2bb3a3'},
+  sales:{label:'销售数据', color:'#d4537e'},
+  biz:{label:'业务拓展', color:'#6b5bd6'},
+  other:{label:'其他', color:'#8a93a6'}
+};
+const POPUP_KW=['展览','快闪','乐园','城市乐园','gallery','画廊','主题展','艺术展','艺术空间','展区','消博会','游园','灯会','沉浸式','pop land','巡展','展会','门票','开区'];
+const SALES_KW2=['营收','销量','售罄','溢价','销售额','业绩','财报','股价','市值','回购','同比','交易额','售出','万件','万只','亿元','gmv','复购','成交价','单日','首周销量'];
+const BIZ_KW=['门店','总部','工厂','供应链','区域','ip','新品','联名','合作','授权','收购','电影','家电','饰品','品类','出海','升级','人事','cgo','旗舰','市场','投产','新增','拓展','签约','入局','上市','总裁'];
+function classify4(u){
+  const t=((u.title||'')+' '+(u.text||'')).toLowerCase();
+  if(POPUP_KW.some(k=>t.includes(k))) return 'popup';
+  if(SALES_KW2.some(k=>t.includes(k))) return 'sales';
+  if(BIZ_KW.some(k=>t.includes(k))) return 'biz';
+  return 'other';
+}
+
+function newsCard(u,accent){
+  const r=REGIONS[u.region]||null;
+  return `<article class="card enter" style="border-left-color:${accent}">
+    <div class="top"><span class="date" style="background:${accent}">${fmtDate(u.d)}</span>
+      ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}</div>
+    <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
+    <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
+      <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div></article>`;
+}
+
+/* ===== 资讯板块 ===== */
 function renderBoard(){
   const board=document.getElementById('board');
   const all=sortByDate(regionFilter(NEWS));
-  const accent='var(--violet)';
 
   // —— 本周开店线索 ——
   const leads=all.filter(isLead).slice(0,8);
@@ -516,27 +549,24 @@ function renderBoard(){
     html+=`<div class="empty">本周暂无新开店线索。</div>`;
   }
 
-  // —— 全部动向资讯 ——
+  // —— 动向资讯（已剔除开店线索，避免重复） ——
+  const rest=all.filter(u=>!isLead(u));
   html+=`<div class="region-head" style="margin-top:30px"><span class="flag">📰</span><h2>动向资讯</h2>
-    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${all.length} 条</span><span class="ln"></span></div>`;
-  if(!all.length){
-    board.innerHTML = html + `<div class="empty">该地区暂无动向。</div>`;
-    return;
+    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${rest.length} 条</span><span class="ln"></span></div>`;
+  if(!rest.length){
+    html+=`<div class="empty">该地区暂无其他动向。</div>`;
+    board.innerHTML=html; return;
   }
-  html += `<div class="cards">`;
-  all.forEach((u,i)=>{
-    const r=REGIONS[u.region]||null;
-    html+=`<article class="card enter" style="border-left-color:${accent};animation-delay:${Math.min(i*45,500)}ms">
-      <div class="top"><span class="date" style="background:${accent}">${fmtDate(u.d)}</span>
-        ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}
-        ${isLead(u)?`<span class="lead-tag">📍 开店线索</span>`:''}</div>
-      <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
-      <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
-        <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-      </div></article>`;
+  // 按四类分组渲染
+  Object.entries(CATS4).forEach(([key,meta])=>{
+    const group=rest.filter(u=>classify4(u)===key);
+    if(!group.length) return;
+    html+=`<div class="cat-head"><span class="bar" style="background:${meta.color}"></span>
+      <h3 style="color:${meta.color}">${meta.label}</h3>
+      <span class="meta">${group.length} 条</span></div><div class="cards">`;
+    group.forEach(u=>{ html+=newsCard(u,meta.color); });
+    html+=`</div>`;
   });
-  html+=`</div>`;
   board.innerHTML = html;
 }
 

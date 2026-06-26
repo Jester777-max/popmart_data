@@ -155,6 +155,10 @@
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
   .empty{grid-column:1/-1;text-align:center;color:var(--faint);padding:34px 0;font-size:14px}
+  .lead-note{font-size:12.5px;color:var(--muted);background:rgba(212,131,0,.08);border:1px solid rgba(212,131,0,.25);border-radius:10px;padding:9px 13px;margin:2px 0 14px}
+  .lead-tag{font-size:11px;font-weight:700;color:#9a6700;background:rgba(212,131,0,.14);padding:2px 8px;border-radius:6px}
+  .card.lead{border-left:3px solid var(--gold)}
+  .card .date.lead{background:var(--gold)}
   .disclaimer{margin:46px 0 60px;font-size:12.5px;color:var(--faint);line-height:1.7;background:rgba(255,255,255,.5);border:1px dashed var(--line);border-radius:14px;padding:16px 18px}
   .disclaimer b{color:var(--muted)}
   .disclaimer code{font-family:'Space Mono',monospace;background:var(--bg-2);padding:1px 5px;border-radius:4px}
@@ -342,7 +346,7 @@ function renderOverseas(){
       <div class="map-card"><h4>美国门店分布（按城市 · 密集度）</h4><div class="cap">圆圈越大越深 = 该城市门店越多 · 悬停查看 · 新店自动高亮</div>
         <div class="map-holder" id="usMap"></div>
         <div class="legend" id="usLegend"></div></div>
-      <div class="map-card"><h4>全球门店分布（按国家）</h4><div class="cap">颜色越深 = 门店越多 · 悬停查看各国数量</div>
+      <div class="map-card"><h4>全球门店分布（按国家）</h4><div class="cap">每个国家标注线下门店数 · 无门店不标注 · 数据随 stores.json 每周刷新</div>
         <div class="map-holder" id="worldMap"></div>
         <div class="legend" id="worldLegend"></div></div>
     </div>
@@ -430,44 +434,102 @@ function drawUSMap(){
 
 function drawWorldMap(){
   const el=document.getElementById('worldMap'); if(!el||!window.d3) return; el.innerHTML='';
-  const data=STORES.world||{}; const max=Math.max(1,...Object.values(data));
-  const color=d3.scaleQuantize([0,max],WORLD_RAMP);
+  const data=STORES.world||{};
+  const vals=Object.values(data).filter(v=>v>0);
+  // 分位数配色：避免中国(数值很大)把其他国家压成一片浅色
+  const color=vals.length ? d3.scaleQuantile(vals, WORLD_RAMP) : ()=>WORLD_RAMP[0];
   const svg=d3.select(el).append('svg').attr('viewBox','0 0 960 480');
   const proj=d3.geoNaturalEarth1().scale(175).translate([480,250]);
   const path=d3.geoPath(proj);
+  const norm=s=>s.toLowerCase().replace(/[^a-z]/g,'');
+  const lookup={}; Object.keys(data).forEach(k=>lookup[norm(k)]=data[k]);
+  const alias={'unitedstatesofamerica':'unitedstates','southkorea':'korea','czechia':'czechrepublic'};
+  const getVal=name=>{
+    let v=data[name]??lookup[norm(name)];
+    if(v==null){const n=norm(name);for(const k in alias){if(alias[k]===n&&lookup[k]!=null){v=lookup[k];break;}if(k===n&&lookup[alias[k]]!=null){v=lookup[alias[k]];break;}}}
+    return v||0;
+  };
   d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w=>{
-    const norm=s=>s.toLowerCase().replace(/[^a-z]/g,'');
-    const lookup={}; Object.keys(data).forEach(k=>lookup[norm(k)]=data[k]);
-    const alias={'unitedstatesofamerica':'unitedstates','southkorea':'korea','czechia':'czechrepublic'};
-    svg.selectAll('path').data(topojson.feature(w,w.objects.countries).features).join('path')
+    const feats=topojson.feature(w,w.objects.countries).features;
+    // 1) 国家填色
+    svg.append('g').selectAll('path').data(feats).join('path')
       .attr('d',path)
-      .attr('fill',d=>{const n=norm(d.properties.name);let v=data[d.properties.name]??lookup[n];
-        if(v==null){for(const k in alias){if(alias[k]===n&&lookup[k]!=null){v=lookup[k];break;}if(k===n&&lookup[alias[k]]!=null){v=lookup[alias[k]];break;}}}
-        return v?color(v):'#EDEAF4';})
-      .on('mousemove',(e,d)=>{const v=data[d.properties.name]??lookup[norm(d.properties.name)]??0;
-        showTip(e,`${d.properties.name}<br><span class="sm">${v} 家门店</span>`);})
+      .attr('fill',d=>{const v=getVal(d.properties.name);return v?color(v):'#EDEAF4';})
+      .attr('stroke','#fff').attr('stroke-width',.4)
+      .on('mousemove',(e,d)=>{const v=getVal(d.properties.name);
+        showTip(e,`${d.properties.name}<br><span class="sm">${v?v+' 家门店':'无门店'}</span>`);})
       .on('mouseleave',hideTip);
-    document.getElementById('worldLegend').innerHTML=legendHTML(WORLD_RAMP,max);
+    // 2) 有门店的国家标注数量
+    const lg=svg.append('g').style('pointer-events','none');
+    feats.forEach(d=>{
+      const v=getVal(d.properties.name); if(!v) return;
+      const c=path.centroid(d); if(!c||isNaN(c[0])) return;
+      const txt=String(v), w0=txt.length*7+8;
+      lg.append('rect').attr('x',c[0]-w0/2).attr('y',c[1]-8).attr('width',w0).attr('height',15)
+        .attr('rx',7).attr('fill','rgba(255,255,255,.82)');
+      lg.append('text').attr('x',c[0]).attr('y',c[1]+3.5).attr('text-anchor','middle')
+        .attr('font-size','11').attr('font-weight','700').attr('fill','var(--violet)').text(txt);
+    });
+    document.getElementById('worldLegend').innerHTML=
+      `数字 = 该国线下门店数 · 颜色越深门店越多 · 共 ${vals.length} 国有门店`+
+      ` · <span style="color:var(--faint)">美国为官方数据，其余为估算</span>`;
   }).catch(()=>{el.innerHTML='<div style="padding:30px;text-align:center;color:var(--faint);font-size:13px">地图地形数据加载失败（需联网）</div>';});
+}
+
+/* ===== 开店线索识别 ===== */
+const LEAD_KW=['新店','新开','首店','开业','开出','开设','进驻','入驻','新增门店','旗舰店','落地',
+  'opening','opens',' opened','open store','new store','flagship','debut','grand opening','now open'];
+function isLead(u){
+  if(u.lead===true) return true;           // 抓取脚本已标记
+  if(u.lead===false) return false;
+  const t=((u.title||'')+' '+(u.text||'')).toLowerCase();
+  return LEAD_KW.some(k=>t.includes(k.toLowerCase()));
 }
 
 /* ===== 资讯板块（不分类，按地区列出） ===== */
 function renderBoard(){
   const board=document.getElementById('board');
-  const items=sortByDate(regionFilter(NEWS));
+  const all=sortByDate(regionFilter(NEWS));
   const accent='var(--violet)';
-  let html=`<div class="region-head"><span class="flag">📰</span><h2>动向资讯</h2>
-    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${items.length} 条</span><span class="ln"></span></div>`;
-  if(!items.length){
+
+  // —— 本周开店线索 ——
+  const leads=all.filter(isLead).slice(0,8);
+  let html=`<div class="region-head"><span class="flag">📍</span><h2>本周开店线索</h2>
+    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${leads.length} 条</span><span class="ln"></span></div>`;
+  html+=`<div class="lead-note">自动从动向资讯中筛出疑似「开店」消息，供你核实。<b>地图门店数字不会自动改动</b>，确认属实后再更新 stores.json。</div>`;
+  if(leads.length){
+    html+=`<div class="cards">`;
+    leads.forEach((u,i)=>{
+      const r=REGIONS[u.region]||null;
+      html+=`<article class="card lead enter" style="animation-delay:${Math.min(i*45,400)}ms">
+        <div class="top"><span class="date lead">${fmtDate(u.d)}</span>
+          ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}
+          <span class="lead-tag">📍 开店线索</span></div>
+        <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
+        <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
+          <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div></article>`;
+    });
+    html+=`</div>`;
+  }else{
+    html+=`<div class="empty">本周暂无新开店线索。</div>`;
+  }
+
+  // —— 全部动向资讯 ——
+  html+=`<div class="region-head" style="margin-top:30px"><span class="flag">📰</span><h2>动向资讯</h2>
+    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${all.length} 条</span><span class="ln"></span></div>`;
+  if(!all.length){
     board.innerHTML = html + `<div class="empty">该地区暂无动向。</div>`;
     return;
   }
   html += `<div class="cards">`;
-  items.forEach((u,i)=>{
+  all.forEach((u,i)=>{
     const r=REGIONS[u.region]||null;
     html+=`<article class="card enter" style="border-left-color:${accent};animation-delay:${Math.min(i*45,500)}ms">
       <div class="top"><span class="date" style="background:${accent}">${fmtDate(u.d)}</span>
-        ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}</div>
+        ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}
+        ${isLead(u)?`<span class="lead-tag">📍 开店线索</span>`:''}</div>
       <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
       <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
         <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文

@@ -93,6 +93,20 @@ def detect_region(text):
     return "overseas" if any(kw in text for kw in OVERSEAS_KEYWORDS) else "china"
 
 
+# 「开店线索」识别：标题含这些词则疑似新开门店，供人工核实（不自动改地图数字）
+STORE_LEAD_KEYWORDS = [
+    "新店", "新开", "首店", "开业", "开出", "开设", "进驻", "入驻", "新增门店",
+    "旗舰店", "落地", "开张", "正式营业", "门店亮相",
+    "opening", "opens", "opened", "open store", "new store", "flagship",
+    "debut", "grand opening", "now open",
+]
+
+
+def is_store_lead(text):
+    low = text.lower()
+    return any(kw.lower() in low for kw in STORE_LEAD_KEYWORDS)
+
+
 def clean_title(title):
     """Google News 标题常为 '正文 - 来源'，拆出正文与来源。"""
     src = ""
@@ -142,6 +156,7 @@ def parse_rss(xml_text):
 
         items.append({
             "cat": cat,
+            "lead": is_store_lead(title),   # 是否疑似「开店线索」
             "region": detect_region(title),
             "d": d,
             "title": title,

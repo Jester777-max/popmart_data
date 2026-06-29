@@ -52,6 +52,92 @@ STATE_ABBR = {
  "Wisconsin":"WI","Wyoming":"WY",
 }
 
+# 海外（非美）城市 -> (世界地图国家键, 纬度, 经度)。用于把 overseas_loc 里的城市解析到世界地图。
+# 国家键须与 stores.json 的 world / world_base 键一致（英文）。可按需增删。
+OVERSEAS_CITY = {
+    # 东南亚
+    "曼谷": ("Thailand", 13.7563, 100.5018), "bangkok": ("Thailand", 13.7563, 100.5018),
+    "清迈": ("Thailand", 18.7883, 98.9853), "chiang mai": ("Thailand", 18.7883, 98.9853),
+    "新加坡": ("Singapore", 1.3521, 103.8198), "singapore": ("Singapore", 1.3521, 103.8198),
+    "胡志明": ("Vietnam", 10.8231, 106.6297), "ho chi minh": ("Vietnam", 10.8231, 106.6297),
+    "河内": ("Vietnam", 21.0278, 105.8342), "hanoi": ("Vietnam", 21.0278, 105.8342),
+    "雅加达": ("Indonesia", -6.2088, 106.8456), "jakarta": ("Indonesia", -6.2088, 106.8456),
+    "吉隆坡": ("Malaysia", 3.139, 101.6869), "kuala lumpur": ("Malaysia", 3.139, 101.6869),
+    "马尼拉": ("Philippines", 14.5995, 120.9842), "manila": ("Philippines", 14.5995, 120.9842),
+    # 东亚
+    "东京": ("Japan", 35.6762, 139.6503), "tokyo": ("Japan", 35.6762, 139.6503),
+    "大阪": ("Japan", 34.6937, 135.5023), "osaka": ("Japan", 34.6937, 135.5023),
+    "首尔": ("South Korea", 37.5665, 126.978), "seoul": ("South Korea", 37.5665, 126.978),
+    # 欧洲
+    "伦敦": ("United Kingdom", 51.5074, -0.1278), "london": ("United Kingdom", 51.5074, -0.1278),
+    "巴黎": ("France", 48.8566, 2.3522), "paris": ("France", 48.8566, 2.3522),
+    "米兰": ("Italy", 45.4642, 9.19), "milan": ("Italy", 45.4642, 9.19),
+    "马德里": ("Spain", 40.4168, -3.7038), "madrid": ("Spain", 40.4168, -3.7038),
+    "巴塞罗那": ("Spain", 41.3874, 2.1686), "barcelona": ("Spain", 41.3874, 2.1686),
+    "柏林": ("Germany", 52.52, 13.405), "berlin": ("Germany", 52.52, 13.405),
+    "阿姆斯特丹": ("Netherlands", 52.3676, 4.9041), "amsterdam": ("Netherlands", 52.3676, 4.9041),
+    "哥本哈根": ("Denmark", 55.6761, 12.5683), "copenhagen": ("Denmark", 55.6761, 12.5683),
+    # 大洋洲 / 美洲（非美） / 中东
+    "悉尼": ("Australia", -33.8688, 151.2093), "sydney": ("Australia", -33.8688, 151.2093),
+    "墨尔本": ("Australia", -37.8136, 144.9631), "melbourne": ("Australia", -37.8136, 144.9631),
+    "奥克兰": ("New Zealand", -36.8485, 174.7633), "auckland": ("New Zealand", -36.8485, 174.7633),
+    "多伦多": ("Canada", 43.6532, -79.3832), "toronto": ("Canada", 43.6532, -79.3832),
+    "温哥华": ("Canada", 49.2827, -123.1207), "vancouver": ("Canada", 49.2827, -123.1207),
+    "迪拜": ("United Arab Emirates", 25.2048, 55.2708), "dubai": ("United Arab Emirates", 25.2048, 55.2708),
+}
+
+
+def resolve_overseas(entry):
+    """把 overseas_loc 条目（如 '曼谷（小野长期店）'）解析为 (country, lat, lng)；解析不到返回 (None,None,None)。"""
+    s = (entry or "").lower()
+    for city, (country, lat, lng) in OVERSEAS_CITY.items():
+        if city.lower() in s:
+            return country, lat, lng
+    return None, None, None
+
+
+def recompute_overseas_maps(base, us_stores):
+    """幂等重算世界地图与海外总数：
+    world = world_base（基线）+ 美国实测 + 截止月之后 overseas_loc 解析到的国家；
+    overseas_total = overseas_total_base + (美国实测 − 美国基线) + 截止月之后其他地区新增（解析+未解析）;
+    解析到的其他地区门店另存 overseas_points 供世界地图标点。未解析的只计入总数、不标点。
+    """
+    world_base = base.get("world_base") or dict(base.get("world", {}))
+    cutoff = base.get("world_base_month", "0000-00")
+    us_base = base.get("us_total_base", len(us_stores))
+    ov_base = base.get("overseas_total_base",
+                       base.get("totals", {}).get("overseas_total", 0))
+
+    world = dict(world_base)
+    world["United States of America"] = len(us_stores)
+
+    points, nonus_add, new_countries = [], 0, set()
+    for row in base.get("monthly", []):
+        if not isinstance(row, dict):
+            continue
+        if (row.get("month") or "") <= cutoff:
+            continue                              # 截止月及之前已计入基线，跳过避免重复
+        for entry in (row.get("overseas_loc") or []):
+            nonus_add += 1
+            country, lat, lng = resolve_overseas(entry)
+            if country:
+                if world_base.get(country, 0) == 0:   # 基线里没有的全新国家
+                    new_countries.add(country)
+                world[country] = world.get(country, 0) + 1
+                if lat is not None:
+                    points.append({"country": country, "label": entry,
+                                   "lat": lat, "lng": lng, "month": row.get("month")})
+
+    base["world"] = world
+    base["overseas_points"] = points
+    totals = base.setdefault("totals", {})
+    totals["us_total"] = len(us_stores)
+    totals["overseas_total"] = ov_base + (len(us_stores) - us_base) + nonus_add
+    # countries 用基线（world 字典不完整，不能直接数），仅在解析到全新国家时 +1
+    totals["countries"] = base.get("countries_base", totals.get("countries", 0)) + len(new_countries)
+    print(f"[info] 世界地图重算：解析到其他地区新店 {len(points)} 处，"
+          f"未解析 {nonus_add-len(points)} 处；海外总数 = {totals['overseas_total']}。")
+
 
 def fetch_raw(url, timeout=25):
     """先试 GET，失败或非 JSON 再试 POST 空体。返回响应文本。"""
@@ -86,21 +172,25 @@ def parse_stores(raw):
         if s.get("status") != 1:                # 仅在营
             continue
         name = (s.get("nameLocal") or "").strip()
+        if not name:                            # 至少要有店名才计入总数
+            continue
         addr = (s.get("addressLocal") or "").strip()
         state_full = (s.get("administrativeDivisionLevel1") or "").strip()
         city = (s.get("administrativeDivisionLevel2") or "").strip()
         try:
             lat = float(s.get("lat")); lng = float(s.get("lon"))
         except (TypeError, ValueError):
-            continue
-        if not (name and addr and state_full and city):
-            continue
+            lat = lng = None                    # 坐标可缺：州级地图不需要坐标
         temp = "Temp" in name
         disp = name.replace("Temp", "").strip()
-        out.append({"name": disp, "addr": addr, "city": city,
-                    "state": STATE_ABBR.get(state_full, state_full[:2].upper()),
-                    "lat": round(lat, 6), "lng": round(lng, 6),
-                    **({"temp": True} if temp else {})})
+        rec = {"name": disp, "addr": addr, "city": city,
+               # 有州 -> 上州地图；无州 -> 留空，仅计入总数
+               "state": STATE_ABBR.get(state_full, state_full[:2].upper() if state_full else "")}
+        if lat is not None and lng is not None:
+            rec["lat"] = round(lat, 6); rec["lng"] = round(lng, 6)
+        if temp:
+            rec["temp"] = True
+        out.append(rec)
     return out
 
 
@@ -123,7 +213,7 @@ def main():
     # 按州计数（全称键，供备用）
     from collections import Counter
     abbr2full = {v: k for k, v in STATE_ABBR.items()}
-    cnt = Counter(s["state"] for s in stores)
+    cnt = Counter(s["state"] for s in stores if s.get("state"))
     us_counts = {abbr2full.get(a, a): n for a, n in
                  sorted(cnt.items(), key=lambda kv: (-kv[1], kv[0]))}
 
@@ -166,9 +256,10 @@ def main():
 
     base["us_stores"] = stores
     base["us"] = us_counts
-    base.setdefault("totals", {})["us_total"] = len(stores)
-    base.setdefault("world", {})["United States of America"] = len(stores)
     base["as_of"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # 幂等重算世界地图与海外总数（world / overseas_points / totals.*）
+    recompute_overseas_maps(base, stores)
 
     json.dump(base, open(STORES_PATH, "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)

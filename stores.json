@@ -797,8 +797,7 @@
       "us": 0,
       "overseas": 0,
       "china_loc": [
-        "北京",
-        "南京"
+        "北京"
       ],
       "us_loc": [],
       "overseas_loc": []
@@ -814,5 +813,31 @@
       "us_loc": [],
       "overseas_loc": []
     }
-  ]
+  ],
+  "world_base": {
+    "United States of America": 76,
+    "Thailand": 18,
+    "Singapore": 7,
+    "Vietnam": 5,
+    "Indonesia": 6,
+    "Malaysia": 5,
+    "Philippines": 4,
+    "Japan": 9,
+    "South Korea": 7,
+    "United Kingdom": 5,
+    "France": 4,
+    "Italy": 3,
+    "Netherlands": 2,
+    "Spain": 2,
+    "Germany": 2,
+    "Australia": 4,
+    "New Zealand": 1,
+    "Canada": 3,
+    "United Arab Emirates": 2
+  },
+  "world_base_month": "2026-06",
+  "us_total_base": 76,
+  "overseas_total_base": 208,
+  "overseas_points": [],
+  "countries_base": 30
 }

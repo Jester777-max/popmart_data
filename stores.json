@@ -1,7 +1,8 @@
+
 {
   "as_of": "2026-06-18",
   "is_estimate": false,
-  "note": "美国为官网 store-list 接口真实数据，逐店见 us_stores。monthly 月度数据：china/us 分别为当月中国、美国新增门店数，overseas 为海外新增总数（含美国）；前端「其他地区新增」= overseas − us。地点字段：china_loc（中国，由 fetch_news.py 从开店线索自动并入）、us_loc（美国，由 fetch_stores.py 每周自动并入）、overseas_loc（其他地区/非美，手动维护）。world 中除美国外国家及历史月度数为基于公开报道的估算。",
+  "note": "美国为官网 store-list 接口真实数据，逐店见 us_stores。monthly 月度数据：china/us 为当月中国、美国新增门店数，overseas 为海外新增总数（含美国）；前端「其他地区新增」=overseas−us。其中 us 历史值为基于公开累计节点（北美 2025-05≈29、2025-06≈41、2025末≈70、2026≈72-76）反推的【估算】，当前月起由 fetch_stores.py 每周实测校准；china_loc 由 fetch_news.py 自动并入，us_loc 由 fetch_stores.py 自动并入，overseas_loc（非美/其他地区）手动维护。world 中除美国外国家及历史月度数均为估算。",
   "source": "POP MART 美国官网 store-list 接口快照（2026-06-18）",
   "totals": {
     "overseas_total": 208,
@@ -682,7 +683,7 @@
     {
       "month": "2025-05",
       "china": 7,
-      "us": 0,
+      "us": 3,
       "overseas": 9,
       "china_loc": [],
       "us_loc": [],
@@ -691,7 +692,7 @@
     {
       "month": "2025-06",
       "china": 6,
-      "us": 0,
+      "us": 4,
       "overseas": 11,
       "china_loc": [],
       "us_loc": [],
@@ -700,7 +701,7 @@
     {
       "month": "2025-07",
       "china": 8,
-      "us": 0,
+      "us": 4,
       "overseas": 13,
       "china_loc": [],
       "us_loc": [],
@@ -709,7 +710,7 @@
     {
       "month": "2025-08",
       "china": 5,
-      "us": 0,
+      "us": 3,
       "overseas": 12,
       "china_loc": [],
       "us_loc": [],
@@ -718,7 +719,7 @@
     {
       "month": "2025-09",
       "china": 6,
-      "us": 0,
+      "us": 4,
       "overseas": 14,
       "china_loc": [],
       "us_loc": [],
@@ -727,7 +728,7 @@
     {
       "month": "2025-10",
       "china": 9,
-      "us": 0,
+      "us": 5,
       "overseas": 16,
       "china_loc": [],
       "us_loc": [],
@@ -736,7 +737,7 @@
     {
       "month": "2025-11",
       "china": 7,
-      "us": 0,
+      "us": 4,
       "overseas": 15,
       "china_loc": [],
       "us_loc": [],
@@ -745,7 +746,7 @@
     {
       "month": "2025-12",
       "china": 10,
-      "us": 0,
+      "us": 5,
       "overseas": 18,
       "china_loc": [],
       "us_loc": [],
@@ -754,7 +755,7 @@
     {
       "month": "2026-01",
       "china": 5,
-      "us": 0,
+      "us": 3,
       "overseas": 10,
       "china_loc": [],
       "us_loc": [],
@@ -763,7 +764,7 @@
     {
       "month": "2026-02",
       "china": 4,
-      "us": 0,
+      "us": 2,
       "overseas": 8,
       "china_loc": [
         "上海（Hirono 小野全球首店）"
@@ -774,7 +775,7 @@
     {
       "month": "2026-03",
       "china": 6,
-      "us": 0,
+      "us": 3,
       "overseas": 9,
       "china_loc": [],
       "us_loc": [],
@@ -785,7 +786,7 @@
     {
       "month": "2026-04",
       "china": 5,
-      "us": 0,
+      "us": 2,
       "overseas": 7,
       "china_loc": [],
       "us_loc": [],
@@ -805,8 +806,8 @@
     {
       "month": "2026-05",
       "china": 1,
-      "us": 0,
-      "overseas": 0,
+      "us": 2,
+      "overseas": 5,
       "china_loc": [
         "成都"
       ],

@@ -15,6 +15,7 @@
 
 import json
 import os
+import re
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -222,6 +223,46 @@ def extract_cn_cities(text):
     return [c for c in CHINESE_CITIES if c in text]
 
 
+# —— 其他地区（非美海外）开店线索 -> 月度 overseas_loc ——
+# 含美国标志的线索一律跳过（美国由官网接口单独统计，避免重复）。
+US_MARKERS = [
+    "美国", "美东", "美西", "北美", "纽约", "洛杉矶", "加州", "加利福尼亚", "旧金山",
+    "拉斯维加斯", "德克萨斯", "德州", "得州", "休斯顿", "达拉斯", "芝加哥", "西雅图",
+    "波士顿", "新泽西", "佛罗里达", "迈阿密", "奥兰多", "亚特兰大",
+]
+# 非美海外地名：城市优先、国家兜底（同一条线索若同时出现城市与国家，只取城市，避免重复计数）
+OVERSEAS_CITIES_CN = [
+    "曼谷", "清迈", "新加坡", "胡志明", "河内", "雅加达", "吉隆坡", "马尼拉", "东京", "大阪",
+    "首尔", "伦敦", "巴黎", "米兰", "马德里", "巴塞罗那", "柏林", "阿姆斯特丹", "哥本哈根",
+    "悉尼", "墨尔本", "奥克兰", "多伦多", "温哥华", "迪拜",
+]
+OVERSEAS_COUNTRIES_CN = [
+    "泰国", "越南", "印度尼西亚", "印尼", "马来西亚", "菲律宾", "日本", "韩国", "英国",
+    "法国", "意大利", "荷兰", "西班牙", "德国", "丹麦", "澳大利亚", "澳洲", "新西兰",
+    "加拿大", "阿联酋", "墨西哥", "巴西",
+]
+
+
+def _dedupe_places(found):
+    out = []
+    for p in found:
+        if not any(p in f or f in p for f in out):
+            out.append(p)
+    return out
+
+
+def extract_overseas_places(text):
+    """从非美海外开店线索里提取地名；含美国标志则返回空。
+    有城市优先返回城市，否则返回国家（避免「德国柏林」被算成两家）。"""
+    text = text or ""
+    if any(k in text for k in US_MARKERS):
+        return []
+    cities = _dedupe_places([c for c in OVERSEAS_CITIES_CN if c in text])
+    if cities:
+        return cities
+    return _dedupe_places([c for c in OVERSEAS_COUNTRIES_CN if c in text])
+
+
 def _recent_months(n=13):
     """返回最近 n 个月的 'YYYY-MM' 列表（含本月）。"""
     now = datetime.now(timezone.utc)
@@ -235,49 +276,206 @@ def _recent_months(n=13):
     return out
 
 
-def update_china_loc(items):
-    """从中国开店线索（region=china 且 lead=True）提取城市，按月并入 stores.json 的 china_loc。
-    - 增量并入：不覆盖已有（含手填）条目，只追加尚未出现的城市；
-    - 仅处理最近 13 个月；该月若无行则新建（china 取检测到的城市数，作为下限估算）；
-    - 任何异常都不影响 data.json 的写入。
+# —— 财报 / 官方门店数监测：检测到新财报则刷新基线 ——
+# 现实：泡泡玛特财报只公布分区域营收与「海外门店总数」，不公布逐国门店数。
+# 故本流程自动刷新「海外总数」并按比例重排非美各国估算（美国用实测），逐国精确拆分仍可人工微调。
+# 将 AUTO_APPLY_BASELINE 置 False 可改为「只提示、不自动改数」。
+AUTO_APPLY_BASELINE = True
+REPORT_KW = ["财报", "半年报", "年报", "季报", "业绩", "业绩报告", "业绩快报",
+             "中报", "年度业绩", "interim", "annual result"]
+_OV_PAT = re.compile(r"(?:海外|港澳台[及和]?海外|海外及港澳台)[^。；;，,、]{0,14}?门店[^。；;，,、]{0,8}?(\d{2,4})\s*家")
+_US_PAT = re.compile(r"美国[^。；;，,、]{0,12}?门店[^。；;，,、]{0,8}?(\d{2,4})\s*家")
+
+
+def _recent_iso(days=45):
+    """返回 days 天前的 'YYYY-MM-DD'（UTC）。"""
+    from datetime import timedelta
+    return (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+
+
+def extract_official_total(text, pat):
+    """用给定正则从文本提取门店总数；匹配附近含『机器人/快闪』则跳过，避免混入非永久零售店。"""
+    text = text or ""
+    for m in pat.finditer(text):
+        span = text[max(0, m.start() - 6): m.end() + 6]
+        if "机器人" in span or "快闪" in span:
+            continue
+        try:
+            return int(m.group(1))
+        except ValueError:
+            continue
+    return None
+
+
+def _rescale_nonus(world, target_nonus, us_key="United States of America"):
+    """把非美各国按比例缩放到 target_nonus（每个市场至少保留 1），并修正取整误差到精确值。"""
+    us = world.get(us_key, 0)
+    items = [[k, v] for k, v in world.items() if k != us_key]
+    cur = sum(v for _, v in items)
+    if cur <= 0 or target_nonus <= 0:
+        return dict(world)
+    factor = target_nonus / cur
+    for it in items:
+        it[1] = max(1, round(it[1] * factor)) if it[1] > 0 else 0
+    diff = target_nonus - sum(v for _, v in items)
+    items.sort(key=lambda x: -x[1])
+    guard = 0
+    while diff != 0 and items and guard < 10000:
+        for it in items:
+            if diff == 0:
+                break
+            step = 1 if diff > 0 else -1
+            if it[1] + step >= 1:
+                it[1] += step
+                diff -= step
+        guard += 1
+    out = {us_key: us}
+    for k, v in items:
+        out[k] = v
+    return out
+
+
+def review_baseline(stores, items):
+    """检测最近 45 天内的财报/官方门店数信号：
+    - 发现未处理过的新财报项 -> 写入 baseline_review 提示（前端会显示横幅）；
+    - 若同时提取到可信的新『海外门店总数』(> 现值、且 ≤ 现值×3) 且 AUTO_APPLY_BASELINE：
+        自动刷新 overseas_total_base/totals.overseas_total、按比例重排非美各国估算、
+        推进 world_base_month 到财报月份，并记录出处与新旧值；否则只提示，等待人工校准。
+    幂等：同一篇（按 url）只处理一次。
+    """
+    if not isinstance(stores.get("world"), dict):
+        return
+    review = stores.get("baseline_review") or {}
+    ack_url = review.get("acknowledged_url")
+    since = _recent_iso(45)
+
+    cand = None
+    for it in items:
+        title = it.get("title", "") or ""
+        text = it.get("text", "") or ""
+        d = (it.get("d") or "")[:10]
+        if d < since:
+            continue
+        if any(k in title or k in text for k in REPORT_KW):
+            if cand is None or d > cand["d"]:
+                cand = {"d": d, "title": title, "text": text, "url": it.get("url", "")}
+
+    if not cand:
+        return                                      # 无新财报信号 -> 不动
+    if cand.get("url") and cand["url"] == ack_url:
+        return                                      # 已处理过 -> 幂等跳过
+
+    cur_total = int(stores.get("overseas_total_base") or
+                    (stores.get("totals", {}) or {}).get("overseas_total") or 0)
+    n_ov = (extract_official_total(cand["title"], _OV_PAT) or
+            extract_official_total(cand["text"], _OV_PAT))
+    plausible = (n_ov is not None and cur_total > 0 and cur_total < n_ov <= cur_total * 3)
+
+    new_review = {
+        "needed": True,
+        "detected_on": cand["d"],
+        "headline": cand["title"][:120],
+        "url": cand["url"],
+        "detected_overseas_total": n_ov,
+    }
+
+    if AUTO_APPLY_BASELINE and plausible:
+        us_key = "United States of America"
+        world = dict(stores["world"])
+        us_now = world.get(us_key, stores.get("us_total_base", 0))
+        new_world = _rescale_nonus(world, n_ov - us_now, us_key)
+        stores["world"] = dict(new_world)
+        stores["world_base"] = dict(new_world)
+        stores["overseas_total_base"] = n_ov
+        stores.setdefault("totals", {})["overseas_total"] = n_ov
+        stores["world_base_month"] = cand["d"][:7]
+        new_review.update({
+            "needed": False,
+            "auto_applied": True,
+            "applied_overseas_total": n_ov,
+            "prev_overseas_total": cur_total,
+            "acknowledged_url": cand["url"],
+            "note": "海外总数已按财报自动刷新；非美各国为按比例重排的估算，可手动微调。",
+        })
+        stores["baseline_review"] = new_review
+        print(f"[done] 检测到新财报（{cand['d']}）：海外门店总数 {cur_total} -> {n_ov}，"
+              f"已自动刷新基线并按比例重排非美各国估算。")
+    else:
+        reason = ("未能提取到可信的海外门店总数" if n_ov is None
+                  else (f"提取到的总数 {n_ov} 不在合理区间，已忽略自动刷新" if not plausible else ""))
+        new_review["note"] = ("检测到疑似新财报，请人工校准基线"
+                              "（world 各国值 / overseas_total_base）。" + reason).strip()
+        stores["baseline_review"] = new_review
+        print(f"[info] 检测到疑似新财报（{cand['d']}）：{cand['title'][:40]}…"
+              f"{'（' + reason + '）' if reason else ''} 已写入提示，等待人工校准。")
+
+
+def update_store_locs(items):
+    """从开店线索并入 stores.json 的月度地点：
+    - 中国（region=china 且 lead）-> china_loc（最近 13 个月，增量）；
+    - 其他地区（region=overseas 且 lead，且非美）-> overseas_loc（截止月之后、最近 13 个月，增量，
+      每识别到一个新地名同时给当月 overseas 计数 +1，因「其他地区新增 = overseas − us」）；
+    - 增量并入，不覆盖已有（含手填）条目；任何异常都不影响 data.json 的写入。
     """
     if not os.path.exists(STORES_PATH):
-        print("[skip] 未找到 stores.json，跳过 china_loc 更新。")
+        print("[skip] 未找到 stores.json，跳过门店地点更新。")
         return
     stores = load_json(STORES_PATH)
     if not stores or not isinstance(stores.get("monthly"), list):
-        print("[skip] stores.json 无 monthly，跳过 china_loc 更新。")
+        print("[skip] stores.json 无 monthly，跳过门店地点更新。")
         return
 
     monthly = stores["monthly"]
     allowed = set(_recent_months(13))
+    cutoff = stores.get("world_base_month", "")     # 此月及之前已计入 world_base，不再自动加（避免与历史估算/基线重复）
     by_month = {r.get("month"): r for r in monthly if isinstance(r, dict)}
-    added = 0
 
-    for it in items:
-        if it.get("region") != "china" or not it.get("lead"):
-            continue
-        ym = (it.get("d") or "")[:7]
-        if ym not in allowed:
-            continue
-        cities = extract_cn_cities(it.get("title", "")) or extract_cn_cities(it.get("text", ""))
-        if not cities:
-            continue
+    def ensure_row(ym):
         row = by_month.get(ym)
-        created = False
         if row is None:
             row = {"month": ym, "china": 0, "overseas": 0, "us": 0,
                    "china_loc": [], "us_loc": [], "overseas_loc": []}
             monthly.append(row)
             by_month[ym] = row
-            created = True
-        loc = row.setdefault("china_loc", [])
-        for c in cities:
-            if not any(c in e for e in loc):     # 该城市尚未出现在任何条目里
-                loc.append(c)
-                added += 1
-        if created and not row.get("china"):
-            row["china"] = len(loc)              # 新建行的计数取检测到的城市数（下限估算）
+        return row
+
+    cn_added, ov_added = 0, 0
+
+    for it in items:
+        if not it.get("lead"):
+            continue
+        ym = (it.get("d") or "")[:7]
+        if ym not in allowed:
+            continue
+        region = it.get("region")
+
+        if region == "china":
+            cities = extract_cn_cities(it.get("title", "")) or extract_cn_cities(it.get("text", ""))
+            if not cities:
+                continue
+            row = ensure_row(ym)
+            created_china = (row.get("china") in (None, 0)) and not row.get("china_loc")
+            loc = row.setdefault("china_loc", [])
+            for c in cities:
+                if not any(c in e for e in loc):
+                    loc.append(c)
+                    cn_added += 1
+            if created_china and not row.get("china"):
+                row["china"] = len(loc)             # 新建行计数取检测到的城市数（下限估算）
+
+        elif region == "overseas":
+            if ym <= cutoff:                        # 截止月及之前已含在基线/估算里，跳过
+                continue
+            places = extract_overseas_places(it.get("title", "")) or extract_overseas_places(it.get("text", ""))
+            if not places:
+                continue
+            row = ensure_row(ym)
+            loc = row.setdefault("overseas_loc", [])
+            for p in places:
+                if not any(p in e for e in loc):
+                    loc.append(p)
+                    row["overseas"] = (row.get("overseas") or 0) + 1   # 其他地区 +1
+                    ov_added += 1
 
     # 保证所有月度行都带地点/计数字段，便于前端读取
     for r in monthly:
@@ -287,10 +485,16 @@ def update_china_loc(items):
             r.setdefault("us_loc", [])
             r.setdefault("overseas_loc", [])
 
+    # 财报/官方门店数监测：检测到新财报则刷新基线（详见 review_baseline）
+    try:
+        review_baseline(stores, items)
+    except Exception as e:
+        print(f"[warn] 财报基线检查失败（已忽略）: {e}", file=sys.stderr)
+
     try:
         with open(STORES_PATH, "w", encoding="utf-8") as f:
             json.dump(stores, f, ensure_ascii=False, indent=2)
-        print(f"[done] china_loc 增量更新：新增 {added} 个城市标记 -> {STORES_PATH}")
+        print(f"[done] 门店地点增量更新：中国新增 {cn_added} 城、其他地区新增 {ov_added} 处 -> {STORES_PATH}")
     except Exception as e:
         print(f"[warn] 写入 stores.json 失败: {e}", file=sys.stderr)
 
@@ -320,11 +524,11 @@ def main():
     write_data(merged, note="fetched")
     print(f"[done] 写入 {len(merged)} 条 -> {DATA_PATH}")
 
-    # 从中国开店线索提取城市，并入 stores.json 的月度 china_loc（异常不影响上面的结果）
+    # 从开店线索并入 stores.json 的月度地点（中国 china_loc + 其他地区 overseas_loc；异常不影响上面的结果）
     try:
-        update_china_loc(merged)
+        update_store_locs(merged)
     except Exception as e:
-        print(f"[warn] china_loc 更新失败（已忽略）: {e}", file=sys.stderr)
+        print(f"[warn] 门店地点更新失败（已忽略）: {e}", file=sys.stderr)
 
 
 def write_data(updates, note=""):

@@ -25,6 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA_PATH = os.path.join(ROOT, "data.json")
 SEED_PATH = os.path.join(ROOT, "seed.json")
+STORES_PATH = os.path.join(ROOT, "stores.json")   # 用于把中国开店线索的城市并入月度 china_loc
 
 # Google News RSS 搜索（简体中文）。可按需增删关键词。
 QUERIES = [
@@ -203,6 +204,97 @@ def dedup(items):
     return list(seen.values())
 
 
+# —— 中国开店线索 -> 月度 china_loc（城市级，增量并入 stores.json）——
+# 常见城市表：用于从「开店线索」标题/正文中识别门店所在城市。可按需增删。
+CHINESE_CITIES = [
+    "北京", "上海", "广州", "深圳", "成都", "杭州", "重庆", "武汉", "南京", "西安",
+    "苏州", "天津", "长沙", "郑州", "青岛", "宁波", "东莞", "沈阳", "昆明", "合肥",
+    "佛山", "无锡", "厦门", "福州", "哈尔滨", "济南", "温州", "大连", "南宁", "石家庄",
+    "泉州", "贵阳", "南昌", "太原", "长春", "南通", "常州", "嘉兴", "金华", "珠海",
+    "惠州", "徐州", "海口", "三亚", "乌鲁木齐", "兰州", "烟台", "中山", "绍兴", "台州",
+    "潍坊", "保定", "廊坊", "香港", "澳门",
+]
+
+
+def extract_cn_cities(text):
+    """返回文本中命中的城市（按城市表顺序，去重）。"""
+    text = text or ""
+    return [c for c in CHINESE_CITIES if c in text]
+
+
+def _recent_months(n=13):
+    """返回最近 n 个月的 'YYYY-MM' 列表（含本月）。"""
+    now = datetime.now(timezone.utc)
+    y, m = now.year, now.month
+    out = []
+    for _ in range(n):
+        out.append(f"{y:04d}-{m:02d}")
+        m -= 1
+        if m == 0:
+            m, y = 12, y - 1
+    return out
+
+
+def update_china_loc(items):
+    """从中国开店线索（region=china 且 lead=True）提取城市，按月并入 stores.json 的 china_loc。
+    - 增量并入：不覆盖已有（含手填）条目，只追加尚未出现的城市；
+    - 仅处理最近 13 个月；该月若无行则新建（china 取检测到的城市数，作为下限估算）；
+    - 任何异常都不影响 data.json 的写入。
+    """
+    if not os.path.exists(STORES_PATH):
+        print("[skip] 未找到 stores.json，跳过 china_loc 更新。")
+        return
+    stores = load_json(STORES_PATH)
+    if not stores or not isinstance(stores.get("monthly"), list):
+        print("[skip] stores.json 无 monthly，跳过 china_loc 更新。")
+        return
+
+    monthly = stores["monthly"]
+    allowed = set(_recent_months(13))
+    by_month = {r.get("month"): r for r in monthly if isinstance(r, dict)}
+    added = 0
+
+    for it in items:
+        if it.get("region") != "china" or not it.get("lead"):
+            continue
+        ym = (it.get("d") or "")[:7]
+        if ym not in allowed:
+            continue
+        cities = extract_cn_cities(it.get("title", "")) or extract_cn_cities(it.get("text", ""))
+        if not cities:
+            continue
+        row = by_month.get(ym)
+        created = False
+        if row is None:
+            row = {"month": ym, "china": 0, "overseas": 0, "us": 0,
+                   "china_loc": [], "us_loc": [], "overseas_loc": []}
+            monthly.append(row)
+            by_month[ym] = row
+            created = True
+        loc = row.setdefault("china_loc", [])
+        for c in cities:
+            if not any(c in e for e in loc):     # 该城市尚未出现在任何条目里
+                loc.append(c)
+                added += 1
+        if created and not row.get("china"):
+            row["china"] = len(loc)              # 新建行的计数取检测到的城市数（下限估算）
+
+    # 保证所有月度行都带地点/计数字段，便于前端读取
+    for r in monthly:
+        if isinstance(r, dict):
+            r.setdefault("china_loc", [])
+            r.setdefault("us", 0)
+            r.setdefault("us_loc", [])
+            r.setdefault("overseas_loc", [])
+
+    try:
+        with open(STORES_PATH, "w", encoding="utf-8") as f:
+            json.dump(stores, f, ensure_ascii=False, indent=2)
+        print(f"[done] china_loc 增量更新：新增 {added} 个城市标记 -> {STORES_PATH}")
+    except Exception as e:
+        print(f"[warn] 写入 stores.json 失败: {e}", file=sys.stderr)
+
+
 def main():
     # 1) 读人工精选基线
     seed = load_json(SEED_PATH) or {"updates": []}
@@ -227,6 +319,12 @@ def main():
 
     write_data(merged, note="fetched")
     print(f"[done] 写入 {len(merged)} 条 -> {DATA_PATH}")
+
+    # 从中国开店线索提取城市，并入 stores.json 的月度 china_loc（异常不影响上面的结果）
+    try:
+        update_china_loc(merged)
+    except Exception as e:
+        print(f"[warn] china_loc 更新失败（已忽略）: {e}", file=sys.stderr)
 
 
 def write_data(updates, note=""):

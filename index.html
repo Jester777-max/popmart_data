@@ -661,7 +661,7 @@ function renderMonthlyTable(){
       `<td class="ov">${oth}</td><td class="loc">${locText(r.overseas_loc)}</td>`+
       `<td class="tt">${cn+ov}</td></tr>`;}).join('');
   return `<div class="table-card"><h4>月度新开门店（近 ${m.length} 个月）</h4>
-    <div class="cap">单位：家 · ${STORES.is_estimate?'估算数据，随 stores.json 更新':'随 stores.json 更新'}</div>
+    <div class="cap">单位：家 · 月度为估算，美国列随每周抓取逐步校准为实测</div>
     <table class="mt"><thead><tr><th>月份</th><th>中国新增</th><th>中国新增地点</th><th>美国新增</th><th>美国新增地点</th><th>其他地区新增</th><th>其他地区新增地点</th><th>合计</th></tr></thead>
     <tbody>${rows}</tbody>
     <tfoot><tr><td>合计</td><td class="cn">${tCn}</td><td class="loc"></td><td class="us">${tUs}</td><td class="loc"></td><td class="ov">${tOth}</td><td class="loc"></td><td class="tt">${tCn+tUs+tOth}</td></tr></tfoot></table></div>`;

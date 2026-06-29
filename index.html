@@ -532,8 +532,9 @@ const FALLBACK_NEWS = {
     }
   ]
 };
-const FALLBACK_STORES = {as_of:'2026-03-31',is_estimate:true,totals:{overseas_total:208,us_total:67,countries:30,china_total:401},
-  us:{California:14,'New York':9,Texas:7,Florida:6},world:{'United States of America':67,Thailand:18,Japan:9,'United Kingdom':5},
+const FALLBACK_STORES = {as_of:'2026-03-31',is_estimate:true,totals:{overseas_total:208,us_total:76,countries:29,china_total:401},
+  us:{California:19,'New Jersey':8,'New York':7,Texas:6,Florida:5,Nevada:4},
+  world:{'United States of America':76,Taiwan:9,'Hong Kong':6,Macau:1,Japan:11,'South Korea':9,Thailand:18,Singapore:10,Malaysia:6,Vietnam:4,Indonesia:5,Philippines:4,Australia:9,'New Zealand':2,Canada:4,Mexico:2,Brazil:1,'United Kingdom':7,France:6,Germany:3,Italy:3,Netherlands:2,Spain:2,Denmark:1,Belgium:1,Ireland:1,Switzerland:1,'United Arab Emirates':3,'Saudi Arabia':1},
   monthly:[{month:'2026-04',china:5,overseas:7,us:0,china_loc:[],us_loc:[],overseas_loc:[]},{month:'2026-03',china:6,overseas:9,us:0,china_loc:[],us_loc:[],overseas_loc:['曼谷（Hirono 小野长期店）']}]};
 
 let NEWS=[], STORES=null, META={generated:null};
@@ -620,12 +621,26 @@ function render(){
 }
 
 /* ===== 海外门店区块（地图 + 表） ===== */
+function baselineBanner(){
+  const b = STORES && STORES.baseline_review; if(!b) return '';
+  if(b.auto_applied){
+    return `<div style="margin:0 0 14px;padding:10px 14px;border-radius:10px;background:rgba(212,160,23,.10);border:1px solid rgba(212,160,23,.35);font-size:13px;line-height:1.5;color:var(--ink)">`+
+      `📊 估算基线已按财报自动刷新：海外门店 <b>${b.prev_overseas_total||'—'}</b> → <b>${b.applied_overseas_total||'—'}</b> 家（${esc(b.detected_on||'')}）。非美各国为按比例重排的估算，如需精确可手动微调。</div>`;
+  }
+  if(b.needed){
+    return `<div style="margin:0 0 14px;padding:10px 14px;border-radius:10px;background:rgba(214,78,78,.08);border:1px solid rgba(214,78,78,.35);font-size:13px;line-height:1.5;color:var(--ink)">`+
+      `🔔 检测到泡泡玛特可能发布了新财报 / 官方门店数（${esc(b.detected_on||'')}）：<span style="color:var(--faint)">${esc(b.headline||'')}</span><br>${esc(b.note||'建议人工校准基线（world 各国值 / overseas_total_base）。')}</div>`;
+  }
+  return '';
+}
+
 function renderOverseas(){
   const host=document.getElementById('overseasBlock');
   if(!STORES){ host.innerHTML=''; return; }
   const est = STORES.is_estimate;
   host.innerHTML = `
     <div class="region-head"><span class="flag">🌍</span><h2>海外门店分布</h2><span class="ln"></span></div>
+    ${baselineBanner()}
     <div class="maps-intro"><h3>门店分布地图</h3>
       ${est?'<span class="est-badge">估算 / 示意数据 · 非官方逐店统计</span>':''}
       <span style="font-size:12px;color:var(--faint)">截至 ${STORES.as_of||'—'}</span></div>
@@ -633,7 +648,7 @@ function renderOverseas(){
       <div class="map-card"><h4>美国门店分布（按州）</h4><div class="cap">颜色越深 = 该州门店越多 · 悬停查看 · 数据随每周抓取刷新</div>
         <div class="map-holder" id="usMap"></div>
         <div class="legend" id="usLegend"></div></div>
-      <div class="map-card"><h4>全球门店分布（按国家）</h4><div class="cap">每个国家标注线下门店数 · 无门店不标注 · 数据随 stores.json 每周刷新</div>
+      <div class="map-card"><h4>全球门店分布（按国家）</h4><div class="cap">每个国家标注线下门店数 · 美国为实测，非美各国为估算（按区域营收占比与公开锚点）· 各国之和 = 海外总数</div>
         <div class="map-holder" id="worldMap"></div>
         <div class="legend" id="worldLegend"></div></div>
     </div>

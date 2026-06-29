@@ -219,14 +219,15 @@
   </div>
 
   <div class="controls">
-    <div class="seg" id="regionSeg">
-      <button data-region="china" class="active">🇨🇳 中国</button>
-      <button data-region="overseas">🌍 海外</button>
+    <div class="seg" id="viewSeg">
+      <button data-view="news" class="active">📰 资讯</button>
+      <button data-view="china">🇨🇳 中国</button>
+      <button data-view="overseas">🌍 海外</button>
     </div>
   </div>
 
-  <div id="overseasBlock"></div>
   <main id="board"></main>
+  <div id="overseasBlock"></div>
 
   <div class="disclaimer">
     <b>数据来源与机制：</b>新闻动向由 <code>data.json</code> 提供，每周由 GitHub Actions 自动从 Google News 抓取「泡泡玛特」相关公开报道，按关键词归类并区分中国/海外后写入。<br>
@@ -251,17 +252,287 @@ const CATS = {
 const REGIONS = {china:{label:'中国', flag:'🇨🇳'}, overseas:{label:'海外', flag:'🌍'}};
 
 /* ===== 离线兜底 ===== */
-const FALLBACK_NEWS = {generated:null, updates:[
-  {cat:'store',region:'overseas',d:'2026-03-31',title:'海外门店达 208 家，美国超 67 家成最大市场',text:'截至 2026Q1 海外门店 208 家，美国 67 家。',source:'钛媒体',url:'https://www.tmtpost.com/8010210.html'},
-  {cat:'store',region:'china',d:'2026-06-14',title:'珠宝品牌 POPOP 北京首店开业',text:'POPOP 北京首店 6 月 14 日开业。',source:'中国家电网',url:'https://news.cheaa.com/2026/0327/653887.shtml'},
-  {cat:'collab',region:'overseas',d:'2026-03-19',title:'携手索尼影业开发 LABUBU 真人动画电影',text:'保罗·金任导演，龙家升参与创作。',source:'36氪',url:'https://36kr.com/p/3738206967070722'},
-]};
+const FALLBACK_NEWS = {
+  "generated": "2026-06-26T06:22:11+00:00",
+  "updates": [
+    {
+      "cat": "expo",
+      "region": "china",
+      "d": "2026-07-01",
+      "title": "城市乐园 POP LAND 1.5 期夏季完工",
+      "text": "北京泡泡玛特城市乐园 1.5 期瞄准 LABUBU 主题，新增「飞翔的 Labubu」等游乐设施，预计今年夏天完工；2 期预计 2027 年启动。",
+      "source": "观察者网",
+      "url": "https://www.guancha.cn/economy/2026_04_15_813717.shtml",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-06-16",
+      "title": "自研手游《梦想家园》将于 8 月停运",
+      "text": "旗下自研手游《梦想家园》因「运营规划调整」将于 2026 年 8 月 12 日终止运营；王宁承认公司电影与游戏业务尚不够成功。",
+      "source": "大纪元",
+      "url": "https://www.epochtimes.com/gb/26/6/16/n14789715.htm",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "china",
+      "d": "2026-06-14",
+      "title": "珠宝品牌 POPOP 北京首店开业",
+      "text": "独立珠宝饰品品牌 POPOP 北京首家门店于 6 月 14 日开业；该品牌已在全国 6 个城市落地 8 家门店。",
+      "source": "中国家电网",
+      "url": "https://news.cheaa.com/2026/0327/653887.shtml",
+      "lead": true
+    },
+    {
+      "cat": "store",
+      "region": "china",
+      "d": "2026-05-01",
+      "title": "全球首家臻藏店 POP MART COLLECTION 落地成都",
+      "text": "5 月泡泡玛特全球首家臻藏店 POP MART COLLECTION 落地成都 SKP，定位高端收藏体验。",
+      "source": "21世纪经济报道",
+      "url": "https://www.21jingji.com/article/20260513/herald/2c3a19eab380f65eb90fd806342f5778.html",
+      "lead": true
+    },
+    {
+      "cat": "expo",
+      "region": "china",
+      "d": "2026-05-01",
+      "title": "城市乐园「五一」开新区：新增三大主题区 + 五大游乐设施",
+      "text": "完成升级的泡泡玛特城市乐园五一开区，围绕 THE MONSTERS 与 DIMOO 新增三大主题区域和海盗船、跳楼机、旋转木马等五个大型设施，并引入喜茶、皮爷咖啡。",
+      "source": "网易",
+      "url": "https://c.m.163.com/news/a/KS3LC06105118O92.html",
+      "lead": false
+    },
+    {
+      "cat": "expo",
+      "region": "china",
+      "d": "2026-04-30",
+      "title": "乐园门票上调：旺季最高将达 238 元",
+      "text": "4 月 30 日起平日门票由 88 元上调至 148 元；7 月末将进一步提价至最高 238 元。",
+      "source": "网易",
+      "url": "https://c.m.163.com/news/a/KS3LC06105118O92.html",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "china",
+      "d": "2026-04-30",
+      "title": "首款跨界家电 LABUBU 冰箱发售即售罄，二手溢价至 19999 元",
+      "text": "4 月 30 日 LABUBU 冰箱正式发售（官方价 5999 元），上线即售罄；二手市场转售报价一度达 19999 元，溢价 14000 元。",
+      "source": "网易",
+      "url": "https://c.m.163.com/news/a/KS3LC06105118O92.html",
+      "lead": false
+    },
+    {
+      "cat": "expo",
+      "region": "china",
+      "d": "2026-04-13",
+      "title": "重磅亮相 2026 消博会（海南）",
+      "text": "4 月 13—18 日携 LABUBU 系列重磅产品（ZIMOMO 大天使、LABUBU 国王等）及马年限定亮相海南消博会北京展区。",
+      "source": "新浪财经",
+      "url": "https://t.cj.sina.com.cn/articles/view/1649285380/624e190400101hl7s",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "overseas",
+      "d": "2026-04-01",
+      "title": "THE MONSTERS × FIFA 世界杯联名引爆抢购",
+      "text": "4 月 THE MONSTERS 与 FIFA 世界杯联名系列上市，将世界杯氛围融入日常消费场景，再度引发抢购。",
+      "source": "新浪财经",
+      "url": "https://t.cj.sina.com.cn/articles/view/1649285380/624e190400101hl7s",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-31",
+      "title": "海外门店达 208 家，美国超 67 家成最大市场",
+      "text": "截至 2026 年一季度末，海外门店 208 家、新开 26 家；美国已开 67 家，是海外门店最多的市场，2026 年计划超过 100 家。",
+      "source": "钛媒体",
+      "url": "https://www.tmtpost.com/8010210.html",
+      "lead": true
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-25",
+      "title": "全球门店达 630 家，全年净增 109 家",
+      "text": "截至 2025 年末，泡泡玛特全球运营 630 家门店、全年净增 109 家，运营 2637 个机器人商店、净增 165 个。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-25",
+      "title": "德国、丹麦、加拿大、菲律宾相继开出首店",
+      "text": "2025 年泡泡玛特在德国、丹麦、加拿大以及菲律宾开设了首家线下门店，海外门店网络持续扩张。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": true
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-25",
+      "title": "Hirono 小野曼谷长期店开业",
+      "text": "小野主题店在上海落地后，已在曼谷开设第一家长期店，品类涵盖潮玩、服饰、生活家居、雕塑、茶饮等。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": true
+    },
+    {
+      "cat": "collab",
+      "region": "china",
+      "d": "2026-03-25",
+      "title": "跨界小家电：与新宝股份 OEM 合作，京东首发",
+      "text": "3 月 25 日宣布推出首款 IP 联名小家电，4 月在京东等平台发售；核心代工或为新宝股份，品类含电水壶、咖啡机、吹风机等。",
+      "source": "中国家电网",
+      "url": "https://news.cheaa.com/2026/0327/653887.shtml",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "china",
+      "d": "2026-03-25",
+      "title": "对外授权扩容：优衣库、麦当劳、瑞幸等 24+ 品牌",
+      "text": "2025 年以来对外商业授权至少 24 次，合作方涵盖优衣库、麦当劳、喜茶、瑞幸、荣耀手机、周生生等头部品牌。",
+      "source": "36氪",
+      "url": "https://36kr.com/p/3698271652589443",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-03-20",
+      "title": "重磅人事：文德一升任全球首席增长官 CGO",
+      "text": "曾带队强势开拓海外市场的文德一被任命为全球首席增长官（CGO），聚焦集团中长期战略与以 IP 为核心的集团化业务创新。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "overseas",
+      "d": "2026-03-19",
+      "title": "携手索尼影业开发 LABUBU 真人动画电影",
+      "text": "3 月 19 日官宣与索尼影业围绕 THE MONSTERS（LABUBU）打造真人动画电影，由《帕丁顿熊》导演保罗·金执导，采用真人实拍 + CGI，龙家升深度参与。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-15",
+      "title": "敲定双海外总部：伦敦设欧洲总部、洛杉矶设美国总部",
+      "text": "2026 年 1 月将伦敦定为欧洲总部，3 月正式敲定美国区域总部落址洛杉矶；引入本地零售高管、推行轮值 CEO 制度。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "overseas",
+      "d": "2026-03-15",
+      "title": "越南、东南亚、墨西哥工厂相继投产",
+      "text": "供应链出海加速：越南塑胶手办工厂、东南亚毛绒/搪胶工厂、墨西哥工厂等已相继启动或完成投产，支撑海外供给。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "china",
+      "d": "2026-03-01",
+      "title": "LABUBU 密集联名：三丽鸥、林俊杰",
+      "text": "3 月 LABUBU 接连官宣与三丽鸥家族、林俊杰、安热沙等不同领域头部 IP/品牌的合作。",
+      "source": "36氪",
+      "url": "https://36kr.com/p/3698271652589443",
+      "lead": false
+    },
+    {
+      "cat": "store",
+      "region": "china",
+      "d": "2026-02-21",
+      "title": "Hirono 小野全球首店落地上海",
+      "text": "2 月 Hirono 小野全球首店落地上海中环广场，成为泡泡玛特首个拥有独立门店的 IP，向「生活方式品牌」升级。",
+      "source": "21世纪经济报道",
+      "url": "https://www.21jingji.com/article/20260513/herald/2c3a19eab380f65eb90fd806342f5778.html",
+      "lead": true
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-02-15",
+      "title": "开年密集官宣三个新 IP：merodi、SUPER TUTU、Key A",
+      "text": "2026 年初至今接连官宣放学后的 merodi、SUPER TUTU 和 Key A 三个新 IP，密集程度史无前例，试图丰满产品线、降低单一 IP 依赖。",
+      "source": "赢商网",
+      "url": "https://m.winshang.com/news739357.html",
+      "lead": false
+    },
+    {
+      "cat": "collab",
+      "region": "china",
+      "d": "2026-02-12",
+      "title": "《绝区零》× 泡泡玛特「邦布派对」系列盲盒开售",
+      "text": "2 月《绝区零》官方周边店铺开启「绝区零 × 泡泡玛特 邦布派对系列手办盲盒」贩售，瞄准游戏 IP 跨界。",
+      "source": "新浪",
+      "url": "https://www.sina.cn/news/detail/5259450061162876.html",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-02-06",
+      "title": "王宁年会披露：LABUBU 全年销量超 1 亿只",
+      "text": "2 月 6 日年会上，王宁表示 LABUBU 全年销量超 1 亿只、全品类全 IP 产品销量超 4 亿只，并强调「说 No 大过说 Yes」的克制定力。",
+      "source": "36氪",
+      "url": "https://36kr.com/p/3698271652589443",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-02-06",
+      "title": "开年三连发新品反击：敲敲木鱼 PUCKY、星星人、马力全开",
+      "text": "2026 开年连推三款新品：PUCKY 敲敲木鱼搪胶毛绒挂件火速售罄，星星人「怦然星动」首周销量破 50 万只，「马力全开」毛绒单日交易额超 800 万元。",
+      "source": "36氪",
+      "url": "https://36kr.com/p/3698271652589443",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "overseas",
+      "d": "2026-01-26",
+      "title": "大摩研报：日本市场被重估为海外增长「火车头」",
+      "text": "摩根士丹利研报指出，日本市场长期规模预计将超东南亚，成为海外增长火车头；美欧市场则以线下渠道为后续扩张关键。",
+      "source": "新浪",
+      "url": "https://www.sina.cn/news/detail/5259450061162876.html",
+      "lead": false
+    },
+    {
+      "cat": "other",
+      "region": "china",
+      "d": "2026-01-22",
+      "title": "新 IP「星星人」爆发：怦然星动系列单日售出超 27 万件",
+      "text": "星星人（Twinkle Twinkle）成新增长引擎，1 月 22 日上线的情人节「怦然星动」系列在天猫、抖音单日售出超 27 万件；研报预计 2026 年其中国销量将达 LABUBU 的 50% 以上。",
+      "source": "新浪",
+      "url": "https://www.sina.cn/news/detail/5259450061162876.html",
+      "lead": false
+    }
+  ]
+};
 const FALLBACK_STORES = {as_of:'2026-03-31',is_estimate:true,totals:{overseas_total:208,us_total:67,countries:30,china_total:401},
   us:{California:14,'New York':9,Texas:7,Florida:6},world:{'United States of America':67,Thailand:18,Japan:9,'United Kingdom':5},
   monthly:[{month:'2026-04',china:5,overseas:7},{month:'2026-03',china:6,overseas:9}]};
 
 let NEWS=[], STORES=null, META={generated:null};
-let activeRegion='china';
+let activeView='news';
 
 const fmtDate = iso => { const [y,m,d]=iso.split('-'); return `${parseInt(m)}月${parseInt(d)}日`; };
 const fmtMonth = m => { const [y,mm]=m.split('-'); return `${y}年${parseInt(mm)}月`; };
@@ -326,20 +597,27 @@ function renderTicker(){
     sortByDate(NEWS).slice(0,8).map(u=>`<span><b>${fmtDate(u.d)}</b>${esc(u.title)}</span>`).join('').repeat(2);
 }
 
-/* ===== 控件 ===== */
-function setupRegion(){
-  document.querySelectorAll('#regionSeg button').forEach(b=>{
-    b.onclick=()=>{activeRegion=b.dataset.region;
-      document.querySelectorAll('#regionSeg button').forEach(x=>x.classList.toggle('active',x===b));
-      renderOverseas();renderBoard();};
+/* ===== 控件（三视图：资讯 / 中国 / 海外） ===== */
+function setupView(){
+  document.querySelectorAll('#viewSeg button').forEach(b=>{
+    b.onclick=()=>{activeView=b.dataset.view;
+      document.querySelectorAll('#viewSeg button').forEach(x=>x.classList.toggle('active',x===b));
+      render();};
   });
 }
-function regionFilter(arr){ return arr.filter(u=>u.region===activeRegion); }
+// 视图调度：资讯=全部资讯；中国=空白；海外=地图与门店统计
+function render(){
+  const board=document.getElementById('board');
+  const ov=document.getElementById('overseasBlock');
+  if(activeView==='news'){ ov.innerHTML=''; renderBoard(); }
+  else if(activeView==='overseas'){ board.innerHTML=''; renderOverseas(); }
+  else { board.innerHTML=''; ov.innerHTML=''; }   // 中国：页面留空
+}
 
 /* ===== 海外门店区块（地图 + 表） ===== */
 function renderOverseas(){
   const host=document.getElementById('overseasBlock');
-  if(activeRegion==='china' || !STORES){ host.innerHTML=''; return; }
+  if(!STORES){ host.innerHTML=''; return; }
   const est = STORES.is_estimate;
   host.innerHTML = `
     <div class="region-head"><span class="flag">🌍</span><h2>海外门店分布</h2><span class="ln"></span></div>
@@ -490,29 +768,33 @@ function isLead(u){
   return LEAD_KW.some(k=>t.includes(k.toLowerCase()));
 }
 
-/* ===== 动向资讯四分类 ===== */
-const CATS4={
-  popup:{label:'展览快闪', color:'#2bb3a3'},
-  sales:{label:'销售数据', color:'#d4537e'},
-  biz:{label:'业务拓展', color:'#6b5bd6'},
-  other:{label:'其他', color:'#8a93a6'}
+/* ===== 资讯四分类（开店线索 / 展览快闪 / 销售数据 / 业务拓展） ===== */
+// 渲染顺序即对象顺序；业务拓展(biz)为兜底分类，未命中前三类的都归入此处
+const NEWS_CATS={
+  lead: {label:'开店线索', color:'var(--gold)', flag:'📍'},
+  popup:{label:'展览快闪', color:'#2bb3a3',     flag:'🎡'},
+  sales:{label:'销售数据', color:'#d4537e',     flag:'📈'},
+  biz:  {label:'业务拓展', color:'#6b5bd6',     flag:'🧭'},
 };
 const POPUP_KW=['展览','快闪','乐园','城市乐园','gallery','画廊','主题展','艺术展','艺术空间','展区','消博会','游园','灯会','沉浸式','pop land','巡展','展会','门票','开区'];
 const SALES_KW2=['营收','销量','售罄','溢价','销售额','业绩','财报','股价','市值','回购','同比','交易额','售出','万件','万只','亿元','gmv','复购','成交价','单日','首周销量'];
-const BIZ_KW=['门店','总部','工厂','供应链','区域','ip','新品','联名','合作','授权','收购','电影','家电','饰品','品类','出海','升级','人事','cgo','旗舰','市场','投产','新增','拓展','签约','入局','上市','总裁'];
-function classify4(u){
+// 分类优先级：开店线索 → 展览快闪 → 销售数据 → 业务拓展(兜底)
+function classifyNews(u){
+  if(isLead(u)) return 'lead';
   const t=((u.title||'')+' '+(u.text||'')).toLowerCase();
   if(POPUP_KW.some(k=>t.includes(k))) return 'popup';
   if(SALES_KW2.some(k=>t.includes(k))) return 'sales';
-  if(BIZ_KW.some(k=>t.includes(k))) return 'biz';
-  return 'other';
+  return 'biz';
 }
 
-function newsCard(u,accent){
+function newsCard(u,accent,lead=false){
   const r=REGIONS[u.region]||null;
-  return `<article class="card enter" style="border-left-color:${accent}">
-    <div class="top"><span class="date" style="background:${accent}">${fmtDate(u.d)}</span>
-      ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}</div>
+  return `<article class="card${lead?' lead':''} enter"${lead?'':` style="border-left-color:${accent}"`}>
+    <div class="top">
+      <span class="date${lead?' lead':''}"${lead?'':` style="background:${accent}"`}>${fmtDate(u.d)}</span>
+      ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}
+      ${lead?'<span class="lead-tag">📍 开店线索</span>':''}
+    </div>
     <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
     <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
       <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
@@ -520,54 +802,34 @@ function newsCard(u,accent){
     </div></article>`;
 }
 
-/* ===== 资讯板块 ===== */
+/* ===== 资讯板块（「资讯」视图：展示全部资讯并分四类） ===== */
 function renderBoard(){
   const board=document.getElementById('board');
-  const all=sortByDate(regionFilter(NEWS));
+  const all=sortByDate(NEWS);
 
-  // —— 本周开店线索 ——
-  const leads=all.filter(isLead).slice(0,8);
-  let html=`<div class="region-head"><span class="flag">📍</span><h2>本周开店线索</h2>
-    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${leads.length} 条</span><span class="ln"></span></div>`;
-  html+=`<div class="lead-note">自动从动向资讯中筛出疑似「开店」消息，供你核实。<b>地图门店数字不会自动改动</b>，确认属实后再更新 stores.json。</div>`;
-  if(leads.length){
-    html+=`<div class="cards">`;
-    leads.forEach((u,i)=>{
-      const r=REGIONS[u.region]||null;
-      html+=`<article class="card lead enter" style="animation-delay:${Math.min(i*45,400)}ms">
-        <div class="top"><span class="date lead">${fmtDate(u.d)}</span>
-          ${r?`<span class="rtag ${u.region}">${r.flag} ${r.label}</span>`:''}
-          <span class="lead-tag">📍 开店线索</span></div>
-        <h3>${esc(u.title)}</h3><p>${esc(u.text||u.title)}</p>
-        <div class="src"><span class="who">来源 · ${esc(u.source||'—')}</span>
-          <a href="${esc(u.url||'#')}" target="_blank" rel="noopener">查看原文
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-        </div></article>`;
-    });
-    html+=`</div>`;
-  }else{
-    html+=`<div class="empty">本周暂无新开店线索。</div>`;
+  if(!all.length){
+    board.innerHTML=`<div class="empty">暂无资讯。</div>`;
+    return;
   }
 
-  // —— 动向资讯（已剔除开店线索，避免重复） ——
-  const rest=all.filter(u=>!isLead(u));
-  html+=`<div class="region-head" style="margin-top:30px"><span class="flag">📰</span><h2>动向资讯</h2>
-    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${rest.length} 条</span><span class="ln"></span></div>`;
-  if(!rest.length){
-    html+=`<div class="empty">该地区暂无其他动向。</div>`;
-    board.innerHTML=html; return;
-  }
-  // 按四类分组渲染
-  Object.entries(CATS4).forEach(([key,meta])=>{
-    const group=rest.filter(u=>classify4(u)===key);
+  let html=`<div class="region-head"><span class="flag">📰</span><h2>资讯</h2>
+    <span class="meta" style="font-family:'Space Mono',monospace;color:var(--faint);font-size:13px">${all.length} 条</span><span class="ln"></span></div>`;
+  // 按四类分组，顺序与 NEWS_CATS 一致
+  Object.entries(NEWS_CATS).forEach(([key,meta])=>{
+    const group=all.filter(u=>classifyNews(u)===key);
     if(!group.length) return;
+    const isLeadCat=(key==='lead');
     html+=`<div class="cat-head"><span class="bar" style="background:${meta.color}"></span>
-      <h3 style="color:${meta.color}">${meta.label}</h3>
-      <span class="meta">${group.length} 条</span></div><div class="cards">`;
-    group.forEach(u=>{ html+=newsCard(u,meta.color); });
+      <h3 style="color:${meta.color}">${meta.flag} ${meta.label}</h3>
+      <span class="meta">${group.length} 条</span></div>`;
+    if(isLeadCat){
+      html+=`<div class="lead-note">自动从资讯中筛出疑似「开店」消息，供你核实。<b>地图门店数字不会自动改动</b>，确认属实后再更新 stores.json。</div>`;
+    }
+    html+=`<div class="cards">`;
+    group.forEach((u,i)=>{ html+=newsCard(u,meta.color,isLeadCat); });
     html+=`</div>`;
   });
-  board.innerHTML = html;
+  board.innerHTML=html;
 }
 
 /* ===== 时钟 & 刷新 ===== */
@@ -586,7 +848,7 @@ async function doRefresh(auto){
     const [news,stores]=await Promise.allSettled([fetchJSON('data.json'),fetchJSON('stores.json')]);
     if(news.status==='fulfilled') applyNews(news.value);
     if(stores.status==='fulfilled') applyStores(stores.value);
-    renderTicker();renderOverseas();renderBoard();
+    renderTicker();render();
     const changed=(META.generated!==beforeGen)||(STORES&&JSON.stringify(STORES.totals)!==beforeStores);
     toast(changed?'已刷新 · 数据已更新':'已是最新 · 数据无变化');
   }catch(e){ toast('读取失败 · 保留当前数据'); }
@@ -602,7 +864,7 @@ async function init(){
   applyStores(stores.status==='fulfilled'?stores.value:FALLBACK_STORES);
   if(news.status!=='fulfilled'||stores.status!=='fulfilled')
     document.getElementById('snapText').textContent='部分数据读取失败，当前含离线兜底数据';
-  setupRegion();renderTicker();renderOverseas();renderBoard();
+  setupView();renderTicker();render();
   document.getElementById('refreshBtn').onclick=()=>doRefresh(false);
 }
 init();

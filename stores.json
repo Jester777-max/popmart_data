@@ -807,7 +807,8 @@
       "us": 0,
       "overseas": 0,
       "china_loc": [
-        "北京"
+        "北京",
+        "南京"
       ],
       "us_loc": [],
       "overseas_loc": []
@@ -859,5 +860,13 @@
   "us_total_base": 76,
   "overseas_total_base": 208,
   "overseas_points": [],
-  "countries_base": 29
+  "countries_base": 29,
+  "baseline_review": {
+    "needed": true,
+    "detected_on": "2026-06-21",
+    "headline": "LABUBU家族首破百亿营收，泡泡玛特2026年目标增速不低于20%|直击业绩会",
+    "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5waUNrRzVXSVl6RDBXUU9zNjBrd2lvek9fdjA4a3BKUUoxTHdQelo0S2RYMm9xSUpDM2gwMXJqMXROVHFxMWc?oc=5",
+    "detected_overseas_total": null,
+    "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
+  }
 }

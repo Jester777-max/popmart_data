@@ -127,11 +127,47 @@ def main():
     us_counts = {abbr2full.get(a, a): n for a, n in
                  sorted(cnt.items(), key=lambda kv: (-kv[1], kv[0]))}
 
+    # —— 检测本周新增的美国门店（对比上一份快照），写入当月美国数据 ——
+    from datetime import datetime, timezone
+    def _key(s): return (s.get("name", ""), s.get("addr", ""))
+    prev_keys = {_key(s) for s in (base.get("us_stores") or [])}
+    new_stores = [s for s in stores if _key(s) not in prev_keys]
+
+    monthly = base.setdefault("monthly", [])
+    # 保证每条月度数据都带地点/计数字段（前端按列读取）
+    for r in monthly:
+        r.setdefault("china_loc", [])
+        r.setdefault("us_loc", [])          # 美国新增地点
+        r.setdefault("overseas_loc", [])    # 其他地区（非美）新增地点
+        r.setdefault("us", 0)               # 美国新增（家）
+
+    if new_stores:
+        ym = datetime.now(timezone.utc).strftime("%Y-%m")
+        row = next((r for r in monthly if r.get("month") == ym), None)
+        if row is None:
+            row = {"month": ym, "china": 0, "overseas": 0, "us": 0,
+                   "china_loc": [], "us_loc": [], "overseas_loc": []}
+            monthly.append(row)
+        # 新增美国门店所在城市（City, ST）去重后写入当月「美国新增地点」
+        added = 0
+        existing = set(row.get("us_loc") or [])
+        for s in new_stores:
+            loc = f'{s.get("city","")}, {s.get("state","")}'.strip(", ")
+            if loc and loc not in existing:
+                existing.add(loc)
+                row["us_loc"].append(loc)
+        # 计数：美国与海外总数同步 +k（其他地区 = overseas − us 因此保持不变）
+        k = len(new_stores)
+        row["us"] = (row.get("us") or 0) + k
+        row["overseas"] = (row.get("overseas") or 0) + k
+        print(f"[info] 本周新增美国门店 {k} 家，已并入 {ym} 的 us / us_loc / overseas。")
+    else:
+        print("[info] 本周未检测到新增美国门店，月度数据不变。")
+
     base["us_stores"] = stores
     base["us"] = us_counts
     base.setdefault("totals", {})["us_total"] = len(stores)
     base.setdefault("world", {})["United States of America"] = len(stores)
-    from datetime import datetime, timezone
     base["as_of"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     json.dump(base, open(STORES_PATH, "w", encoding="utf-8"),

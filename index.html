@@ -125,13 +125,15 @@
   .table-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 18px 14px;box-shadow:var(--shadow-sm);margin-top:14px;overflow-x:auto}
   .table-card h4{font-size:15px;font-weight:700;margin-bottom:3px}
   .table-card .cap{font-size:12px;color:var(--faint);margin-bottom:12px}
-  table.mt{width:100%;border-collapse:collapse;font-size:13.5px;min-width:420px}
+  table.mt{width:100%;border-collapse:collapse;font-size:13.5px;min-width:860px}
   table.mt th,table.mt td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line)}
   table.mt th:first-child,table.mt td:first-child{text-align:left;font-family:'Space Mono',monospace}
   table.mt thead th{font-size:12px;color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--line)}
   table.mt td.cn{color:var(--teal);font-weight:700}
+  table.mt td.us{color:#2563eb;font-weight:700}
   table.mt td.ov{color:var(--violet);font-weight:700}
   table.mt td.tt{font-weight:700}
+  table.mt td.loc{text-align:left;font-weight:400;color:var(--muted);font-size:12.5px;line-height:1.5;white-space:normal;max-width:220px}
   table.mt tr:hover td{background:#FAF8FE}
   table.mt tfoot td{border-top:1.5px solid var(--line);border-bottom:0;font-weight:700;color:var(--ink)}
 
@@ -196,6 +198,9 @@
       <span style="font-size:12px;color:var(--faint)">数据随每周抓取更新</span>
       <button class="btn" id="refreshBtn">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>刷新
+      </button>
+      <button class="btn" id="dlBtn">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>下载 HTML
       </button>
     </div>
   </div>
@@ -529,7 +534,7 @@ const FALLBACK_NEWS = {
 };
 const FALLBACK_STORES = {as_of:'2026-03-31',is_estimate:true,totals:{overseas_total:208,us_total:67,countries:30,china_total:401},
   us:{California:14,'New York':9,Texas:7,Florida:6},world:{'United States of America':67,Thailand:18,Japan:9,'United Kingdom':5},
-  monthly:[{month:'2026-04',china:5,overseas:7},{month:'2026-03',china:6,overseas:9}]};
+  monthly:[{month:'2026-04',china:5,overseas:7,us:0,china_loc:[],us_loc:[],overseas_loc:[]},{month:'2026-03',china:6,overseas:9,us:0,china_loc:[],us_loc:[],overseas_loc:['曼谷（Hirono 小野长期店）']}]};
 
 let NEWS=[], STORES=null, META={generated:null};
 let activeView='news';
@@ -639,14 +644,27 @@ function renderOverseas(){
 function renderMonthlyTable(){
   const m=(STORES.monthly||[]).slice().sort((a,b)=>b.month.localeCompare(a.month)).slice(0,12);
   if(!m.length) return '';
-  let tCn=0,tOv=0;
-  const rows=m.map(r=>{tCn+=r.china||0;tOv+=r.overseas||0;
-    return `<tr><td>${fmtMonth(r.month)}</td><td class="cn">${r.china||0}</td><td class="ov">${r.overseas||0}</td><td class="tt">${(r.china||0)+(r.overseas||0)}</td></tr>`;}).join('');
+  // 地点字段：可为数组 ["北京","上海"] 或顿号字符串 "北京、上海"；空则显示 —
+  const locText=v=>{
+    if(Array.isArray(v)) v=v.filter(Boolean).join('、');
+    v=(v==null?'':String(v)).trim();
+    return v ? esc(v) : '—';
+  };
+  let tCn=0,tUs=0,tOth=0;
+  const rows=m.map(r=>{
+    const cn=r.china||0, ov=r.overseas||0, us=r.us||0;
+    const oth=Math.max(0, ov-us);          // 其他地区 = 海外总数 − 美国
+    tCn+=cn; tUs+=us; tOth+=oth;
+    return `<tr><td>${fmtMonth(r.month)}</td>`+
+      `<td class="cn">${cn}</td><td class="loc">${locText(r.china_loc)}</td>`+
+      `<td class="us">${us}</td><td class="loc">${locText(r.us_loc)}</td>`+
+      `<td class="ov">${oth}</td><td class="loc">${locText(r.overseas_loc)}</td>`+
+      `<td class="tt">${cn+ov}</td></tr>`;}).join('');
   return `<div class="table-card"><h4>月度新开门店（近 ${m.length} 个月）</h4>
     <div class="cap">单位：家 · ${STORES.is_estimate?'估算数据，随 stores.json 更新':'随 stores.json 更新'}</div>
-    <table class="mt"><thead><tr><th>月份</th><th>中国新增</th><th>海外新增</th><th>合计</th></tr></thead>
+    <table class="mt"><thead><tr><th>月份</th><th>中国新增</th><th>中国新增地点</th><th>美国新增</th><th>美国新增地点</th><th>其他地区新增</th><th>其他地区新增地点</th><th>合计</th></tr></thead>
     <tbody>${rows}</tbody>
-    <tfoot><tr><td>合计</td><td class="cn">${tCn}</td><td class="ov">${tOv}</td><td class="tt">${tCn+tOv}</td></tr></tfoot></table></div>`;
+    <tfoot><tr><td>合计</td><td class="cn">${tCn}</td><td class="loc"></td><td class="us">${tUs}</td><td class="loc"></td><td class="ov">${tOth}</td><td class="loc"></td><td class="tt">${tCn+tUs+tOth}</td></tr></tfoot></table></div>`;
 }
 
 /* ===== D3 地图 ===== */
@@ -832,6 +850,34 @@ function renderBoard(){
   board.innerHTML=html;
 }
 
+/* ===== 下载当前页面为 index.html（清空动态内容，导出干净源文件） ===== */
+function downloadSelf(){
+  try{
+    const clone=document.documentElement.cloneNode(true);
+    // 清空运行时渲染出来的内容，避免写进文件
+    ['#board','#overseasBlock','#ticker'].forEach(sel=>{
+      const el=clone.querySelector(sel); if(el) el.innerHTML='';
+    });
+    // 视图选中态重置为默认「资讯」
+    clone.querySelectorAll('#viewSeg button').forEach(x=>
+      x.classList.toggle('active', x.getAttribute('data-view')==='news'));
+    // 还原顶部占位文案
+    const dt=clone.querySelector('#dataTime'); if(dt) dt.textContent='读取中…';
+    const sn=clone.querySelector('#snapText'); if(sn) sn.textContent='数据加载中…';
+    ['k-ov','k-us','k-co','k-cn'].forEach(id=>{const e=clone.querySelector('#'+id);if(e)e.textContent='0';});
+    const ka=clone.querySelector('#kpiAsOf'); if(ka) ka.textContent='—';
+
+    const html='<!DOCTYPE html>\n'+clone.outerHTML;
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download='index.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+    toast('已开始下载 index.html');
+  }catch(e){ toast('下载失败：'+e.message); }
+}
+
 /* ===== 时钟 & 刷新 ===== */
 function tickClock(){const d=new Date();
   document.getElementById('clock').textContent=`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;}
@@ -866,6 +912,7 @@ async function init(){
     document.getElementById('snapText').textContent='部分数据读取失败，当前含离线兜底数据';
   setupView();renderTicker();render();
   document.getElementById('refreshBtn').onclick=()=>doRefresh(false);
+  document.getElementById('dlBtn').onclick=downloadSelf;
 }
 init();
 </script>

@@ -823,6 +823,17 @@
       ],
       "us_loc": [],
       "overseas_loc": []
+    },
+    {
+      "month": "2026-07",
+      "china": 1,
+      "overseas": 0,
+      "us": 0,
+      "china_loc": [
+        "南京"
+      ],
+      "us_loc": [],
+      "overseas_loc": []
     }
   ],
   "world_base": {

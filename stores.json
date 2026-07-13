@@ -830,7 +830,8 @@
       "overseas": 0,
       "us": 0,
       "china_loc": [
-        "南京"
+        "南京",
+        "北京"
       ],
       "us_loc": [],
       "overseas_loc": []

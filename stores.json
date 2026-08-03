@@ -827,7 +827,7 @@
     {
       "month": "2026-07",
       "china": 1,
-      "overseas": 0,
+      "overseas": 1,
       "us": 0,
       "china_loc": [
         "南京",
@@ -835,7 +835,9 @@
         "成都"
       ],
       "us_loc": [],
-      "overseas_loc": []
+      "overseas_loc": [
+        "新加坡"
+      ]
     }
   ],
   "world_base": {

@@ -838,6 +838,17 @@
       "overseas_loc": [
         "新加坡"
       ]
+    },
+    {
+      "month": "2026-08",
+      "china": 0,
+      "overseas": 1,
+      "us": 0,
+      "china_loc": [],
+      "us_loc": [],
+      "overseas_loc": [
+        "新加坡"
+      ]
     }
   ],
   "world_base": {

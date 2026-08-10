@@ -1,7 +1,357 @@
 {
-  "generated": "2026-08-03T04:24:59+00:00",
+  "generated": "2026-08-10T03:07:52+00:00",
   "note": "fetched",
   "updates": [
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-09",
+      "title": "China shopping爆火！外国游客来华“科技购”，“只有想不到，没有买不到”",
+      "text": "China shopping爆火！外国游客来华“科技购”，“只有想不到，没有买不到”",
+      "source": "新浪网",
+      "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOcGt2TkMwYi1TUEs5dUhpUHM4WjZYM0ZCZDVBaDE0RGZFS2NCNUpXNjZFR2FCTm9RdkptX3Q0UmRrMTNYTEUyWnZJTld6LVo5N09LSl93cnpLOXlvMXFrSnN0UUtrQXRkRjR2ZnNoYU00ZTJOMGFUTEFUQ2dPRmN0Yml2c2pXcmFaWnJ2VWdRZzRrczVtTkh6VGc2b0Q5YzEzWW95TWtYYVlLenVHbTZQZmMtREpsejZyU0lkZGlQRU9oUXhSei1rdXlZYzlmbGZ1Rk5pYjlsOXYzV1o2SGVITWtDa0EwY2I2a2otVElCWkdhZFVndnB0Nk93Nmk5TUJPMlE0ZWw1TnpVYzVEazJiRlljdw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-09",
+      "title": "跟着百花游朝阳，5条光影游玩路线闭眼冲！",
+      "text": "跟着百花游朝阳，5条光影游玩路线闭眼冲！",
+      "source": "China Daily",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9pN1NHQWg3RnNWV3dkbC1NUTNmWmIxWGs3by1NNEFodERQa0QtX0gyNXhOd0NBYWQ3dFYxelo4X2xpLW5OTWdpM1lhdDVIQ2ZKSXZhdlVzckMtVkR1WVdFbXdYQWhxOGFkaHNMWC1YQ3dSR3ZTcHZpQ3FKN1c?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-08",
+      "title": "中国特稿：雪域养蜂酿酒卖泡泡玛特 西藏特色与现代产业能否走出高原反应？",
+      "text": "中国特稿：雪域养蜂酿酒卖泡泡玛特 西藏特色与现代产业能否走出高原反应？",
+      "source": "联合早报",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1UOXppWkFNN290YkE1bTVRSW1IVjV2RGhlTXJnRnBITXVVMEJXTm9VRXFMWWVLTXlzYVRmcGRkaVV2NGZHV1FEX0d1eURFNzdjNW5ISFR3dGE0VFpJaXJTc1BCMjl3YURPVkE?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-08",
+      "title": "@大道无形我有型 呼和浩特万象城POP MART 昨天16：11人气旺，客流大,生意好。",
+      "text": "@大道无形我有型 呼和浩特万象城POP MART 昨天16：11人气旺，客流大,生意好。",
+      "source": "xueqiu.com",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBJRmRWRmNGU003Yl92SnpNRGFLT0diQk9kS2FnZUxwRkFNYlJPVlNNOFZfUjVTVHNxOVBMSERuR3Z1WjJ3ejB5azJ1ek5jT1hI?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-07",
+      "title": "北京：潮玩夜出发 解锁星夜童话",
+      "text": "北京：潮玩夜出发 解锁星夜童话",
+      "source": "新华网",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5IZFJxd0xqNlotLU1jTlZOMmlMbXd1ZE40VlU5WllWR0lZYmszZzMxSnZpVXQ5cE9HeGFubnlDdmNMRUEtVnBqdWplckVOYzRKV0xGZmF4ZW42eFNqMkUtcllXVTg0eHYtZHUxaHZLaFlMUnZkRzZrWUt2QQ?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "泡泡玛特盘初一度跌超3%",
+      "text": "泡泡玛特盘初一度跌超3%",
+      "source": "eastmoney.com",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9UZzRrY0I2Yk9pY2lkbk5nNURtR1UyUE1Rbm1LRGVkWUg3dXQ5VEpVZGFEZ0RNNWxuNW0tenRlTHBfU1VIRktiWjB1cHRkNVBKTzluaW56SUpGSFRLQ2dfMw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "overseas",
+      "d": "2026-08-06",
+      "title": "电商早报：段永平解读泡泡玛特持股变动；金价集体上调；菜鸟推出全球三日达跨境物流- 栏目",
+      "text": "电商早报：段永平解读泡泡玛特持股变动；金价集体上调；菜鸟推出全球三日达跨境物流- 栏目",
+      "source": "亿邦动力网",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFAtRy1TMEVyNDIzVmdXUXgzM1B3T1RfeXNncmdCTFYxNXhfYk9XeG1BeThVM2hrOFhUWjNvOWp1Sm9zcHRGRENDRkNJTTFOMDBmTy1FRWNR?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "年内3次重金加仓！段永平的泡泡玛特投资学：卖put补贴建仓，买正股吃成长，卖call补贴持有",
+      "text": "年内3次重金加仓！段永平的泡泡玛特投资学：卖put补贴建仓，买正股吃成长，卖call补贴持有",
+      "source": "时代财经",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOdnl5OF9CMjFZYm9oZ2JxbDhIbzZGQnNRTmhqbFNncThpREloSFRwSXE4ME1xMkR4YlFhYUxlSVo1NzFCUDFyb3hZWEpfRi0wNnU1SWxQbVlFbjRIREo5QnN4UGJ3ektWZFhTTHRyNFktNkxyQzJGcUVzWVBUOGhNUV9STno3RS01OVNMWjktSTI?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "期权合约被动履约，段永平对泡泡玛特持股比例降至5.55%、曾说“10年不卖”",
+      "text": "期权合约被动履约，段永平对泡泡玛特持股比例降至5.55%、曾说“10年不卖”",
+      "source": "QQ News",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE10OVNnSmhOQ3lJMEJnTkRqcG1zd3gyMXZRam15S0luSHJSUFF4TzBHX2VBQ1o0MGxfX0h4SEtENlpNdjdQR0piSC01Nl9mQVVFQzk2YkVR?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "段永平泡泡玛特仓位收缩：一场由港交所披露规则引发的“误会” | 巴伦港股",
+      "text": "段永平泡泡玛特仓位收缩：一场由港交所披露规则引发的“误会” | 巴伦港股",
+      "source": "21财经",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOWlFkdTRFZ0E0dFZyanJtd3ZHSFZ4Mkg0TmpUUmpsU3cxOFFZajdRM3pzZ3lyQTZaeUhkRWJnUU1qRGhJaTJ0XzlZMkRDY21NTE9jbmVjRE04cXczR2Y4WjNvTjJTdXpoZXhzbVpMamlPUDVqSHpTbU9ob1AxVXM5OGF4eTdvNl85T2x5eA?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "泡泡玛特盘初跌超4%，段永平称还会在一定价格区间做期权 | 大鱼财经",
+      "text": "泡泡玛特盘初跌超4%，段永平称还会在一定价格区间做期权 | 大鱼财经",
+      "source": "jinantimes.com.cn",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9oekxheXR0Z25rSWFaeXBYUlNWbS1LbzZLWTAwMXZGdjhfdjh3Y3pwUjBTZzl1ai1NVTFhN3dlSHB5d3pieC1CczFKZUM5QzdLeGczYkRJVGhkVEVvWVZN?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "一网店用“Labubu”形象制作蛋糕并销售，被泡泡玛特公司起诉",
+      "text": "一网店用“Labubu”形象制作蛋糕并销售，被泡泡玛特公司起诉",
+      "source": "紫牛新闻",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBUYkRJOHc0cjZobFBoYnJxUXR5YWQ0eFpVZFV2MlY5UXY5OWNaUUp1MTJ1Vm5MWjhVRUhha2ZTRTVrbS1tZk1Xc1Y2ZXBaTm1xcVZnZ3JzVVFlNlJXRDRSNllfZmFYODFCZHc?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-06",
+      "title": "豪言十年不卖泡泡玛特转头沽 段永平︰put expired 部分被call走",
+      "text": "豪言十年不卖泡泡玛特转头沽 段永平︰put expired 部分被call走",
+      "source": "香港01",
+      "url": "https://news.google.com/rss/articles/CBMiggNBVV95cUxNZ2VPbDFyeVJnRkJLLWJjT2xvcHNCQTdJVlJYSGVWLTUwX2dqMXp4a3ViNHdLclFzOGRyZ0F5bmlmWEFWWWY1QkVWb2phbmc4WWlQYWFfQmVYNjM5ZFJUSVJqOVF2WjA1Q2lCYjF2ZU9GZnA1S21JRFhEdGpnekl1R1dxVm80TjVuczlpY2M1bktMeTNNUVJpNzlRUUZfR2I3ZVZzWDFNY1dGMUVuSE9BT3U0U3RhNE1nNVNaenN4bnZxY3VSYTZ2UmpPZmhUMm1IQzljdWlCX2RDbWdpaGo4MHhKazhaWWtfaU9KblNxLXl5bVo3UE9BN0xNbTNESkZZcjZzUzB0T1czYXlrYW80QWVLd2Q5YVF0Vi1ZZEdWV0RWRm5CY3FyYUREdVF5MElZSi1HT0h0eEVxc2l5azQ1d3lIQkxpVlE1UlpORlROTTE0VldmTWlDUGsxS1ZfcnhFajE4SlZ0VFFJX2w5Y3pLV2JWTU5ram5mUGRmeUhKRkNxZw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平持股泡泡玛特比例下降，此前刚称“10年内大概率不卖”",
+      "text": "段永平持股泡泡玛特比例下降，此前刚称“10年内大概率不卖”",
+      "source": "财联社",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5hTXlNMGV3b2hBUGRnNHVDbHNzQ1RtT296LVg1RmxZaDlkWW0zM01jSkI2d2h5Qmw3TDJSRHlzcFVZRlg3aTlOVg?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平回应对泡泡玛特的持股比例下降",
+      "text": "段永平回应对泡泡玛特的持股比例下降",
+      "source": "eastmoney.com",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KS3dNczZMSXV0RDd2bGpvTFFBZTVBelBfXzRuYV9xY3J1Tk9TN1pna2xTM3Bjb2JQZlZUN0czNFJpVXVNalNvV3FIT3dQaWN1cWJ6MkFmU2NjcU5KNmNGRA?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "泡泡玛特，回应段永平持股下降",
+      "text": "泡泡玛特，回应段永平持股下降",
+      "source": "eastmoney.com",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1KWVU2T0dVVFYzY3Rkbk0wb0lFeW4wLUM4WjA0eDZ6UVFGcndtNEdEZHVEc0xLS0U1dGFFcU1CbElmTXlBMmFENTI0VjBpTFpVcTgyc2ZtWVNsMGtOWEtyTw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平曾称10年不卖泡泡玛特",
+      "text": "段永平曾称10年不卖泡泡玛特",
+      "source": "新浪新闻_手机新浪网",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1veVJ3NzNHbXNMdzhGRWtzVWhiZC1lSXo3cC0zNlJGak1rMTdweW9JeWZIR1BBZVBNM3hLd0w3MDVLd3EwTkgxdy1NcGdkUTUzUWNSdDZDbTJrVjM2N0xSRzVhcXNNd3M1TUU3anpic2VjYzJXSkZVcQ?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "“10年大概率不卖”泡泡玛特的段永平持仓再变 系期权履约交付股份",
+      "text": "“10年大概率不卖”泡泡玛特的段永平持仓再变 系期权履约交付股份",
+      "source": "财联社",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8ySlgxMEwtcDhna25nMlMyZFNMOWlnOWZERlVGaUlSV2sxbjlKNlk0SWY1QkxJSFBYemx4VHJhNWo3M1hlZjdkag?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "持仓比例骤降！段永平泡泡玛特权益生变，发生了什么？",
+      "text": "持仓比例骤降！段永平泡泡玛特权益生变，发生了什么？",
+      "source": "证券时报",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFB0cWdpM0RfUDVURGJ6M2dReXc2QWdwWGVJSVBCcDJ4MzRQNWNNbDAxU1pnSTBweDAyQlptTkJld0plSFdOelpjWndiZFpzZzJtSlVQbnFCVS1Vakoy?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平泡泡玛特“好仓”骤降 或因衍生品交割影响",
+      "text": "段永平泡泡玛特“好仓”骤降 或因衍生品交割影响",
+      "source": "财联社",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5JV19BMWItazNvTVFGYzIyZlAxcmhYRl96Z1FsTzJxckRkR3ppODVjNTVIVTFRWkprMkJPbkhVOHZRc0JPcUE?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "泡泡玛特的商业模式有何特点？",
+      "text": "泡泡玛特的商业模式有何特点？",
+      "source": "新浪财经",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBydGZ6em9TNkR1ejQyRk51Q2RiT0FULVZucTV0ckVrS1pGYzdYRG52dmtVLUpwdjJESUV2S2RHSk9VaHh1dVZNT0g3T0hqQ2pxNS1sZm13Q2ZuS2tMNDkzdTJUZUM4QzRBaElwdkZlLXlxMnRqSjhmZWtCT01CUQ?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平对泡泡玛特持股比例下降至5.55%",
+      "text": "段永平对泡泡玛特持股比例下降至5.55%",
+      "source": "21财经",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQYm5LNTI2SEJ4WUFMa2wySlowSFlhT0M3WU9lRGQ0Ynh5N2xKR0pQTEw2aEFCZUVDaGR6U0ViTlpFWlk1cVA4QTl3SHlIM1llSUo1U1MzMjlIVU53YkJ6bk1YN09zR1RsSW83VG12YzNFdzlRaThTOXplMG1wOHg0dmQ0OWE1d1J3enZZbA?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "持仓泡泡玛特股份骤降，段永平回应",
+      "text": "持仓泡泡玛特股份骤降，段永平回应",
+      "source": "东方财富",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5ucVB2dGNkUy1nRkl1NUhWSEZsaWhkak1pVzFyNExyXzE3MS00YlVBSXNJWllkVkpxR1dGM3c0Q1d3bkdIMFJqQzRjWjE0cTVZT2RLZW9JU1hya005RkV2MDk3U0JZZw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "17:19:05【段永平对泡泡玛特持股比例降至5.55%】",
+      "text": "17:19:05【段永平对泡泡玛特持股比例降至5.55%】",
+      "source": "财联社",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9EVFNEQmdPUzItaHJUMjJua1liSzU0ejlndjVDeHBxYVhiRGZ2T2F3T1huTk1xYzNwUlNWRG02UXU1NmpLZnF5MA?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平对泡泡玛特持股比例降至5.55%",
+      "text": "段永平对泡泡玛特持股比例降至5.55%",
+      "source": "同花顺财经",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1rX3QtSmQyRXM0Zno4ZW13MzVGcmtHOF9Mc0FiZi1iVnhWeDJ5RXlMR254ekk4Uld3WU1Xc3BxU2dsWjN0ZVlUcFVhRFBIMERDZEp0MEJBZzgyQnhBVE5Cb0h3?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "段永平持股泡泡玛特比例下降，或源自衍生品工具行权",
+      "text": "段永平持股泡泡玛特比例下降，或源自衍生品工具行权",
+      "source": "同花顺财经",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA1MFhjb3hEWVByZXdhN2tYQUNTYnJXUkx2OUk0M29Bbk1ZY05kQ2JxVnZBRGxzajRTalJpb1UzU3FFY0J6MlR3bXA0WGhXNFk4NDM1c05IemlocXhvbG5PVUdB?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "网店蛋糕印Labubu被泡泡玛特起诉",
+      "text": "网店蛋糕印Labubu被泡泡玛特起诉",
+      "source": "新浪财经",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTTJDYTdnSzlpQzV3T2g5QWVjNmp3UEZBbEN1WDdieEVadjJnaDZ2TXNoeUtGZ2NoUmRnRURqYnl5elN2UExuSEtDcHZra3kwNlluWmRlZ01RM25XdGc0czFtVzdyb1RUb0RtX2ItdFhNVWJ3U2Rwc3JscHdMUFFub1R6U0JXdTFPTTJGNHV3VHRHMm45Zm9aUDdrUjZyRWFwSXZHYlp0ZTFIa0VMRTM4Ri1wNkFwRlZoczJfYmV3X1pYUXNDS1hIWjZwR0NER09WbHBXNk16SEg?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "泡泡玛特，“把握”情绪",
+      "text": "泡泡玛特，“把握”情绪",
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSnUyeDNub3dPbnhvLVFLX01EUHVaMWF4M2ZuMk9reFhQZzg5eU51UUYzSTZNazBQYktfVE9IWl82MjJKa29nYTZiQi1nYU5FTURqZWJlSHM0SUJBT1Y3cHV3R0lTenFfR0luOE1qNDRYS05PVGhZd0ZBWHcySUkyX2VuTzhXQldWaTc4cg?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-05",
+      "title": "新浪网·",
+      "text": "新浪网·",
+      "source": "新浪网",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBGSV83WC1MU0o3Vm1QbkJ6SG5OckVMQVNURlp0NWY2ZFo1S3VFcnV5YkRUUklHVU1EX08xTS1MMGF5WFE4ZFpSdW53UFA0UkxFSU9zM2pKTzhKbXh0NzVyWk90WQ?oc=5"
+    },
+    {
+      "cat": "expo",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-04",
+      "title": "从IP盲盒到甜品乐园 潮玩多元跨界 用吃喝玩乐固粉圈粉",
+      "text": "从IP盲盒到甜品乐园 潮玩多元跨界 用吃喝玩乐固粉圈粉",
+      "source": "联合早报",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE04NElLYXl6UmdnZDJXUlNvNnFFT3cxU3o4Z2RfZnRONWRWN015Ylo2cFRwbjEwOGpxSFkxb21RTzBGUUZULVVQOHdsdXpLNzR0MkRvRlFsQ1Jyc0RJU1owT3p3Z2tidloxWjRyamZucjQ0OVhMY0V3RzJvYTg?oc=5"
+    },
+    {
+      "cat": "store",
+      "lead": true,
+      "region": "overseas",
+      "d": "2026-08-04",
+      "title": "泡泡玛特POP BAKERY东南亚首店落地新加坡圣淘沙",
+      "text": "泡泡玛特POP BAKERY东南亚首店落地新加坡圣淘沙",
+      "source": "guandian.cn",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE54ZGwwcjRkd0taeHcweXl3SGMwa2RfUFd6WnFJcmV5ekJXUVg3S2ZNem53MUx2aUFCWDU3amtveE9PbGREd3dsNzUxY0kzQQ?oc=5"
+    },
+    {
+      "cat": "collab",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-04",
+      "title": "泡泡玛特联名壳牌HACIPUPU周边加油站独家发售- 品牌",
+      "text": "泡泡玛特联名壳牌HACIPUPU周边加油站独家发售- 品牌",
+      "source": "亿邦动力网",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9TcVRHamVxTkFuUThUM2VkajcyRWp1dWFxT19EQ05JN2pWaGR2SGlMd1JfQ1NLQTBSYXFreG4weVk5cGp1dG1VRFpMN3RER1ZMRmN4RDVB?oc=5"
+    },
+    {
+      "cat": "store",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-04",
+      "title": "泡泡玛特北京最大门店来了！近500平方米！现场大排长队！有哪些好玩儿的？记者带你打卡↓#泡泡玛特 #泡泡玛特星星人 #合生汇",
+      "text": "泡泡玛特北京最大门店来了！近500平方米！现场大排长队！有哪些好玩儿的？记者带你打卡↓#泡泡玛特 #泡泡玛特星星人 #合生汇",
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE05MTJLWXhQOGp5YnVRcENiVTZqb1dlT3kxdm5kZ3VhQVJ1b1V6Mnd1V0l3eDhZTDlXUHZTNWxuakxmcS1Ya3NTaGE4OE9jUVZZc1VTLWg4VXd6akNFXy1wMXpreER3N0pMYzZz?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-03",
+      "title": "泡泡玛特Crybaby特展北京开幕",
+      "text": "泡泡玛特Crybaby特展北京开幕",
+      "source": "中国日报网",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFB1YkdmZnh3a2RyZ3pxdUlhcUprLUJmMUg1X3lRcW40YkNIN09vVUpkZ0p0TlFsVnhsSlFKRFFPMFg0YzY2NHVnWmE0bVJ2anJxUmowcnJSN2xBNjFXOGllUmIyWjBOLUc1Y0tQeWg1bVFYaGkxaWRuMEt6dTk?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-03",
+      "title": "【经济观察】新需求催生新赛道，为“更愉悦”买单——情绪经济“点燃”消费市场",
+      "text": "【经济观察】新需求催生新赛道，为“更愉悦”买单——情绪经济“点燃”消费市场",
+      "source": "每日甘肃网",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1TQzhTWnpGRzJvZGF2azN6Y2NUclpDd3QwOEVLQzRJY0JrWllHOTg4MkpzeEJyS0NuSHF6RjI2dk5rbC1QcC1yM2phYmVfZmRZZ1BTVVd5a0JER1ZPTUpiLW84dlA2MWd3aHBzT2hlcGJVY1k?oc=5"
+    },
     {
       "cat": "expo",
       "lead": false,
@@ -13,14 +363,14 @@
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQS0NfWmNEQWlLd3lGNkhfTkZIME5ZdnQwQzZGV1NQUDNfNGkyZENkTTduZWZJRFU2ZW95VURveDRTbzBGVlRWNFNrOTNyV0xqTUdyWWxNWVYtMTdjSGMyLTd2LVdxR1ZYTjBsYURpWk5QdzN1MGlnSXAzT1Y1dWU5Q1ZvaU9tZlB3?oc=5"
     },
     {
-      "cat": "other",
+      "cat": "store",
       "lead": false,
       "region": "china",
       "d": "2026-08-03",
-      "title": "新需求催生新赛道，为“更愉悦”买单——情绪经济“点燃”消费市场_社会综合",
-      "text": "新需求催生新赛道，为“更愉悦”买单——情绪经济“点燃”消费市场_社会综合",
-      "source": "中国甘肃网",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1WSDZGRUQ5UmV4Nlo5NXQ2LTBwRmEtdWVxeWY1YWxDS0t2dU5ldFB0amdPV3Q3V3ZidGFJQjRINFcyZ2xpV3FPR1BMNnNsaTYxQ0Q5SFBZbXk1cER5X3VrNWtfenhYQllRa1E?oc=5"
+      "title": "【实探】线下商圈消费回暖 泡泡玛特门店人气旺",
+      "text": "【实探】线下商圈消费回暖 泡泡玛特门店人气旺",
+      "source": "新浪财经",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBEM3JoUzFzSlJhWWtlY0lNVW5KNEdKaWJyWHV2WVNYUDh0Wll2OTYtaV9iUjZ6b3podHFWaHVUNmM4dmVFamViejVHa3VSWDZ4MzB5Rks2a2pmUjdWZnJPMGVHdGZKSDZBQjdsX0VpUmtmZlFPMEZwXw?oc=5"
     },
     {
       "cat": "other",
@@ -29,38 +379,38 @@
       "d": "2026-08-02",
       "title": "力推新IP，泡泡玛特也吃劲儿",
       "text": "力推新IP，泡泡玛特也吃劲儿",
-      "source": "36kr.com",
+      "source": "36 Kr",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8xa2dXbTFaeDlzb2NxYm1VeDdEUFE5SG8wXzBOWk5abENjOWxJZHZEdzRiWDZBbkt5QXI2ck12S1hKNm9YRUQzcnMyUElsQQ?oc=5"
     },
     {
       "cat": "other",
       "lead": false,
       "region": "china",
-      "d": "2026-08-01",
-      "title": "带动潮玩IP经济，泡泡玛特Crybaby特展北京站开幕",
-      "text": "带动潮玩IP经济，泡泡玛特Crybaby特展北京站开幕",
-      "source": "huacheng.gz-cmc.com",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNazdZRDU5TGZXejhvNnJ4emFoUkVzVHdsN2hDS21jNTdHSWM4Ym5FR2lWSDdnQTYyU2JKb0NKT2FYdVFRZnBzaW9SeDFBZndqcDI3MkdVd1h0NGFnaFo1NWV4Q3lpZktPbTlvMGJ5eVZULXlDV2hpd1lwZzFWVEd5NUtjQ0ZvcFhVS0E?oc=5"
+      "d": "2026-08-02",
+      "title": "价投实践笔记（38）：泡泡玛特深度分析#泡泡玛特#Labubu",
+      "text": "价投实践笔记（38）：泡泡玛特深度分析#泡泡玛特#Labubu",
+      "source": "东方财富",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOdFNkTjBxaW1ZYlQ3M1FBVlItYW1vbUI1aWpWeWwwRDJnWEZrTWNrV1lDbkVsWHpqTXd4cW1qWEd1WmZUWjBlZnRWNnVqQ3NENTZFdm9oS1J0RUplS1NadUpfLTE0RUh2Z1VValhiZFhidEpIeFp5QkVGdHVGSDlTOUdsZmU0dWwxQzFjSkQtRXN5YVRIdk1od3FSVEN6dHNQYXk2RkhqelNkbEIxVHFoeTNzMA?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-08-02",
+      "title": "段永平不小心成了泡泡玛特的榜一大哥",
+      "text": "段永平不小心成了泡泡玛特的榜一大哥",
+      "source": "新浪网",
+      "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQNEMzS0xZVDFMV1l5VEVLaWJmb1pTQmg0UVZNOXZPYXBrM0FPTXpNaWtkdlRRYndrcURSTzdGRWppVkVEeC1aR1JaNVZCWE5PU04yUnhEUks3MFU1NlN2TzlfdTJvODdRQjQzZnhJcms4Z2ZsaWlpSEZzTnAxWGxBQmtyWm8wS2diUFhXNHdsdFlDQUJ4TjRsNkpERmM3T2V3UDJMRTFOX1BkMFZMc2pvSTliRENPaTdLc3d0T0NscmVkTWdzNC02SGFLM1ZUTFpfek15ZkFaOUFqemJHYkh5UWZScWZ0RGdVY1pOTFU0X1ZiR056Q29hWXRmMFpvYVJvQVdV?oc=5"
     },
     {
       "cat": "expo",
       "lead": false,
       "region": "china",
-      "d": "2026-08-01",
-      "title": "一款不会送餐的「假外卖」APP，治好了年轻人的深夜EMO|泡泡玛特城市乐园|乐园|温网|珀莱雅|阿尔诺_手机新浪网",
-      "text": "一款不会送餐的「假外卖」APP，治好了年轻人的深夜EMO|泡泡玛特城市乐园|乐园|温网|珀莱雅|阿尔诺_手机新浪网",
+      "d": "2026-08-02",
+      "title": "喜茶这一杯限定饮品你喝到了吗？|乐园|幸福感|茶店|打卡|森林_手机新浪网",
+      "text": "喜茶这一杯限定饮品你喝到了吗？|乐园|幸福感|茶店|打卡|森林_手机新浪网",
       "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOUlhDNERLTUo4WEx2T24yTEJmazh6TkNTQl8ycFgtX20wck1VQWQ0MGFuQjJwa2hSYm1GTTExd2JWUDRLR0NBTThVa0VrZGpRV19xSTVkcUFueUlNeG1vT2NOOE84SFZzNERDY3lrUjhhczhnWkczSWlDSk5ENmRkY09td21DUlFZdlNaTEsxaXByZWdQWlIyMG10RTdNX1ZLdzVCeXhKcGV1aDJDbWZQcDdDRi1ZZ3p5N2JScWJTeng2elFfQWo2SlduYVZjZzJVVGwzTzZMcm9BT0JESS1vbUI4Sk8yTjdUd2pJbXdoWnZoNlZt?oc=5"
-    },
-    {
-      "cat": "collab",
-      "lead": false,
-      "region": "china",
-      "d": "2026-08-01",
-      "title": "壳牌泡泡玛特跨界联名，加油站邂逅潮流IP是啥体验？",
-      "text": "壳牌泡泡玛特跨界联名，加油站邂逅潮流IP是啥体验？",
-      "source": "腾讯新闻",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1IWXpXTV9kTFU2bGlDNXRHeDJtS0xqNkstN3NtQ0FmYjBTN3ltcGJSQmJmcVlyQ0Z4UDRJLXpOZWJjbWNqZUtGbENNbWNkNHYzcEhYc2NR?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMipwJBVV95cUxQNUg2NmhPWjlTQXlSQzNBdENHTzFqRUN5YW1DYXl4YWE0RURWNHBQUDIwNGxWVHVPYlJjZ0xxOGltWWNIYm4tamtUZVdzY1lET1VGVGlBQkZoaXBaRFFEN2dNZF9GYkxqYVl5Y2lkbnJGdW1LTThwMXpGLTdIODBmdmdqRVhxUzVBWkY2ZHB5bHY4SzR5WDFJV1BkSEJ1R1gta1hKQlk5M2NtOGY1UjNqUEJJb1dHSzdLejJpYWlPT0oxbXlNWnU4TjNELXFFYW0yNVRUakczLS1nVE1QTXFHY1dIeFFpWUtLbE9La0k0V3VGbU9nYXV6dC1UaERtS1owZEdUZlJFVUl5WnMxbUhJaFJBVXNIR1gtd2RjdVNkamg3Wk0wZ2hJ?oc=5"
     },
     {
       "cat": "other",
@@ -69,7 +419,7 @@
       "d": "2026-08-01",
       "title": "北京游玩地上新！",
       "text": "北京游玩地上新！",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9BXzZ5Uk9way12T3RvRjdwOXNfSlliRnZXYWxNbWJlTGJyRzFBeFdDdlFqdkxtdzY1U1NsSGhZWTRLT21Feld4RFd2UmJjSzEtVmQzY2owd1FsWFRZajRQc2FhXzAybEw1T2tmNVhoTEVOUQ?oc=5"
     },
     {
@@ -83,56 +433,6 @@
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE83NkF1ZmM5SGN1R0lUVGlnWmhiOVlSUHFlTWtDVlRiRHlfS1BQU3I2anJ6MTRHUG42bFhTSDJUd2xsREF2OGg3bVFiRFFmSTkxeEhV?oc=5"
     },
     {
-      "cat": "other",
-      "lead": false,
-      "region": "overseas",
-      "d": "2026-07-31",
-      "title": "中国潮玩 海外破圈",
-      "text": "中国潮玩 海外破圈",
-      "source": "光明网",
-      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9ralNzZ1h2TS1udmRJSXU4a1JUSUIyUXdPVXhhVk8wbjVmS0U3VUpIaVY5bGFYQWtwUmJFZEQ0bHBGaHM3bTFkMTB6ckgtWDJkeXdaeTRjQTR5cldLMm9uemx3?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": true,
-      "region": "overseas",
-      "d": "2026-07-31",
-      "title": "泡泡玛特旗下甜品店东南亚首店在新加坡开业",
-      "text": "泡泡玛特旗下甜品店东南亚首店在新加坡开业",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE85b2E5MkxpemhfU2FLZlJLTUZjSlhmcEJ4Y1VpWlRSVm1WdHRKUHByWFJnS3JQc2JEd2laRVpPTkg4cWNMa2c3WjdQeTBjVFhST1hRSzVQMzBTdFg1YkRrSFNwb1VGYTJyRW5JbzJ3?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-31",
-      "title": "泡泡玛特城市乐园“奇遇森林”全面开放，部分票价上调30元",
-      "text": "泡泡玛特城市乐园“奇遇森林”全面开放，部分票价上调30元",
-      "source": "北京商报",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FdzBZTmVqT1VEdXFOTVZMVDZwTnpSbnAtaDA0Y1ZHOTZaSjBaRWxSR01ZeWR1YXVybnhUUUwwWmVnU0xLRThUSUxPbkpEd2x0YTlOelFUYWVhUHJ4Tnc?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": true,
-      "region": "overseas",
-      "d": "2026-07-30",
-      "title": "Labubu可以吃了！泡泡玛特首家海外烘焙店开业",
-      "text": "Labubu可以吃了！泡泡玛特首家海外烘焙店开业",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBVd0dZVHQ0YU1QWlpONVFNYXQ5SUd4UUZldUY4UHBmWk94blotRko3Sk9kcTU5VTUxeEtSYU1IWTFndTZZdUh5Qjh5NktkQnI3RHNwcEE0ZExwRFY3N190OTdfT2l5b0VlUFBzVG12ZUJTQQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-30",
-      "title": "泡泡玛特“Crybaby”特展北京站将“柔软”启幕",
-      "text": "泡泡玛特“Crybaby”特展北京站将“柔软”启幕",
-      "source": "livejapan.cn",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQQkMzNzdJQnczRnNYRVJOcmI4UW53ZndNdFdIS21TNkVXR0NYakJhOWpiLUhaZ3NLYmx4VGp4bVpKdW9sRWFkSENpOVgydm1mTGJ2MU1IMnBkR3NOTGVneUEtRzhtVXZ5YVZnaEZBOWJJVzV1aHhwMDdib04yd05RSVpJamxGRzRG?oc=5"
-    },
-    {
       "cat": "expo",
       "lead": false,
       "region": "china",
@@ -140,37 +440,7 @@
       "title": "LABUBU精灵部落首次完整亮相，泡泡玛特乐园今起全面开放，票价上调30元",
       "text": "LABUBU精灵部落首次完整亮相，泡泡玛特乐园今起全面开放，票价上调30元",
       "source": "京报网",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9zckhvcF9lcDBOU2dDc2lMYXVMUDRZdmNSTzRxb2E4VFNjbGs1NjBCbVZfWVFubEdOMVRpdzR5eDNsVDNsWWs1czR5Y2lwd3RadGl3UUpaVGd5VVRobUE?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-30",
-      "title": "泡泡玛特城市乐园新区域开放，票价整体上调30元",
-      "text": "泡泡玛特城市乐园新区域开放，票价整体上调30元",
-      "source": "搜狐网",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPREtpR0N2REZ6NUN5MWtlZVZ3QUhRNFFpVVh4dDFETVhwc21OMHlFSi11LWIzUnAwdUczaE5LTVJQUXRGVHh2OFU4bVpqT09ENHp0dklkbDRNUVhjNy1BbE1fLVBJc1RnLXpNanJBWTVBbjVGaFhaUWZJNGx4VkRubE9aWXFqZ3ot?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": true,
-      "region": "china",
-      "d": "2026-07-30",
-      "title": "泡泡玛特一周动向：乐园门票年内两涨成都开西南首家旗舰店- 品牌",
-      "text": "泡泡玛特一周动向：乐园门票年内两涨成都开西南首家旗舰店- 品牌",
-      "source": "亿邦动力网",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE56MV9IOC1zQ0JoUHFPY3NhaWU4MEo3cUtfYjh5ZTVDdkc1U2wyUGVmcGoxM0c4SndUV05UYTU1eDJUTWZpMGtobl9iNFlWSEU0UGY0cmVR?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-30",
-      "title": "泡泡玛特城市乐园门票涨价，标准游乐票最高票价238元",
-      "text": "泡泡玛特城市乐园门票涨价，标准游乐票最高票价238元",
-      "source": "thepaper.cn",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBsQnJzVHJpYXc5X2xkRm5TXzJSMDdnd1UteVZiRkVkUkZka0tKV2twYUZVVXZOUG1pYlhab21EcG9xemgta3dwNVI3M3RfZmtUczNQSDhhZlBZaXpBcmc?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1kbmFDRi0ta19uYlE0TUpFN3A2UnJRYk9yRWhDdkVub0VhZ3ZlSUJlQ01NMDRnNDJoNEt1UV9HZl9xY3FrX28tMUhhNTloanI4MzNkV0NBcmQxV3pWUGZhUDdsZ1RISVhvcGo1UElUbWFsQQ?oc=5"
     },
     {
       "cat": "expo",
@@ -183,30 +453,30 @@
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNenREcWhQd2JLT2tIVU1QUmNjM1dWYlNHRDQwWGNtNHB2X2JtNW1iQmRBQVF1ZUcyYy1NaE5YMHUwdjh0aUVtTzFSQmwybzhCZ1dXeE1sRWJZN3Q0ZXdSdS00T01JUC14YzJQLW1rclJDSnBCRUtBejYtdWRhemY5WVV3U2xMTzNZ?oc=5"
     },
     {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-29",
-      "title": "相伴成长向未来！泡泡玛特城市乐园的暑期公益游园活动很精彩",
-      "text": "相伴成长向未来！泡泡玛特城市乐园的暑期公益游园活动很精彩",
-      "source": "xinwen.bjd.com.cn",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5RUllZQlhMelBLX3JCWWpfN3FDTEFtLXFkYUk1SXc5eWhjeEdCNHYxMkhZRURJNFI2Q0xTSE10SjFXYzVTZ1Iyd181akFISWdqYmZmdUxQVDk1eldwMG1lRDBuZ09SbkNXdWdJMEpBWWtiUQ?oc=5"
-    },
-    {
       "cat": "other",
       "lead": false,
       "region": "china",
-      "d": "2026-07-29",
-      "title": "网友问“泡泡玛特创始人王宁出现意外，对泡泡玛特影响多大?”",
-      "text": "网友问“泡泡玛特创始人王宁出现意外，对泡泡玛特影响多大?”",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNOGROYjVmNVFFUnJpejR0dnlUby1qeDBjUTVXYmpoRWxZcGhQcDQ2bGNMLVY0aHZ0SkRlVm9jMkNCS2F0MVgtZ3lBZXgybHVveVVfZVBnNDVMQ1RnSTRtZ202ZjZWT2MzV1BoVUctdmhDbjZNY1hJdnUzdEREZTVZbDdqX2VOckFBOXk4?oc=5"
+      "d": "2026-07-30",
+      "title": "原神：",
+      "text": "原神：",
+      "source": "新浪网",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5qWThXNVJfeEczV295NjVmeTJBcjVlc2JrMF93Y0Z2bHFCeUdNdWNQS3dXQTJQMWFyaUdkN0U0OHo1RDlBLVlpNWUwdEFpYW02N0tNMDU1QjRqamJTaEN1ekJxOA?oc=5"
     },
     {
       "cat": "expo",
       "lead": false,
       "region": "china",
-      "d": "2026-07-29",
+      "d": "2026-07-30",
+      "title": "泡泡玛特城市乐园“奇遇森林”全面开放，部分票价上调30元",
+      "text": "泡泡玛特城市乐园“奇遇森林”全面开放，部分票价上调30元",
+      "source": "东方财富",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9zWnRERko3akdMcWl6Vzd1MjNZdk1YZG95WXJwUWZvYjNpYVRvNTNjaGltUzNTa3NWak5rVFFVSVJnTW81Unh4enJ3dW8tZktnWTRXUTdjaEw1ekhnT05UTnRhUUhsZw?oc=5"
+    },
+    {
+      "cat": "expo",
+      "lead": false,
+      "region": "china",
+      "d": "2026-07-30",
       "title": "泡泡玛特城市乐园7月30日门票调价，暑期高峰日游乐票238元",
       "text": "泡泡玛特城市乐园7月30日门票调价，暑期高峰日游乐票238元",
       "source": "Jiemian.com",
@@ -216,11 +486,31 @@
       "cat": "expo",
       "lead": false,
       "region": "china",
+      "d": "2026-07-30",
+      "title": "泡泡玛特城市乐园新区域开放，票价整体上调30元",
+      "text": "泡泡玛特城市乐园新区域开放，票价整体上调30元",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5oeWgyRWFKQU4yWXZmWENnRmJnZUIta056aU93VE5IY1ZPVkJOQUx6UV9aUmVwamFuSGdOV1A2TXhMdElQSUE3VExyUGF5VElIa3pvVUV5LU9uWDlhR0g1b21kLUJnX2o2UWg0SmlUc3JYdw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "overseas",
+      "d": "2026-07-30",
+      "title": "巨型“眼泪球池”亮相首创郎园，潮玩IP“哭娃”全球最大特展即将开幕",
+      "text": "巨型“眼泪球池”亮相首创郎园，潮玩IP“哭娃”全球最大特展即将开幕",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB4WnF1d2ZrYkI0emJ5TVlMTnFzcFJrd0YwRlVIT1M1R0F0UG85TUJjUnlyUmJoSEZpRmJ2aDJ3ck1vNWhqdGpBdmpOTGUxSkZ2NnR2eTZuUEpDYldBaG1FVDNsNWxGM1ZERTFkcjhiQ1NXUQ?oc=5"
+    },
+    {
+      "cat": "expo",
+      "lead": false,
+      "region": "china",
       "d": "2026-07-29",
-      "title": "泡泡玛特城市乐园7月30日起涨价，最高票价达288元",
-      "text": "泡泡玛特城市乐园7月30日起涨价，最高票价达288元",
-      "source": "Moomoo",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBvMVhvVEwtQTlBcmlsOWFGMW81WlNWdDYyaS1ya3ZPS3ZTRjB6dUZqUVE3QVBCOHVjcUZVQk9ONmdKMzZ1MlZfMGtmTE5ialZRbFNz?oc=5"
+      "title": "相伴成长向未来！泡泡玛特城市乐园的暑期公益游园活动很精彩",
+      "text": "相伴成长向未来！泡泡玛特城市乐园的暑期公益游园活动很精彩",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5RUllZQlhMelBLX3JCWWpfN3FDTEFtLXFkYUk1SXc5eWhjeEdCNHYxMkhZRURJNFI2Q0xTSE10SjFXYzVTZ1Iyd181akFISWdqYmZmdUxQVDk1eldwMG1lRDBuZ09SbkNXdWdJMEpBWWtiUQ?oc=5"
     },
     {
       "cat": "expo",
@@ -229,8 +519,18 @@
       "d": "2026-07-29",
       "title": "泡泡玛特城市乐园奇遇森林区域完成升级 暑期高峰日门票涨至238元",
       "text": "泡泡玛特城市乐园奇遇森林区域完成升级 暑期高峰日门票涨至238元",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9TT0JTRU84Uk5FTTBldVhZdXRLVl9TYmhTQzdVY1k5MDJJek9UWHRqeXFBeDdta3Y4cTUtUnJsTEtIZm10aDdWNHUxa0ZsN0Q4ZGdCaXBOdDB4UHlnOHZIR1Fhd1gyZVdmZ084V293?oc=5"
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQ2ZraVRQS2FhZXlFZzh2SjFTOUloU2FMSVROanhJS3BqcFlpUkpJd01RcEZMdEtVWXotX2prWXdyYWhjbkR0cXJ1cnhNRWNCWHVvM2F4R2ZUTDhaSk9RNmdKalh6R0k1aVREZzlqaVp6QzNWZlVrMWo3Wlp4MmV4OS1UNjhQdFdD?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-07-29",
+      "title": "1年增长16倍，星星人的爆发，能否打破资本对泡泡玛特的“LABUBU依赖偏见”？",
+      "text": "1年增长16倍，星星人的爆发，能否打破资本对泡泡玛特的“LABUBU依赖偏见”？",
+      "source": "财富号",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBoSGtPNUNPZlBFbTJSUWRIWE92R1c4Sy1FVnJ5Z3RITjJTWWktZGJBSDhoektYaXlnZ2M2ZVQzLTJQdjdEQzVvM1hMMXp5Vk5QbmFsaUJqSndkWXBOVGpYU3k0OG9Gelpkam80?oc=5"
     },
     {
       "cat": "expo",
@@ -247,9 +547,19 @@
       "lead": false,
       "region": "china",
       "d": "2026-07-28",
+      "title": "一年两涨！泡泡玛特城市乐园票价最高288元",
+      "text": "一年两涨！泡泡玛特城市乐园票价最高288元",
+      "source": "财联社",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1RWDl2WTFEbnlLN0VncGphdzhWa2V6aC15UW1ULUxKaFBEc3Z5T2w3eVd0S1RJTjh3VFRzVHJTMHg4WTQxZmRJaA?oc=5"
+    },
+    {
+      "cat": "expo",
+      "lead": false,
+      "region": "china",
+      "d": "2026-07-28",
       "title": "泡泡玛特城市乐园7月30日起门票涨价 标准乐园游平日178元",
       "text": "泡泡玛特城市乐园7月30日起门票涨价 标准乐园游平日178元",
-      "source": "观点网",
+      "source": "guandian.cn",
       "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB5bFhtcUhwY2QyTlhXSnVJb1VaektFSWZDZU9TTUdRQWlIcldvcVdCZDhPWjlLRE9xM0lURVlsRGJCUEFaa19QOHBaTDJPRGhvV0hiZW1CSmR0ZWQ4ZXRIMm9B?oc=5"
     },
     {
@@ -257,30 +567,10 @@
       "lead": false,
       "region": "china",
       "d": "2026-07-28",
-      "title": "一年两涨！泡泡玛特城市乐园票价最高288元",
-      "text": "一年两涨！泡泡玛特城市乐园票价最高288元",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOSDNibGh4U0g4bWZWWXp5WUR5Z18xU1N6M3IxbnNNYkw3RWtuVG1VanhCcHZrZGsycU5oX0FlUkg3R0NoRWJjbngyVHpOU3lXbGhUdURzT3owRWpHeVk5Mm02cUVsMG1zNVpJUkNJVmpZd29xNEJaLXI3VjZTYnJPTGVhS2RBZS04WEI5QzdBcTZsQTNlNjNCNw?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-28",
-      "title": "泡泡玛特首次跻身《财富》中国500强位列第393位",
-      "text": "泡泡玛特首次跻身《财富》中国500强位列第393位",
-      "source": "亿邦动力网",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBkbWpLU2UtUVhDeEt0Z2NFT084VnJKQjBZRi1lLVVhYlp0SWZ5U1FaX2JPY3pRazYtcUttNXROX2F6Unl6UkZ2SVRkRG1wVmJMNlBITkRaSUo?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-28",
-      "title": "泡泡玛特城市乐园门票涨价",
-      "text": "泡泡玛特城市乐园门票涨价",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE96Z2YtNEtrMVBnV2d0QmRXMWtNanVDWElWNS1uLVpCOUR0eDA2eEdOWnFVYmsxTlRjYXdlQU9udGY3SEYtdmJxNnNyR1ZweGxIdHBacExILVlDVGdpQU1wTk1jWXhkMU0yckkyamZCT2lMODdGOUpCVw?oc=5"
+      "title": "泡泡玛特城市乐园7月30日起涨价，最高票价达288元",
+      "text": "泡泡玛特城市乐园7月30日起涨价，最高票价达288元",
+      "source": "moomoo.com",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBvMVhvVEwtQTlBcmlsOWFGMW81WlNWdDYyaS1ya3ZPS3ZTRjB6dUZqUVE3QVBCOHVjcUZVQk9ONmdKMzZ1MlZfMGtmTE5ialZRbFNz?oc=5"
     },
     {
       "cat": "expo",
@@ -290,7 +580,7 @@
       "title": "泡泡玛特城市乐园宣布门票调价：7月30日起暑期高峰日游乐票涨至238元",
       "text": "泡泡玛特城市乐园宣布门票调价：7月30日起暑期高峰日游乐票涨至238元",
       "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNT3FUSXZ2TGotM2pvZEM2TXcycThUcnF2bXc0ZVFLTTZDdTB6Qms2Y1ZwM1ZPeFZYTWRyWEdmSDE0bnY2T2lNWm9CUmFwX3BWWVNkaVN1MzBoX1hjdnloX204LWU4eHZQUFV5Rlk0MmFmQUI5akJ4My1aRkdhTVNCLV9RWkJJaGc?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQZEFocUd3Y3k4QWNfd0Z0MFdaYXMwaGcyWjFuWHBsSlZzRVdwcE55MUluZEdiTjFYSVZINW40c2U5SnRJMExWNnVxcXVNRWlkalZ1bUdqOXNlSXJuTEptTUg4cVFDNXZVM1B0Y05IbGRIT2JiWGJwSnN4OU9ES1pvNXdldXpvdFRUM25JaGQxMUtwQ0tLaXg1OGpYSUJTV29mYXBzaHNiSXhnMTY4R2hMUzB2WTRKVDdmRi1EY1NFZ2Y2N2FzWVFLZGlpQ3g4cGN6?oc=5"
     },
     {
       "cat": "expo",
@@ -299,28 +589,28 @@
       "d": "2026-07-28",
       "title": "标准游乐票最高票价238元！泡泡玛特城市乐园将于7月30日启用新门票方案",
       "text": "标准游乐票最高票价238元！泡泡玛特城市乐园将于7月30日启用新门票方案",
-      "source": "腾讯新闻",
+      "source": "QQ News",
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBpWlJtTV9ka1JidG13YVZPdWRoQ1pFenhHTmQ4alN5VURpOVJtWXZVS2VCS214N0gwN0tVRldsajdXR1FBeG8zbXFnRnhBd3lEQ0ZnQ2t3?oc=5"
     },
     {
       "cat": "expo",
       "lead": false,
-      "region": "china",
+      "region": "overseas",
       "d": "2026-07-28",
-      "title": "北京泡泡玛特城市乐园月底涨价，标准票最高238元！网友：人太多，应该翻倍",
-      "text": "北京泡泡玛特城市乐园月底涨价，标准票最高238元！网友：人太多，应该翻倍",
-      "source": "腾讯新闻",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1sVUcyVkhyNklBbDRDczhMOWtnYWhhREo0bTFPakJITVA5aVRDMUhlekhnZElPU2RpV1JoLTdlcFJySzBFeHdfUG1aVG5yLWsybnVLX0Jn?oc=5"
+      "title": "北京泡泡玛特城市乐园月底涨价，标准票最高238元！网友：人太多，应该翻倍_德国_新闻",
+      "text": "北京泡泡玛特城市乐园月底涨价，标准票最高238元！网友：人太多，应该翻倍_德国_新闻",
+      "source": "52hrtt.com",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB4bHRkOGdWTXQ5QWo5OTc1X01KeDFjTThYQUpJWUNrdy0xemNnazVCQXluNXcxbVRLMFNmQUl6SWRNZ21mWEdwNGZJMk82T3RIRzdHbnVhNFRtMW9iUUE?oc=5"
     },
     {
-      "cat": "expo",
+      "cat": "other",
       "lead": false,
       "region": "china",
-      "d": "2026-07-28",
-      "title": "泡泡玛特城市乐园近日发布乐园全面开放与票价调整公告：2026年7月30日起，奇遇森林区域将迎来全面开放，乐园将于7月30日启用新的门票方案，以更好地匹配全面升级后的乐园内容，为大家提供更丰富的游玩体验，据了解，乐园新区域全面开放后，票价进一步上调，",
-      "text": "泡泡玛特城市乐园近日发布乐园全面开放与票价调整公告：2026年7月30日起，奇遇森林区域将迎来全面开放，乐园将于7月30日启用新的门票方案，以更好地匹配全面升级后的乐园内容，为大家提供更丰富的游玩体验，据了解，乐园新区域全面开放后，票价进一步上调，",
-      "source": "腾讯新闻",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBnSDU2X1g1ajJlVWdfRnotWG9xcS1UTFg2RHZJMUxyWFpCSTI0V3hySFhtci11MHFQdjlUcUZ3MmNqVFZaOVZObS1rSmpGdnFzMi1CZkdB?oc=5"
+      "d": "2026-07-27",
+      "title": "限时开放3个月的泡泡玛特“星夜奇遇”，到底怎么玩才最值？",
+      "text": "限时开放3个月的泡泡玛特“星夜奇遇”，到底怎么玩才最值？",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9RaXhNbTZjRlFtUWFIcFJqdVRrbHBuWDBXUy05WFl3T1l2eklNVW5VUmxBU0RCa2JWZ3ZITFVIUnhqa3NhUWFDenVnRUVVMTdpTHNaVjdrYkZPNml3XzBBd2c1TFg4aFNrVnZMZlAwd2dyQQ?oc=5"
     },
     {
       "cat": "store",
@@ -329,7 +619,7 @@
       "d": "2026-07-27",
       "title": "泡泡玛特西南首家旗舰店成都开业 面积约700平方米",
       "text": "泡泡玛特西南首家旗舰店成都开业 面积约700平方米",
-      "source": "观点网",
+      "source": "guandian.cn",
       "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE43d3ZFMk45SC1CZXBIYlFxNlQ4SkQwWG5UWDhHd1NPbGd6ZW1SWDN6TlVnUUJWU191Sm9zb1FyV0N5WUdsRWtobkpXZ0lvY000WlBXc3QwTFZuUzNCNWFLN19B?oc=5"
     },
     {
@@ -339,28 +629,18 @@
       "d": "2026-07-27",
       "title": "港股泡泡玛特盘中涨近4%",
       "text": "港股泡泡玛特盘中涨近4%",
-      "source": "东方财富",
+      "source": "eastmoney.com",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE12Z2FBcnBnS2tFallTUnpiblVtZXlPZVI5NWRvbWFqSF83OWhpTnRVazQySFptcVlRZGppeXNhQVBnOFY1bk5NeDBDcjZzZVBPLXIybGk3SF8xWFppSXo0ag?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-27",
-      "title": "全新LABUBU专属演出上线泡泡玛特城市乐园延长夜间营业时间- 业界",
-      "text": "全新LABUBU专属演出上线泡泡玛特城市乐园延长夜间营业时间- 业界",
-      "source": "亿邦动力网",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1HeVBDV3hTcjRwal96NFRvU0pTYW1ja3phc054QWVLQ2JHVXhGZ3h1SFRFaHNwemRHZjRRWmc3ODlsZGljbzFWLXg3b3MwSldMMkNRa01R?oc=5"
     },
     {
       "cat": "store",
       "lead": true,
       "region": "china",
       "d": "2026-07-27",
-      "title": "泡泡玛特西南首家旗舰店开业落地成都IFS面积七百平- 品牌",
-      "text": "泡泡玛特西南首家旗舰店开业落地成都IFS面积七百平- 品牌",
-      "source": "亿邦动力网",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8tRGRuaTlvclJLZ0R5Q21DY1N6SmJkcVN6anhNXzd5TkNOZlpIYUgwWFhMblhMRWs1al90VS1RM0IybzRnakZwNEZvV19KNzFmWXRfZWRR?oc=5"
+      "title": "泡泡玛特西南首家旗舰店正式开业！",
+      "text": "泡泡玛特西南首家旗舰店正式开业！",
+      "source": "川观新闻",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpbjhiT0dSLVVROWRNR0RWRWFUTjZ5d3A4WV9CTFBnVDhwT3g2a3JNVEFiSjZrZVBlc2VRMV9COTdjT0wzMUM0a3NaVEVjdw?oc=5"
     },
     {
       "cat": "expo",
@@ -376,21 +656,11 @@
       "cat": "other",
       "lead": false,
       "region": "china",
-      "d": "2026-07-26",
-      "title": "限时开放3个月的泡泡玛特“星夜奇遇”，到底怎么玩才最值？",
-      "text": "限时开放3个月的泡泡玛特“星夜奇遇”，到底怎么玩才最值？",
-      "source": "xinwen.bjd.com.cn",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9RaXhNbTZjRlFtUWFIcFJqdVRrbHBuWDBXUy05WFl3T1l2eklNVW5VUmxBU0RCa2JWZ3ZITFVIUnhqa3NhUWFDenVnRUVVMTdpTHNaVjdrYkZPNml3XzBBd2c1TFg4aFNrVnZMZlAwd2dyQQ?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": true,
-      "region": "china",
       "d": "2026-07-25",
-      "title": "成都潮玩地图又上新！泡泡玛特西南首家旗舰店正式开业",
-      "text": "成都潮玩地图又上新！泡泡玛特西南首家旗舰店正式开业",
-      "source": "凤凰网",
-      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5nYl9vYV9iVnE2eTlHYldrMmVBaTBHQ2F2NU4zYXpERjJFYmZWRnphWHdRT2R2dFF1blhhNUZhcDBpeDhJZXNxRE9zSzA?oc=5"
+      "title": "七只LABUBU首次同台演出",
+      "text": "七只LABUBU首次同台演出",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9Qdzg2aDFTTmpzVDBXUkItRy0waVp2VlEyd0FNOUdMMUJHU1JPNGw3SnB6NzhtbGpyVFdqUGoyb2hZZDBtMTJ4dVllMndKSnEteUxBWDRyNXNFajF3eVRFYjBxM1A0SUsxeFM3OXVQWVhpQQ?oc=5"
     },
     {
       "cat": "expo",
@@ -399,7 +669,7 @@
       "d": "2026-07-25",
       "title": "泡泡玛特乐园启动夏季夜游",
       "text": "泡泡玛特乐园启动夏季夜游",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5SQWVWU0tkLWt2bkViRlp5NW1KQzZmY20yYkZSUTVrMUlTWWM2bnhBU0NYeXRhZXVRSE1EQzI4a1p1NmV3dkRPcm5wOWhtclY1cGNEdzFleGwwRVhCODBNMzdRaFZNNE41aTUyUUNpd2hidw?oc=5"
     },
     {
@@ -409,28 +679,8 @@
       "d": "2026-07-25",
       "title": "情绪消费又上新，泡泡玛特城市乐园推出夜游限定",
       "text": "情绪消费又上新，泡泡玛特城市乐园推出夜游限定",
-      "source": "mp.oeeee.com",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBWbGs5Si1jaGoxdnFlTnBJOXRVVThmbjBFc2F5N3JFcFNLX1F2TlRWdzR0WExrVDFGOVNhN05yNHVCYWlpSXBVdTBMalZEYW1wNktrRHM0SGJLYTd1a1pxVFd1UDJ2RDQ?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-25",
-      "title": "七只LABUBU首次同台亮相 泡泡玛特城市乐园推出全新限定演出",
-      "text": "七只LABUBU首次同台亮相 泡泡玛特城市乐园推出全新限定演出",
-      "source": "搜狐网",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZGVCWVg0LXgwVWRYR19Wd0gzZVhuS2tZMUxuVS1kS183SjRFYjJDVnJmVlJNUjFLNVJrQmMwSGpFOFVBN3NzQ2Q3Sm9vUEtYcU9YNWpialZZcUFlTnRKX1ZSWERJSFpBSUxvdFBlR3VTeVJhbW04X0lyaU1iVXZ6Vm1hd2xRRmV3N0REcw?oc=5"
-    },
-    {
-      "cat": "expo",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-25",
-      "title": "泡泡玛特乐园启动夏季夜游项目",
-      "text": "泡泡玛特乐园启动夏季夜游项目",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxORXVfM1lYQXNqa3J0STRSOVphMWpISndDclJobTk0WlBrVVhQUHFYMXRuUnlLaUszWEdVQnprODRUa0pyR1hZcGV2eXhKUjNPMVA0a3F3eTZtZ09CeGlCVUR0emVIQkJiRG8yRFd2VjI1QnZ6dkxYV2pSa2NGTk5zSVQxOXJ5cjQ?oc=5"
+      "source": "QQ News",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5PSkxXX3JBVzJTcXRzT295LTlXYXJZUVFqMDQtc1gtdVdoc3pQSU5ZVm1VeDRMZko5b2FsRWpCUU1XajR4VU9TNy1IWG1sU1g1UXBvTU1R?oc=5"
     },
     {
       "cat": "expo",
@@ -439,48 +689,18 @@
       "d": "2026-07-24",
       "title": "七只LABUBU首次同台！泡泡玛特乐园开启最大规模户外演出",
       "text": "七只LABUBU首次同台！泡泡玛特乐园开启最大规模户外演出",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1ObUViSGVTVlpZZ3FDVWhmYWVmSUU0M3J1djhRVHlNbWpmYzhqMmhPb3F0SjIxb2xYMnRLUUtqdU1CZEVWQ29VdG9oWVh4c2UyTGFkTkQ3TFF4NkM1azRkRlV1b0E2RVdHVHY1YXJoV3RGdw?oc=5"
     },
     {
-      "cat": "other",
-      "lead": false,
+      "cat": "store",
+      "lead": true,
       "region": "china",
       "d": "2026-07-24",
-      "title": "七只LABUBU首次同台演出",
-      "text": "七只LABUBU首次同台演出",
-      "source": "xinwen.bjd.com.cn",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9Qdzg2aDFTTmpzVDBXUkItRy0waVp2VlEyd0FNOUdMMUJHU1JPNGw3SnB6NzhtbGpyVFdqUGoyb2hZZDBtMTJ4dVllMndKSnEteUxBWDRyNXNFajF3eVRFYjBxM1A0SUsxeFM3OXVQWVhpQQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-24",
-      "title": "泡泡玛特走向了IP最难的一步",
-      "text": "泡泡玛特走向了IP最难的一步",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNY0VtMjBvQ08zSmFwR2RkRl9Ub0JOU21ibkl6aGdVUXhzdTU2dm92dGs0RGFvcDQ0N1dBajRsTkFGNnJfUVZYUlJDV0VyZkZwWkVRMnJHYTZEQ2t5c1RWU0gwWDFNYTRLWFpWT3MtWll3djFxNmcxc1VZeWpKS05hSG9JYklCMkYzSzhXdklaaXpreVR0MWtGeEhhOFI5ekVSQ2JoWTRBa1VDVXJPU3drWnZGWQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-23",
-      "title": "段永平：10年内大概率不会卖泡泡玛特",
-      "text": "段永平：10年内大概率不会卖泡泡玛特",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5wYlZpb0dmSlc0Z0RxYktpcE5iUUpSNlBNbWlGQjU2eFN5aEdZdkkzRjRoRkljbUdwLThBNV9xR3hVdG04US1HWUhvcUZFMUpvN0Rqb2JDTDRBS2FuRlBBNQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-23",
-      "title": "段永平：十年内大概率不会卖泡泡玛特",
-      "text": "段永平：十年内大概率不会卖泡泡玛特",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5GRTFOREpCRi1uaWtjSEVGcXNPMnNxcjFwbmJPMlJBZHRUNWF2UUhsdmktZVotWTg4OEpxcFduLWZDRWZEaHNEcWVTUnRNdWNwemF3VnRSZEI5T0FpOGhlYg?oc=5"
+      "title": "成都潮玩地图又上新！泡泡玛特西南首家旗舰店正式开业",
+      "text": "成都潮玩地图又上新！泡泡玛特西南首家旗舰店正式开业",
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQbm1pRkdreHdjR0xiMkxsRHdQazdjME9oWHVidlAzTWJXU1RxcVNnbll1ekc4ckhjeC0tdndwdi1NUVFvMGtEd1IxMGppOUVsVnhPQ1ktanhrRGl5TkdDY3c3QWoyUUI3V2J1d2c3MkZCbExOWm55WkJLR0pHZGNTa3BpMU9RRDZ1dDMtdGFKQ09XdnJzM0hmUm9iTU8wakVnSnN6Sg?oc=5"
     },
     {
       "cat": "other",
@@ -491,56 +711,6 @@
       "text": "“10年内大概率不卖”，关于泡泡玛特，段永平最新发声",
       "source": "证券时报",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5UMjRCUURRYnFCUGN1Ny1wUi1kZFlyTUV0aGM1V2MxTm5UUkhURW9LRjc0WU1KUE9GcE9UbFJWdFNxWVlHb2pIYXhXbFpBV2VJU05nV1NWcVY5Qk9p?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-23",
-      "title": "段永平最新发声：10年内大概率不卖泡泡玛特",
-      "text": "段永平最新发声：10年内大概率不卖泡泡玛特",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ueVVzYkFleDM4X252aGJsVGtnY3BxUDN4QmhyTzhTc2VFTWhSTGs5LUNhXzhMNlJaeTlIRDFSWUNhc1lsNzRPOF9NRnhyQkxxUnJuU1RSN2RSTTZtdHBFZw?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-23",
-      "title": "殷勇在西城区朝阳区海淀区调研城市更新工作时强调 积极探索可持续的更新模式 高质量推进城市更新",
-      "text": "殷勇在西城区朝阳区海淀区调研城市更新工作时强调 积极探索可持续的更新模式 高质量推进城市更新",
-      "source": "北京市人民政府",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE16QVE1d2tIV3JSY1BocU01WG1HNThhalpLcDJsemszWHFzOXNnVEtzcFFtRm5WeXRHQkYxVndpVU5NV0s3akwxUEprbFNGSjluX3huN1RqNFZCSkFHNUdWV3hsbFFRNTMtM04zNnp2N3hIOVg4VlZ3QQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "overseas",
-      "d": "2026-07-22",
-      "title": "情绪经济站上万亿级风口！泡泡玛特登顶美国亚马逊热卖潮玩榜",
-      "text": "情绪经济站上万亿级风口！泡泡玛特登顶美国亚马逊热卖潮玩榜",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE51dTlGaFhXNFVTYXZaLUxINGZWSHlLNDlkd0hZelJKWHhiNkl3dWZJVzZWMmoyYmpFMkxZczVyeWNDTWxRWnVNV0k4bmZwanJpMVZGZkE0andyM2xWemVQbA?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-22",
-      "title": "段永平和王宁世纪合影一天后，泡泡玛特挤进中国500强",
-      "text": "段永平和王宁世纪合影一天后，泡泡玛特挤进中国500强",
-      "source": "财富号",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1fdE5FVXRiNHd4ejNBU2lpWVRUVFRSZUVreXlERF9FaFRVQlczNEFZUkJzMzhhRzlNdmI3UWlCOXEwbWhOMGE1UUJKWmRVMUhTRVZLMVFPczczTnFrejBGQWI2REJadlIyNlZz?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-22",
-      "title": "罕见“破发”！新品发售半小时降价超30%，网友：太好了，又省钱了",
-      "text": "罕见“破发”！新品发售半小时降价超30%，网友：太好了，又省钱了",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1DZU94T0taVEtqOFZrc0trSmc4RmJEcEFPRXhaaXM5TWZYenpNbC1qeXRybF9jaElFUHAtOGlLcXRzOWNmUEZDak4zb1VfWG1ELVVwY1VzX2VvX0prY19ZaGlXYUNxOWw0MGNzQnJIcVAzZHlQUmJINQ?oc=5"
     },
     {
       "cat": "other",
@@ -557,10 +727,20 @@
       "lead": false,
       "region": "china",
       "d": "2026-07-21",
-      "title": "段永平成为泡泡玛特第二股东，你会去抄作业吗？",
-      "text": "段永平成为泡泡玛特第二股东，你会去抄作业吗？",
-      "source": "虎嗅网",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1qSzE1NW9hWC12Y3A3dFFQQzdDOFJiS0hySFJzSk5sRmNLamRWcjBFeUN1blVfdVdLQklkT3hVMlA3bHZmRHpsQ0lTOEVBZ0w4T2ZNWg?oc=5"
+      "title": "中国500强榜单公布！泡泡玛特首次上榜，腾讯成最赚钱互联网企业",
+      "text": "中国500强榜单公布！泡泡玛特首次上榜，腾讯成最赚钱互联网企业",
+      "source": "雷科技",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA1WHVDd2NWWnVHaGtkOHFteXltX0dHRTZHWkZ6Q19CaHM2RXVHeUdKbVBMb0o4UUQ0bU5yMUYwSTR1cG9NWDQxbnFJYUNyZw?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "overseas",
+      "d": "2026-07-20",
+      "title": "泡泡玛特创始人王宁与投资人段永平纽约会面",
+      "text": "泡泡玛特创始人王宁与投资人段永平纽约会面",
+      "source": "eastmoney.com",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE16YXlrenAtd2R6QXVZeFF3UEYxb3lFUjdKNjVBd2tnQlZkWVM5YWVVYkxUdXpwNlFmY1JpT0h1NzktQVYzZFZUdy1fMGNObktmNlVDMUtuMkQ5clIyRzhWUw?oc=5"
     },
     {
       "cat": "other",
@@ -573,14 +753,24 @@
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1jckNpNnJrQ0ljbHlNbmRYUV9zNEwzcU9KQ3NYWWl3Q1FSdkxMZTZ3c3h3TWRvaGV5dTV4V092aFlsZkdQQ1RhREM5RGN4Q29yNVVqbXpvbXN1cXp2?oc=5"
     },
     {
+      "cat": "other",
+      "lead": false,
+      "region": "overseas",
+      "d": "2026-07-20",
+      "title": "王宁、段永平世界杯看台同框，泡泡玛特两大股东纽约“集合”",
+      "text": "王宁、段永平世界杯看台同框，泡泡玛特两大股东纽约“集合”",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE4xZWVzYkRYVzhTMmZCbXlXRHlDb1EwSDF5VlpDcFJZdEIxNHQ5WjBLLWpmSG1nVUpBR3p4Ul91V2laLS1obFg3dWVwRFRFOEpwLVRGTlA0WkNoTVZaaXNHR1JiUnNzWDhaVGZycUdDazZaQQ?oc=5"
+    },
+    {
       "cat": "collab",
       "lead": false,
       "region": "china",
-      "d": "2026-07-20",
-      "title": "泡泡玛特王宁到访苹果总部，送库克FIFA联名LABUBU公仔 7月16日，苹果CEO蒂姆·库克在微博发文欢迎泡泡玛特团队到访Apple Park，并晒出他与苹果候任CEO约翰·特努斯跟泡泡玛特创始人王宁现场交流的照片。当地时间7月14日下午，泡泡玛特创始人王宁率领核",
-      "text": "泡泡玛特王宁到访苹果总部，送库克FIFA联名LABUBU公仔 7月16日，苹果CEO蒂姆·库克在微博发文欢迎泡泡玛特团队到访Apple Park，并晒出他与苹果候任CEO约翰·特努斯跟泡泡玛特创始人王宁现场交流的照片。当地时间7月14日下午，泡泡玛特创始人王宁率领核",
-      "source": "搜狐网",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5JcjlSV28yOWtiVW96cmpRdVB4d1lyWXhxdlQ1UlM0SzJKX2I5dDA2UjVVVXBLeTRyUG5IakVITTNid2Z5QXFnVHB0UnI3YjlmNWc?oc=5"
+      "d": "2026-07-18",
+      "title": "你期待苹果和泡泡玛特联名吗？",
+      "text": "你期待苹果和泡泡玛特联名吗？",
+      "source": "QQ News",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1LcmpJTm1Palp1ekFLU0RKdi13dVdaQWdoUW13ZGFLQmRxaE5PRjBqXzVkUHZpWFJPRTByZkxnM05EWEJBMk1KYS1ySFRkS3pzOHQ1eHB3?oc=5"
     },
     {
       "cat": "store",
@@ -589,18 +779,8 @@
       "d": "2026-07-17",
       "title": "线下商圈消费回暖 泡泡玛特门店人气旺",
       "text": "线下商圈消费回暖 泡泡玛特门店人气旺",
-      "source": "东方财富",
+      "source": "eastmoney.com",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBBM3dtUE43YWVQLS1BYnp0YWQwem83RkJmbFhFQjhPa2dGT2FJTUpONnVWb2lGM0ZoMi1mcWpvMDdpdG5YWmZHV1RhTE14ZVdkN3dVZEFTMEJwYTFONTBNTA?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-17",
-      "title": "【实探】线下商圈消费回暖 泡泡玛特门店人气旺",
-      "text": "【实探】线下商圈消费回暖 泡泡玛特门店人气旺",
-      "source": "证券时报",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5rakp2elpoMWxESEEtYkM5d2twbEYxcFlHNk9SSWJNellTVkdqd0NrLU9US2NYUUxXSll2T0xXeHJ5cjdCWlBMbG9CVldOYkctSW9hUHRDdGdEb2tT?oc=5"
     },
     {
       "cat": "other",
@@ -609,8 +789,18 @@
       "d": "2026-07-16",
       "title": "泡泡玛特盘中一度涨超8%",
       "text": "泡泡玛特盘中一度涨超8%",
-      "source": "东方财富",
+      "source": "eastmoney.com",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iRFIzaGhaNWxlWng2anFTX3B6LUFaT052RzZGMXluT3VnSmZrTUJSanhBNkdfM1JkWVhTM01VUjMtcDNWWHNWN3hkb2NJOUhfUzJCRlZZV2xrU0k1dml1Sg?oc=5"
+    },
+    {
+      "cat": "other",
+      "lead": false,
+      "region": "china",
+      "d": "2026-07-16",
+      "title": "库克：欢迎泡泡玛特！",
+      "text": "库克：欢迎泡泡玛特！",
+      "source": "21财经",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQc1NoUERVVHlIdnJZOXQ1M1BVQ1dOczZQb055bVhJRkJZOWNyUWtYVmh2aHBNNlcyUlpZUndjSjB3T3dJck44R1FZT2UtREpPU0psUldRWTVOREN1RW1RdlhpWkNNUGIxWE8wcmdoeEd4WTB1NkJNWU85YnQtbGlUNEVVZ1E4RTF1c1pOMA?oc=5"
     },
     {
       "cat": "other",
@@ -619,8 +809,18 @@
       "d": "2026-07-16",
       "title": "泡泡玛特王宁带队探访苹果总部，背后藏着哪些深意？",
       "text": "泡泡玛特王宁带队探访苹果总部，背后藏着哪些深意？",
-      "source": "封面新闻",
+      "source": "thecover.cn",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBzSGFmdUFZZEVQejhQLW9peUFST084eXd4VnVtZ2tNRmRBdTRDNDBCS1hMVTlYU181N1RlN1c2RWlXeU8zT1RZZkh0dUl3dTlNNk1SNmRuZmF5UEFTMWgtTEpaLUpVclBPMk9qQzBZYWY4cThKdVBN?oc=5"
+    },
+    {
+      "cat": "collab",
+      "lead": false,
+      "region": "overseas",
+      "d": "2026-07-16",
+      "title": "泡泡玛特创始人王宁现身苹果总部，并赠予库克世界杯联名款LABUBU",
+      "text": "泡泡玛特创始人王宁现身苹果总部，并赠予库克世界杯联名款LABUBU",
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9WTkY3WUN3VnFYVnlyc2Nob1V1Zm40OEVkMGgxbWNzYmhCTXJ0d29VTW13OUxhdW9RR2dXSlBTcUFwRzRESm1VY2FjVjI0Z2Rfa1JOUWZR?oc=5"
     },
     {
       "cat": "other",
@@ -629,78 +829,38 @@
       "d": "2026-07-16",
       "title": "泡泡玛特王宁探访苹果公司总部",
       "text": "泡泡玛特王宁探访苹果公司总部",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE45WFFNbklqNEF3WnRlQkZPcm5yNlJNNzdGNXFQd0pqX0czb2FNMm1uZU9wMXVFSE9Rd0VDNkhlamRabjVqekpVZG5VclVmZUtJN2praFFWbUNGeDFfRUR6Yk5BdDhhVnBVTGNwdi0yV1JsUQ?oc=5"
     },
     {
       "cat": "other",
       "lead": false,
-      "region": "china",
-      "d": "2026-07-16",
-      "title": "泡泡玛特，突然拉升！",
-      "text": "泡泡玛特，突然拉升！",
-      "source": "证券时报",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0NXVHbFBSWC1NSU51VXFXMUFrMEtLT2prYjlDc09rR0ZiMkxYUVNDcmVRXzdvdk9naXhyMHVxYkNnT3lqcTUtSHZlTklrV0Q1T0tMSklONmotWWp0?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": true,
-      "region": "china",
-      "d": "2026-07-16",
-      "title": "泡泡玛特一周动向：王宁率队访苹果总部北京最大沉浸式门店亮相- 品牌",
-      "text": "泡泡玛特一周动向：王宁率队访苹果总部北京最大沉浸式门店亮相- 品牌",
-      "source": "亿邦动力网",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1FZXJpU2pYQ2VyYmhNcUc4TzZnRi01ZVlrUkhPNXV1Z3VxS2RiRlp4QUVVcGFJNlZEREFBLXhLVEZybVkzdnFXV1lmRC1GNEVMa0VqME5n?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-16",
-      "title": "段永平“左手茅台，右手泡泡玛特”，消费股的春天来了？",
-      "text": "段永平“左手茅台，右手泡泡玛特”，消费股的春天来了？",
-      "source": "36kr.com",
-      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5qQ21xS3FGZkh0ZWtFelo2NV9jdld1d1JuS1c5anVrd0prckUtYzB4ME1VcDJzNEotdnF2Y0tBb1hJSkRpWWZVeC1IUkVZdw?oc=5"
-    },
-    {
-      "cat": "collab",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-16",
-      "title": "灵悉L联名泡泡玛特，12.98万起买潮玩座驾？3个维度说清值不值+FAQ",
-      "text": "灵悉L联名泡泡玛特，12.98万起买潮玩座驾？3个维度说清值不值+FAQ",
-      "source": "新浪汽车",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0xMGkzTWhnbjByLWt1VE5VYWc1SXRoZFIwZFVQRWFuU2ZtUnB0R2NIemt2SFhhSUdXOTFueTZOc1lVdWF4YTVQVXJzX1VuWlEzcEZVY3NlMmZ4VTA3X1J6cXF1bkN6enVmNENkTmZB?oc=5"
-    },
-    {
-      "cat": "collab",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-16",
-      "title": "跨界联名？泡泡玛特CEO到访苹果总部",
-      "text": "跨界联名？泡泡玛特CEO到访苹果总部",
-      "source": "腾讯新闻",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5XYnI2ZWlrelJaZ1hyNkZfM05ndHlwU0dUdGt3QklDU2E0TFpmUDVQRGZTUGVZSTR3XzhfT3FCQ0pNMHRxM0R3WHphazlhNnp3dDBRSnRR?oc=5"
+      "region": "overseas",
+      "d": "2026-07-15",
+      "title": "泡泡玛特旗下LABUBU：世界杯开幕式首秀，中国潮玩凭何撬动全球10亿观众？",
+      "text": "泡泡玛特旗下LABUBU：世界杯开幕式首秀，中国潮玩凭何撬动全球10亿观众？",
+      "source": "新浪财经",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZWdoekJka0E4Nmcyb3RZY3ZJM1BBX3kyUmw0TDBOdWhvWnA3RFVtdHNiSDN1MXFlV2JJd2lJbmFxYnBMZjNoYUt0NGN3UjR2OERQVXJqSGd2WWRRNE1NWGJaR05BZDJHWWhXRWI4bDBwZUxtM1lTZHNGREZHTmdTN2kwREQ?oc=5"
     },
     {
       "cat": "other",
       "lead": false,
       "region": "china",
       "d": "2026-07-14",
-      "title": "排面！泡泡玛特创始人王宁携LABUBU探访苹果总部，库克亲自接见",
-      "text": "排面！泡泡玛特创始人王宁携LABUBU探访苹果总部，库克亲自接见",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQb182NEZXWHB3dXFaT1prS0FLUEtOQUdLNW5GdlQyT21oSFF1N3N4RmN5VXJZeWpTRFVaajlrejhsV0wwUmxzRlBNTUZvVzBwT0RiaFhhNGtUVllTanRmdWJER2VINm1lV0k0NUNXaldDQnR4RG5UUDFORUVIdGVMZmZScEtmX2N2U0diajRfRUlGM184R0o0aWR6QXU5T2lwazU4SkJub2dFS0RoOU96RmxpM0tTc0RoZ21yeXZ1ZFpnTG9EQlczcUZKVXdFUkFxM1plQWlzVHYxNlhxUkRRUVZNQm9Ob3UtYkhoYUREdUFQSmZXdXVWU1R5M2pzR3IxTzJKdzJpSzdJWmxGUC1vbnhvVGZ4QQ?oc=5"
+      "title": "近500平、北京最大，泡泡玛特合生汇店试营业",
+      "text": "近500平、北京最大，泡泡玛特合生汇店试营业",
+      "source": "搜狐网",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOZzdPWU15V2ZGUDhXYlZjcUxIU0k5OGZONzAtellFVjJnZmVrcGFmbUlkNFlMOFN5SG5pdVM0S2RQOU9TM2tKT2Q0NFpsZWtvWmNUYnJUSkh2VENEUXVnWHlKWFQ0WUpBMy1jOUlvbFVlcy1GS3AyOHlvVjJSOVp0SHhMZmJoakNURlZJRw?oc=5"
     },
     {
-      "cat": "other",
+      "cat": "store",
       "lead": false,
-      "region": "overseas",
+      "region": "china",
       "d": "2026-07-13",
-      "title": "电子吧唧海外杀疯，OPPO荣耀也在入局，AI版泡泡玛特要来了？",
-      "text": "电子吧唧海外杀疯，OPPO荣耀也在入局，AI版泡泡玛特要来了？",
-      "source": "Morketing",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE54XzZKcUowbVNTcFNvZ0ZmQnAyYUVYN2R3dEN0REZncHNqQ1NZa3ZqWTA3dUpjMjNLNTd3MFY2a3FIV0p2X1NaT003VHRCbkE?oc=5"
+      "title": "北京最大的泡泡玛特门店开始试营业",
+      "text": "北京最大的泡泡玛特门店开始试营业",
+      "source": "京报网",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9oWUJ6cFBFaGhhc3lxNks3UWM5UWtQa0VUc1lNb0RvUE5QTXJXMHNaVGdpdml0VVBqTzM0ekZCbFlLWUMtWG5MUFJSRVAyUUhPR1JobS05TENBaGhmbVh4UmJwQTY1dUE0OHhHVVI5WWJtQQ?oc=5"
     },
     {
       "cat": "other",
@@ -709,7 +869,7 @@
       "d": "2026-07-12",
       "title": "北京首家双首层泡泡玛特试营业，星星人补货了！有人5点半就去排队……",
       "text": "北京首家双首层泡泡玛特试营业，星星人补货了！有人5点半就去排队……",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE93TlFvZE10SUhhSGtLRnlTeldVTDgwbVc1U0Fqbzd6YnEtWmlvV1B5Ym41S0ljNUxmR2ZOLW9aaUxpYVpndTdnY1ZJbV81QlJNam1nbEhxdzFMSFljOTVYZTRlVkpKWm55UHJiU3VweWdKQQ?oc=5"
     },
     {
@@ -719,7 +879,7 @@
       "d": "2026-07-12",
       "title": "泡泡玛特北京最大门店开启试营业，早上5点多就有人来排号",
       "text": "泡泡玛特北京最大门店开启试营业，早上5点多就有人来排号",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1maUw2Uk5JNnFUQjR5TjVrRHBSTzBucHB0VW9yMmw2VDc5V0RUS2d5ckFGRGNyX1JEdGpCSWdveExoN0trNHhHalo4V1VRV0sxUlNWUmY5bEphbnA3N1ppSHhTNEsyVTBDTWdnRG9MSGRuQQ?oc=5"
     },
     {
@@ -729,28 +889,8 @@
       "d": "2026-07-12",
       "title": "早上5点多就有人来排号，北京最大泡泡玛特门店开启试营业",
       "text": "早上5点多就有人来排号，北京最大泡泡玛特门店开启试营业",
-      "source": "xinwen.bjd.com.cn",
+      "source": "京报网",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1JYU4yR2EybDR6LTZXckJXNmY0MEZKUnJXcElWZlJ2ZXkyajdyc0hRaE1qS2plSEVwTm1fd2c4ZUI5UVJVUjA0UHktSmt0Q0Rmc0VNVEFGQmZFdmNWN2txdUZ2MGpiZExIMmRJbFJtaTVEZw?oc=5"
-    },
-    {
-      "cat": "store",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-12",
-      "title": "泡泡玛特北京最大门店来了！近500平方米！现场大排长队！有哪些好玩儿的？记者带你打卡↓#泡泡玛特 #泡泡玛特星星人 #合生汇",
-      "text": "泡泡玛特北京最大门店来了！近500平方米！现场大排长队！有哪些好玩儿的？记者带你打卡↓#泡泡玛特 #泡泡玛特星星人 #合生汇",
-      "source": "搜狐网",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT0lFUHBzaF9xbEVScGZmc3ZfT1Vuc0ZjOVVMRkdudVEzM3Z2OEtHenQxNVljU2ZCdUU2T0h1WmdQTm1tQlhEWGlWZm9iZ3d1M0RVbmNsNE8xVG0zdTBab2xlX3Jlc1pwQWJTVnpObUlvMWZOZldENlMxejNyYUdfZ1gwWTZPajhNSVVuRA?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-11",
-      "title": "百亿资金持续加仓！段永平：泡泡玛特10年升值空间大于茅台",
-      "text": "百亿资金持续加仓！段永平：泡泡玛特10年升值空间大于茅台",
-      "source": "证券时报",
-      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5nSXRFZkJKamFybndWX0lPVzZBeC1qNnM3cmFuNzJOcXFvX25EZzVBajF0TnVXM3AtdWc3VFhfYkJXTDFJTXVRWFVmNnF5N0wwMTFTWU52WQ?oc=5"
     },
     {
       "cat": "collab",
@@ -759,147 +899,8 @@
       "d": "2026-07-11",
       "title": "段永平再度增持泡泡玛特 Labubu世界杯联名产品已在“促销”",
       "text": "段永平再度增持泡泡玛特 Labubu世界杯联名产品已在“促销”",
-      "source": "东方财富",
+      "source": "eastmoney.com",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBES3o1OGV2alowYmRnSVRkYWRVZnVjbXFYVnpFM2Y0RlhmOW9LM3dKMWxsWTl2eUU3QVBsdlVUZnJNNmNTSWoxS2ZTNzZPX0lZRVB0VV9DLUYwZk5KNlJJUQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-10",
-      "title": "砸重金招人：LABUBU冰箱遇冷后，泡泡玛特要亲自造家电了？",
-      "text": "砸重金招人：LABUBU冰箱遇冷后，泡泡玛特要亲自造家电了？",
-      "source": "创业邦",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5OTU5NN290Rk53RGdTN3d1eTVBTTRPa0ZfWjczS2VqdnZzbnFhVzRDUDhDNFVjN001ZUFyTGxoVWFXbFFBUzM0RHlUVWJLMEx6?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-09",
-      "title": "从“稀缺”到“放缓”？“空头”德银：泡泡玛特IP周期见顶，下半年面临更严峻下滑风险",
-      "text": "从“稀缺”到“放缓”？“空头”德银：泡泡玛特IP周期见顶，下半年面临更严峻下滑风险",
-      "source": "华尔街见闻",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9fRGNhanRvR2s5aWNwQkdlcF9Oc2kxcTEwWGpud3JiVWczNlRQdjNRN3hzVWdnaHdvUjc5OUpGaFVPcVY5UUpuRnVFeUgyZ3FvN2VV?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-07",
-      "title": "破发！Labubu，不出意外？",
-      "text": "破发！Labubu，不出意外？",
-      "source": "thepaper.cn",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBPUEd1UXdkTmdnY1VhOUlDaUZzVnBPOEVYQmpzV1FyM21jZnJkX2R0QTFnRlpxSGwzSHNLdm41b09PZWE4bVRsZjlPVS04YTRfYk9QNUpVejhCN2QtVFE?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-07",
-      "title": "没有下一个Labubu，泡泡玛特还值钱吗？",
-      "text": "没有下一个Labubu，泡泡玛特还值钱吗？",
-      "source": "36kr.com",
-      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9sY1AyWV9TbEdfTHg0bnYtbHlKUHUtOWZKZFQzTk9BU0pYSkNueW45T0lSTGpYMjF2NXlLZWRFMVZPV2tRWE5iMnpqcWQ2Zw?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-02",
-      "title": "泡泡玛特的休整年，拉布布新品破发",
-      "text": "泡泡玛特的休整年，拉布布新品破发",
-      "source": "风闻",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE12UW9ZaXcxVHZZbFBHaUMweXllNHNxdU9EM1EzSl84b28tYl9QaTRMNHBtZm84Y2NpTG1SeERrWEZYalVjdHhBOUJNLUgtblZkbkdDY25KQ28tSmc?oc=5"
-    },
-    {
-      "cat": "expo",
-      "region": "china",
-      "d": "2026-07-01",
-      "title": "城市乐园 POP LAND 1.5 期夏季完工",
-      "text": "北京泡泡玛特城市乐园 1.5 期瞄准 LABUBU 主题，新增「飞翔的 Labubu」等游乐设施，预计今年夏天完工；2 期预计 2027 年启动。",
-      "source": "观察者网",
-      "url": "https://www.guancha.cn/economy/2026_04_15_813717.shtml"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-01",
-      "title": "LABUBU 意外破发跌价30%，王宁和泡泡玛特却“稳了”",
-      "text": "LABUBU 意外破发跌价30%，王宁和泡泡玛特却“稳了”",
-      "source": "潮新闻",
-      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1XMnFuc3ZxWDZoNEg1ajlQUUZ1OURZSDhLbUF2REZWM3h6eE10MnloOERXNHZhaEx5MVBEZC1fMnY1NWlaaEhoRmdXWm4yaHJwUGhTTnBKZw?oc=5"
-    },
-    {
-      "cat": "collab",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-01",
-      "title": "荣耀将与泡泡玛特联名推出潮玩手机",
-      "text": "荣耀将与泡泡玛特联名推出潮玩手机",
-      "source": "新浪财经",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9qaFhHaUhYN1ZJVzRrVHcwM2lPaEJrcV95a1lxcXYxZEVwUHp2a01jcnU1NVNzZ2J0dTV6dWdGVmNsZF95SW5fNE5jRnYyZm5rTWxOSG94dFMxTWFHUVJNV1BidGg3bEE4LUlfTGlHUQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-01",
-      "title": "拉布布新品常规款“破发”，潮玩消费回归理性？",
-      "text": "拉布布新品常规款“破发”，潮玩消费回归理性？",
-      "source": "海报新闻",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5GZGdKVXA4NkNmUEN3MVJGN1Ffc1lYNkg1WUR6dVZwRndRTFFEYWxCMWU4S2NJQnlZSm9Yek1EWHVBcWViSXZ3X3RFaU9YSU0z?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-07-01",
-      "title": "拉布布新品常规款“破发” 潮玩消费回归理性？",
-      "text": "拉布布新品常规款“破发” 潮玩消费回归理性？",
-      "source": "东方财富",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0tRVl0bnctOXpwTGVZN1h4ODJfZE9sempjdzhGZWU3YTEwcG9TWmNVYnQ2T0k3cE5jMmRxN0tYSG01ZG5VTHBoZjMxR0loTFlvVU1teEFWOGh4WEZRQnBWa0pLWQ?oc=5"
-    },
-    {
-      "cat": "collab",
-      "lead": false,
-      "region": "china",
-      "d": "2026-06-30",
-      "title": "娇韵诗 (Clarins) x 泡泡玛特 (POP MART) 联名系列 —— 限定版护肤品将于阪急梅田总店发售 - haveagood-holiday.com",
-      "text": "娇韵诗 (Clarins) x 泡泡玛特 (POP MART) 联名系列 —— 限定版护肤品将于阪急梅田总店发售 - haveagood-holiday.com",
-      "source": "haveagood-holiday.com",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNSXNDdVFzNE1MVzJqQ0RKbF9heF9NSTJBS3BnMVhQd0R6a1htY3hqRFpwRVhXNWxnOW5OeUZWUzdlOEg5dkoxVWZ5ZVhZWjRtRUZFUmROUm5HT0RSNVhQN1ZFeVctd3BQRGp2UkMtcnNQQmdobnFQblUtU1c1ZVF4NjY2bkY1QWF4THNNMENsV25fQzBnRzA0?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-06-30",
-      "title": "2026上半年的潮玩市场：泡泡玛特“踩刹车”、新势力蓄力",
-      "text": "2026上半年的潮玩市场：泡泡玛特“踩刹车”、新势力蓄力",
-      "source": "36kr.com",
-      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1ZN2hqUFlqRW1RYzYxQmRTRk1NZzFvcV9jSkV1Q00wVUtYeG1yLUJDODNGY204RGNNdnk2RDZkQ0paSjBuTkExRHJITTMxQQ?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-06-29",
-      "title": "泡泡玛特新品遇冷价格破发，段永平紧急喊话“确实蛮可爱的”",
-      "text": "泡泡玛特新品遇冷价格破发，段永平紧急喊话“确实蛮可爱的”",
-      "source": "腾讯新闻",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBHTG12ajc5eTZ6dUlqXzlOWUx6MXp4UWl5cmtvcDU2SlVmTllwYXJDcElVSnZkeWx2MGY3alNyNVBfMDFKVmk5MmtuVHhxS2tqRnBWSW1B?oc=5"
-    },
-    {
-      "cat": "other",
-      "lead": false,
-      "region": "china",
-      "d": "2026-06-27",
-      "title": "2000亿港元泡泡玛特，LABUBU新品百元随意买",
-      "text": "2000亿港元泡泡玛特，LABUBU新品百元随意买",
-      "source": "21财经",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNYVR1Tkt6ZVJueWd0b0tvLVJ4Yll4Q2tNNTdVMDFwTlo3UEdOSi0temNqUVM4OXVJaGtkZTE5WGhaa3Qzc2ZCN0c0SER3VG5MWDlkODRKM1hnUUNKbllQVVlhRDhyTXlxSEhwYlNxNzA5Y3M0S3ROZ2ZGVXJFR3V4emFNcTNWejdFajBQbw?oc=5"
     }
   ]
 }

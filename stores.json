@@ -889,9 +889,9 @@
   "countries_base": 29,
   "baseline_review": {
     "needed": true,
-    "detected_on": "2026-06-21",
-    "headline": "LABUBU家族首破百亿营收，泡泡玛特2026年目标增速不低于20%|直击业绩会",
-    "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5waUNrRzVXSVl6RDBXUU9zNjBrd2lvek9fdjA4a3BKUUoxTHdQelo0S2RYMm9xSUpDM2gwMXJqMXROVHFxMWc?oc=5",
+    "detected_on": "2026-08-24",
+    "headline": "泡泡玛特业绩出炉，段永平回怼网友恶评：该吃药了吧？",
+    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE85czVfRzdjZHlCM3JNVUxIclh2QldNQlotbUtJZEZkMjB2UnFGMFlOakxnWHp3cVdIQlFoeU9oNU5tSHpVd1VBeVFNcWQ?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }

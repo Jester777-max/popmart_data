@@ -841,10 +841,12 @@
     },
     {
       "month": "2026-08",
-      "china": 0,
+      "china": 1,
       "overseas": 1,
       "us": 0,
-      "china_loc": [],
+      "china_loc": [
+        "北京"
+      ],
       "us_loc": [],
       "overseas_loc": [
         "新加坡"
@@ -889,9 +891,9 @@
   "countries_base": 29,
   "baseline_review": {
     "needed": true,
-    "detected_on": "2026-08-24",
-    "headline": "泡泡玛特业绩出炉，段永平回怼网友恶评：该吃药了吧？",
-    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE85czVfRzdjZHlCM3JNVUxIclh2QldNQlotbUtJZEZkMjB2UnFGMFlOakxnWHp3cVdIQlFoeU9oNU5tSHpVd1VBeVFNcWQ?oc=5",
+    "detected_on": "2026-08-30",
+    "headline": "名创优品二季度净亏2.9亿元，叶国富喊话大店业绩要对标泡泡玛特",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5WMnB3SGNEc3dPek1yWmdmWDBxNFhQczBxVkJyUnpMMTdPM0ZQaVg1ZkVRMDZCSEk5Q0ROODZSUVZGWU5zQkNaLWlWZGtXRWNoQzB1alBtbHBPQnhfenc?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }

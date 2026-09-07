@@ -851,6 +851,18 @@
       "overseas_loc": [
         "新加坡"
       ]
+    },
+    {
+      "month": "2026-09",
+      "china": 1,
+      "overseas": 0,
+      "us": 0,
+      "china_loc": [
+        "上海",
+        "长沙"
+      ],
+      "us_loc": [],
+      "overseas_loc": []
     }
   ],
   "world_base": {
@@ -891,9 +903,9 @@
   "countries_base": 29,
   "baseline_review": {
     "needed": true,
-    "detected_on": "2026-08-30",
-    "headline": "名创优品二季度净亏2.9亿元，叶国富喊话大店业绩要对标泡泡玛特",
-    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5WMnB3SGNEc3dPek1yWmdmWDBxNFhQczBxVkJyUnpMMTdPM0ZQaVg1ZkVRMDZCSEk5Q0ROODZSUVZGWU5zQkNaLWlWZGtXRWNoQzB1alBtbHBPQnhfenc?oc=5",
+    "detected_on": "2026-09-04",
+    "headline": "潮玩公司上半年业绩：泡泡玛特净利增10.1%，奥飞娱乐净利增超3倍，元隆雅图净亏损368万，实丰文化净利降26.09%",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9rbms3YnRLUUR6V0pENjNacmZxZ3h0LTVVSGFDaXRHLXZCU0dTdGtpUUM0OUVmcnRHU0UwOUtpSnNONkNpX0N2NXgwaG4tQTFkMTdCWlNkNURHbUF1SEV3bkZ0VW9uZ21PMVZIRzRNWQ?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }

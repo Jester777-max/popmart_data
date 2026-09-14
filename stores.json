@@ -855,14 +855,17 @@
     {
       "month": "2026-09",
       "china": 1,
-      "overseas": 0,
+      "overseas": 1,
       "us": 0,
       "china_loc": [
         "上海",
-        "长沙"
+        "长沙",
+        "杭州"
       ],
       "us_loc": [],
-      "overseas_loc": []
+      "overseas_loc": [
+        "巴黎"
+      ]
     }
   ],
   "world_base": {
@@ -905,7 +908,7 @@
     "needed": true,
     "detected_on": "2026-09-04",
     "headline": "潮玩公司上半年业绩：泡泡玛特净利增10.1%，奥飞娱乐净利增超3倍，元隆雅图净亏损368万，实丰文化净利降26.09%",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9rbms3YnRLUUR6V0pENjNacmZxZ3h0LTVVSGFDaXRHLXZCU0dTdGtpUUM0OUVmcnRHU0UwOUtpSnNONkNpX0N2NXgwaG4tQTFkMTdCWlNkNURHbUF1SEV3bkZ0VW9uZ21PMVZIRzRNWQ?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA4M2JTWW9VcVN1cnJ5dTNYLVJMTHdnZHVfVFplNUFyOGdLNWpxUnVpOVdSdllRSTJvUS1FQVlvdnZwQWxoWV80WGNpUmNvNXJ1VWtZSE96UkxfZUdQeTYxSjBtZ1hUZUU?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }

@@ -906,9 +906,9 @@
   "countries_base": 29,
   "baseline_review": {
     "needed": true,
-    "detected_on": "2026-09-04",
-    "headline": "潮玩公司上半年业绩：泡泡玛特净利增10.1%，奥飞娱乐净利增超3倍，元隆雅图净亏损368万，实丰文化净利降26.09%",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA4M2JTWW9VcVN1cnJ5dTNYLVJMTHdnZHVfVFplNUFyOGdLNWpxUnVpOVdSdllRSTJvUS1FQVlvdnZwQWxoWV80WGNpUmNvNXJ1VWtZSE96UkxfZUdQeTYxSjBtZ1hUZUU?oc=5",
+    "detected_on": "2026-09-03",
+    "headline": "硬刚泡泡玛特！叶国富喊话：同一商圈名创优品乐园店业绩必须超越",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBrdFlRSEZ2d2QwSGVhcGxzYU5vVk03R2NjNHI1OFdoZzhtM21RbEJJNjhvTUU0aGttSWYxX0tIZ0NteDhqc1pHY2ZQWDg4Sno4d1RWQWZPb0s?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }

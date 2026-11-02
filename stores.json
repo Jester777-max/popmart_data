@@ -879,6 +879,17 @@
       ],
       "us_loc": [],
       "overseas_loc": []
+    },
+    {
+      "month": "2026-11",
+      "china": 1,
+      "overseas": 0,
+      "us": 0,
+      "china_loc": [
+        "北京"
+      ],
+      "us_loc": [],
+      "overseas_loc": []
     }
   ],
   "world_base": {
@@ -919,9 +930,9 @@
   "countries_base": 29,
   "baseline_review": {
     "needed": true,
-    "detected_on": "2026-10-22",
-    "headline": "泡泡玛特Q3财报看点：营收预计下降三成，海外市场全面承压",
-    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9TVl9vWnZhTjJHNXpuRUlnU0pjR2V5ajZDTFh2M1c3bWdFNHpYU3NBM2V2aGRVbThrYy1YYkxWLWZwaTh4dkpKTjNsMEc3LWEyZV8w?oc=5",
+    "detected_on": "2026-11-01",
+    "headline": "沪上阿姨发布“全时茶咖食”战略；Labubu热度退潮影响泡泡玛特业绩；全球奢侈品高度依赖中国市场复苏……｜一周核心",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBIOGFuWmczXzB2VUlYWVVkMmtmZmVvanJ1V3FXdGYwSXFyYmlHMDFDWnU3TFI2Z1ZSN3pyMWJKYWRWWkItNWo4aXZfbWhtak9QMmxiSnpn?oc=5",
     "detected_overseas_total": null,
     "note": "检测到疑似新财报，请人工校准基线（world 各国值 / overseas_total_base）。未能提取到可信的海外门店总数"
   }
